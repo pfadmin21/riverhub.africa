@@ -64,6 +64,33 @@
   },
   "sameAs": []
 }
+// ── Mobile nav ──────────────────────────────────────────
+const navHamburger = document.getElementById('navHamburger');
+const mobileNav = document.getElementById('mobileNav');
+function openMobileNav() {
+  mobileNav.classList.add('open');
+  mobileNav.setAttribute('aria-hidden','false');
+  navHamburger.classList.add('open');
+  navHamburger.setAttribute('aria-expanded','true');
+  document.body.style.overflow = 'hidden';
+}
+function closeMobileNav() {
+  mobileNav.classList.remove('open');
+  mobileNav.setAttribute('aria-hidden','true');
+  navHamburger.classList.remove('open');
+  navHamburger.setAttribute('aria-expanded','false');
+  document.body.style.overflow = '';
+}
+if (navHamburger) navHamburger.addEventListener('click', openMobileNav);
+const navClose = document.getElementById('navClose');
+if (navClose) navClose.addEventListener('click', closeMobileNav);
+mobileNav.addEventListener('click', function(e) {
+  if (e.target === mobileNav) closeMobileNav();
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeMobileNav();
+});
+
 </script>
 
 <!-- ── Favicon ── -->
@@ -321,7 +348,7 @@ footer{background:var(--bg-card);border-top:.5px solid var(--border-lg);padding:
 .ped-footer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px}
 .ped-footer-num{font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:300;color:var(--gold);line-height:1;margin-bottom:8px}
 .ped-footer-label{font-size:12px;font-weight:300;color:var(--muted);line-height:1.6}
-@media(max-width:900px){.ped-header,.ped-panel-grid,.ped-footer-grid{grid-template-columns:1fr;gap:32px}.ped-footer-grid{grid-template-columns:1fr 1fr}}
+
 .venue-hire{padding:120px 0}
 .vh-grid{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:start}
 .vh-packages{display:flex;flex-direction:column;gap:1px;margin-top:40px}
@@ -373,7 +400,7 @@ footer{background:var(--bg-card);border-top:.5px solid var(--border-lg);padding:
 .b-taf{background:rgba(61,138,98,.18);color:#6ec493;border:.5px solid rgba(61,138,98,.3)}
 .b-hrdc{background:rgba(201,168,76,.12);color:var(--gold-lt);border:.5px solid rgba(201,168,76,.25)}
 .b-premium{background:rgba(110,90,138,.15);color:#b09fd4;border:.5px solid rgba(110,90,138,.3)}
-@media(max-width:900px){nav{padding:16px 20px}.nav-links{display:none}.hero{padding:120px 20px 80px}.hero-inner,.intro-grid,.about-grid,.tracks-header,.delivery-grid,.hrdc-grid,.foundation-grid,.register-grid,.footer-inner{grid-template-columns:1fr;gap:48px}.container{padding:0 20px}.about-sticky{position:static}.tracks-grid{grid-template-columns:1fr}.form-row-2{grid-template-columns:1fr}.footer-inner{grid-template-columns:1fr 1fr}.intro-div{display:none}.intro-quote{padding-right:0}.vh-grid{grid-template-columns:1fr;gap:48px}.venue-hire{padding:72px 0}.cal-row{grid-template-columns:60px 1fr;gap:12px}.cal-row .cal-seats{display:none}}
+
 @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 .hero-inner .hero-left > *{animation:fadeUp .8s ease both}
 .hero-inner .hero-left > *:nth-child(1){animation-delay:.1s}
@@ -394,15 +421,7 @@ footer{background:var(--bg-card);border-top:.5px solid var(--border-lg);padding:
               #floorplan .fp-label{font-size:7.5px;fill:rgba(255,255,255,.35);pointer-events:none;text-anchor:middle;dominant-baseline:middle}
               #floorplan .fp-label-gold{font-size:7px;fill:rgba(201,168,76,.6);pointer-events:none;text-anchor:middle;dominant-baseline:middle;font-weight:500;letter-spacing:.08em}
 
-@media(max-width:480px){
-  .cal-seats{display:none}
-  .cal-row{grid-template-columns:52px 1fr auto;gap:8px;padding:10px 12px}
-  .cal-code{font-size:8px}
-  .cal-name{font-size:12px}
-  .cal-cta{font-size:9px}
-  .vh-grid{gap:32px}
-  .venue-hire{padding:56px 0}
-}
+
 
 /* ── SPEAKERS ── */
 .speakers{padding:100px 0;background:var(--bg-card);border-top:.5px solid var(--border);border-bottom:.5px solid var(--border)}
@@ -420,14 +439,206 @@ footer{background:var(--bg-card);border-top:.5px solid var(--border-lg);padding:
 .sp-confirm{position:absolute;top:16px;right:16px;font-size:8px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border:.5px solid var(--border);padding:3px 8px}
 .sp-confirm.confirmed{color:#5ec490;border-color:rgba(61,138,98,.4)}
 .sp-note{margin-top:48px;padding:20px 28px;background:var(--bg-mid);border:.5px solid var(--border);border-left:2px solid var(--gold);font-size:11px;font-weight:300;color:var(--muted-lg);line-height:1.75}
-@media(max-width:900px){.speakers-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:600px){.speakers-grid{grid-template-columns:1fr}}
+
+
+
+/* ══════════════════════════════════════════════════════════
+   HAMBURGER & MOBILE NAV
+══════════════════════════════════════════════════════════ */
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:none;padding:8px;width:40px;height:40px;flex-shrink:0}
+.nav-hamburger span{display:block;width:22px;height:1.5px;background:var(--white);transition:all .3s;border-radius:1px}
+.nav-hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.nav-hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+
+.mobile-nav{position:fixed;inset:0;z-index:300;background:rgba(13,17,23,.98);backdrop-filter:blur(20px);display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .3s;overflow-y:auto}
+.mobile-nav.open{opacity:1;pointer-events:all}
+.mobile-nav-inner{display:flex;flex-direction:column;padding:24px 28px 48px;min-height:100%}
+.mobile-nav-close{align-self:flex-end;background:none;border:.5px solid var(--border-lg);color:var(--muted);font-size:16px;width:36px;height:36px;border-radius:50%;cursor:none;transition:all .2s;margin-bottom:32px}
+.mobile-nav-close:hover{color:var(--white);border-color:var(--gold)}
+.mobile-nav-logo{margin-bottom:40px;padding-bottom:32px;border-bottom:.5px solid var(--border)}
+.mobile-nav-logo .nav-logo-main{display:block;font-family:"Cormorant Garamond",serif;font-size:24px;font-weight:500;color:var(--white);margin-bottom:4px}
+.mobile-nav-logo .nav-logo-sub{display:block;font-size:10px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
+.mobile-nav-links{display:flex;flex-direction:column;gap:0;flex:1}
+.mobile-nav-links a{font-family:"Cormorant Garamond",serif;font-size:28px;font-weight:300;color:rgba(245,243,239,.7);text-decoration:none;padding:14px 0;border-bottom:.5px solid var(--border);transition:color .2s;letter-spacing:.01em}
+.mobile-nav-links a:hover{color:var(--white)}
+.mobile-nav-cta{margin-top:32px;display:block;background:var(--gold);color:var(--bg);text-decoration:none;padding:16px 24px;text-align:center;font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;border-radius:var(--radius)}
+
+/* ══════════════════════════════════════════════════════════
+   TABLET — 900px
+══════════════════════════════════════════════════════════ */
+@media(max-width:900px){
+
+  /* Cursor — disable on touch */
+  body{cursor:auto}
+  #cursor-ring,#cursor-dot{display:none}
+  a,button,[role="button"],.cal-row,.stat-card,.vh-pkg,.track-card,.cal-filter,.nav-cta,.btn-primary,.btn-ghost,.nav-hamburger,.mobile-nav-close{cursor:auto}
+
+  /* Nav */
+  nav{padding:14px 20px}
+  nav.scrolled{padding:12px 20px}
+  .nav-links,.nav-cta{display:none}
+  .nav-hamburger{display:flex}
+
+  /* Sections — reset padding */
+  section,.section{padding:72px 0}
+  .container{padding:0 20px}
+
+  /* Hero */
+  .hero{padding:100px 20px 64px}
+  .hero-inner{grid-template-columns:1fr;gap:48px}
+  .hero-right{display:none}
+  .hero-title{font-size:clamp(32px,6vw,48px)}
+  .hero-stats{grid-template-columns:1fr 1fr;gap:24px;margin-top:40px}
+
+  /* About / intro */
+  .intro-grid,.about-grid,.tracks-header{grid-template-columns:1fr;gap:40px}
+  .intro-div{display:none}
+  .intro-quote{padding-right:0}
+  .about-sticky{position:static}
+
+  /* Tracks */
+  .tracks-grid{grid-template-columns:1fr 1fr;gap:12px}
+
+  /* Pedagogy */
+  .ped-header{grid-template-columns:1fr;gap:32px}
+  .ped-panel-grid{grid-template-columns:1fr;gap:32px}
+  .ped-footer-grid{grid-template-columns:1fr 1fr;gap:24px}
+
+  /* Speakers */
+  .speakers-grid{grid-template-columns:1fr 1fr;gap:12px}
+
+  /* Delivery */
+  .delivery-grid{grid-template-columns:1fr;gap:40px}
+
+  /* Calendar */
+  .cal-filters{gap:6px}
+  .cal-filter{font-size:9px;padding:6px 12px}
+  .cal-row{grid-template-columns:60px 1fr auto;gap:12px;padding:12px 14px}
+  .cal-name{font-size:12px}
+  .cal-code{font-size:9px}
+  .cal-seats{display:none}
+
+  /* Fees */
+  .hrdc-grid{grid-template-columns:1fr;gap:40px}
+
+  /* Venue hire */
+  .venue-hire{padding:72px 0}
+  .vh-grid{grid-template-columns:1fr;gap:48px}
+  #fp-hotspots .hs{stroke-width:2;stroke:rgba(201,168,76,.18)}
+  #fp-hotspots .hs.hs-active{stroke-width:2.5}
+
+  /* Foundation */
+  .foundation-grid{grid-template-columns:1fr;gap:40px}
+
+  /* Register */
+  .register-grid{grid-template-columns:1fr;gap:40px}
+  .form-row-2{grid-template-columns:1fr;gap:0}
+
+  /* Footer */
+  .footer-inner{grid-template-columns:1fr 1fr;gap:32px}
+}
+
+/* ══════════════════════════════════════════════════════════
+   MOBILE — 600px
+══════════════════════════════════════════════════════════ */
+@media(max-width:600px){
+
+  /* Base */
+  section,.section{padding:56px 0}
+  .container{padding:0 16px}
+  .section-tag{font-size:9px}
+
+  /* Hero */
+  .hero{padding:88px 16px 56px}
+  .hero-title{font-size:clamp(28px,8vw,40px);line-height:1.15}
+  .hero-sub{font-size:14px}
+  .hero-cta{font-size:11px;padding:13px 22px}
+  .hero-stats{grid-template-columns:1fr 1fr;gap:16px;margin-top:32px}
+  .stat-val{font-size:28px}
+  .stat-label{font-size:9px}
+
+  /* Section headings */
+  .section-title{font-size:clamp(26px,7vw,36px)}
+
+  /* Tracks */
+  .tracks-grid{grid-template-columns:1fr;gap:8px}
+  .track-card{padding:20px}
+
+  /* Pedagogy */
+  .ped-footer-grid{grid-template-columns:1fr 1fr;gap:16px}
+  .ped-footer-num{font-size:32px}
+
+  /* Speakers */
+  .speakers-grid{grid-template-columns:1fr;gap:8px}
+  .sp-card{padding:20px 18px}
+
+  /* Calendar */
+  .cal-month-name{font-size:18px}
+  .cal-filters{gap:5px}
+  .cal-filter{font-size:8px;padding:5px 10px}
+  .cal-row{grid-template-columns:52px 1fr;gap:8px;padding:10px 12px}
+  .cal-cta{display:none}
+  .cal-name-badge{display:none}
+  .cal-code{font-size:8px}
+  .cal-name{font-size:11px}
+
+  /* Fees */
+  .fees-tier{padding:14px 16px}
+
+  /* Venue hire */
+  .venue-hire{padding:56px 0}
+  .vh-pkg{padding:20px}
+  .vh-pkg-price{font-size:26px}
+  .vh-pkg-name{font-size:18px}
+  .vh-info-card{padding:18px}
+  .vh-note{padding:14px}
+
+  /* Register form */
+  .f-field input,.f-field select,.f-field textarea{font-size:16px}
+
+  /* Footer */
+  .footer-inner{grid-template-columns:1fr;gap:24px}
+  .footer-links{flex-direction:column;gap:12px}
+  .footer-bottom{flex-direction:column;gap:8px;text-align:center}
+}
+
+/* ══════════════════════════════════════════════════════════
+   SMALL MOBILE — 380px
+══════════════════════════════════════════════════════════ */
+@media(max-width:380px){
+  .hero-stats{grid-template-columns:1fr 1fr}
+  .cal-filter{font-size:8px;padding:4px 8px;letter-spacing:.06em}
+  .ped-footer-grid{grid-template-columns:1fr 1fr}
+  .vh-specs{grid-template-columns:1fr}
+}
+
 </style>
 </head>
 <body>
 
 <div id="cursor-dot"></div>
 <div id="cursor-ring"></div>
+<div class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <div class="mobile-nav-inner">
+    <button class="mobile-nav-close" id="navClose" aria-label="Close menu">✕</button>
+    <div class="mobile-nav-logo">
+      <span class="nav-logo-main">River Hub</span>
+      <span class="nav-logo-sub">Capacity Building Centre · Tamarin</span>
+    </div>
+    <nav class="mobile-nav-links">
+      <a href="#about" onclick="closeMobileNav()">About</a>
+      <a href="#tracks" onclick="closeMobileNav()">Tracks</a>
+      <a href="#speakers" onclick="closeMobileNav()">Faculty</a>
+      <a href="#pedagogy" onclick="closeMobileNav()">How It Works</a>
+      <a href="#calendar" onclick="closeMobileNav()">Calendar</a>
+      <a href="#hrdc" onclick="closeMobileNav()">HRDC</a>
+      <a href="#venue" onclick="closeMobileNav()">Venue Hire</a>
+      <a href="#register" onclick="closeMobileNav()">Register</a>
+    </nav>
+    <a href="#register" class="mobile-nav-cta" onclick="closeMobileNav()">Register Interest →</a>
+  </div>
+</div>
 <nav id="nav">
   <a href="#" class="nav-logo">
     <div class="nav-logo-l">
@@ -437,6 +648,9 @@ footer{background:var(--bg-card);border-top:.5px solid var(--border-lg);padding:
     <div class="nav-logo-div"></div>
     <span class="nav-logo-r">The Philanthropic Foundation<br>Capacity Building Centre</span>
   </a>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#tracks">Courses</a></li>
@@ -1797,3 +2011,4 @@ if (window.matchMedia('(hover:hover)').matches) {
 </footer>
 </body>
 </html>
+
