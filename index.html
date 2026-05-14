@@ -94,11 +94,19 @@ nav.scrolled{background:rgba(13,17,23,.94);backdrop-filter:blur(16px);padding:14
 .nav-logo-main{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:500;color:var(--white);letter-spacing:.02em;line-height:1}
 .nav-logo-sub{font-size:9px;font-weight:400;color:var(--muted);letter-spacing:.14em;text-transform:uppercase}
 .nav-logo-r{font-size:10px;color:var(--muted);font-weight:300;letter-spacing:.04em;line-height:1.5}
-.nav-links{display:flex;align-items:center;gap:32px;list-style:none}
-.nav-links a{font-size:11px;font-weight:400;color:var(--muted-lg);text-decoration:none;letter-spacing:.1em;text-transform:uppercase;transition:color .2s}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{font-size:10px;font-weight:400;color:var(--muted-lg);text-decoration:none;letter-spacing:.12em;text-transform:uppercase;transition:color .2s}
 .nav-links a:hover{color:var(--white)}
 .nav-cta{background:var(--gold)!important;color:var(--bg)!important;padding:8px 20px;border-radius:var(--radius);font-weight:500!important;transition:background .2s!important;letter-spacing:.08em!important}
 .nav-cta:hover{background:var(--gold-lt)!important}
+.nav-more{position:relative}
+.nav-more-btn{font-size:10px;font-weight:400;color:var(--muted-lg);text-decoration:none;letter-spacing:.12em;text-transform:uppercase;transition:color .2s;background:none;border:none;font-family:'Inter',sans-serif;cursor:none;display:flex;align-items:center;gap:5px;padding:0}
+.nav-more-btn:hover{color:var(--white)}
+.nav-more-btn span{font-size:8px;opacity:.6}
+.nav-dropdown{position:absolute;top:calc(100% + 16px);right:0;background:rgba(13,17,23,0.97);backdrop-filter:blur(16px);border:.5px solid var(--border-lg);padding:8px 0;min-width:160px;opacity:0;pointer-events:none;transform:translateY(-6px);transition:opacity .2s,transform .2s;z-index:999}
+.nav-more.open .nav-dropdown{opacity:1;pointer-events:all;transform:translateY(0)}
+.nav-dropdown a{display:block;font-size:10px;font-weight:400;color:var(--muted-lg);text-decoration:none;letter-spacing:.1em;text-transform:uppercase;padding:10px 18px;transition:color .15s,background .15s}
+.nav-dropdown a:hover{color:var(--white);background:rgba(255,255,255,0.04)}
 .ticker{background:var(--gold);padding:9px 0;overflow:hidden;white-space:nowrap}
 .ticker-inner{display:inline-flex;animation:ticker 32s linear infinite}
 .ticker-text{font-size:10px;font-weight:500;color:var(--bg);letter-spacing:.14em;text-transform:uppercase;padding:0 28px}
@@ -447,9 +455,76 @@ footer{background:var(--bg-card);border-top:.5px solid var(--border-lg);padding:
 }
 @media(max-width:900px){.speakers-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.speakers-grid{grid-template-columns:1fr}}
+
+/* ── Sticky bottom bar ── */
+#sticky-bar{
+  position:fixed;bottom:0;left:0;right:0;z-index:300;
+  background:rgba(13,17,23,0.96);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-top:.5px solid rgba(201,168,76,0.25);
+  padding:14px 48px;
+  display:flex;align-items:center;justify-content:space-between;
+  transform:translateY(100%);transition:transform .4s cubic-bezier(.22,1,.36,1);
+  gap:20px;
+}
+#sticky-bar.visible{transform:translateY(0)}
+.sticky-label{font-size:11px;font-weight:300;color:rgba(245,243,239,0.55);letter-spacing:.04em;white-space:nowrap}
+.sticky-label strong{color:var(--white);font-weight:400}
+.sticky-pills{display:flex;align-items:center;gap:8px;flex:1}
+.sticky-pill{font-size:9px;font-weight:400;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;border:.5px solid rgba(201,168,76,0.3);padding:3px 9px;border-radius:2px;white-space:nowrap}
+.sticky-cta{background:var(--gold);color:var(--bg);border:none;padding:9px 22px;font-family:'Inter',sans-serif;font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;border-radius:var(--radius);transition:background .2s;white-space:nowrap;text-decoration:none;flex-shrink:0}
+.sticky-cta:hover{background:var(--gold-lt)}
+.sticky-close{background:none;border:none;color:rgba(245,243,239,0.35);font-size:18px;cursor:pointer;padding:0 0 0 12px;line-height:1;flex-shrink:0;transition:color .2s}
+.sticky-close:hover{color:rgba(245,243,239,0.7)}
+@media(max-width:600px){#sticky-bar{padding:12px 16px;flex-wrap:wrap}.sticky-pills{display:none}}
+
+/* ── SPONSORSHIP ── */
+.sponsor{padding:100px 0;background:var(--bg-card);border-top:.5px solid var(--border);border-bottom:.5px solid var(--border)}
+.sponsor-intro{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;margin-bottom:72px}
+.sdg-strip{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+.sdg-badge{display:flex;align-items:center;gap:8px;border:.5px solid var(--border-lg);padding:8px 14px;border-radius:var(--radius)}
+.sdg-num{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:var(--gold);line-height:1;min-width:28px}
+.sdg-label{font-size:9px;font-weight:400;color:var(--muted-lg);letter-spacing:.08em;text-transform:uppercase;line-height:1.4}
+.sponsor-tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:48px}
+.tier-card{background:var(--bg);border:.5px solid var(--border);padding:36px 28px;position:relative;transition:border-color .25s}
+.tier-card:hover{border-color:var(--border-lg)}
+.tier-card.tier-founding{border-color:rgba(201,168,76,0.35)}
+.tier-card.tier-founding::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold)}
+.tier-name{font-size:9px;font-weight:500;color:var(--muted);letter-spacing:.16em;text-transform:uppercase;margin-bottom:14px}
+.tier-title{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--white);line-height:1.1;margin-bottom:8px}
+.tier-price{font-size:11px;font-weight:400;color:var(--gold);letter-spacing:.06em;margin-bottom:6px}
+.tier-slots{font-size:10px;font-weight:300;color:var(--muted);letter-spacing:.04em;margin-bottom:24px;padding-bottom:24px;border-bottom:.5px solid var(--border)}
+.tier-perks{display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
+.tier-perk{display:flex;align-items:flex-start;gap:10px;font-size:11px;font-weight:300;color:var(--muted-lg);line-height:1.6}
+.tier-perk::before{content:'';display:block;width:4px;height:4px;border-radius:50%;background:var(--gold);opacity:.7;flex-shrink:0;margin-top:6px}
+.tier-enquire{display:inline-block;font-size:9px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);border:.5px solid rgba(201,168,76,0.4);padding:8px 18px;text-decoration:none;transition:all .2s;border-radius:var(--radius)}
+.tier-enquire:hover{background:rgba(201,168,76,0.08);border-color:var(--gold)}
+.tier-card.tier-founding .tier-enquire{background:var(--gold);color:var(--bg);border-color:var(--gold)}
+.tier-card.tier-founding .tier-enquire:hover{background:var(--gold-lt)}
+.sponsor-impact{background:var(--bg-mid);border:.5px solid var(--border);border-left:2px solid var(--gold);padding:28px 32px;display:grid;grid-template-columns:1fr 2fr;gap:40px;align-items:center}
+.sponsor-impact-label{font-size:9px;font-weight:500;color:var(--gold);letter-spacing:.16em;text-transform:uppercase;margin-bottom:10px}
+.sponsor-impact-stat{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:300;color:var(--white);line-height:1}
+.sponsor-impact-sub{font-size:11px;font-weight:300;color:var(--muted);margin-top:6px}
+.sponsor-impact-points{display:flex;flex-direction:column;gap:12px}
+.sponsor-impact-point{display:flex;align-items:flex-start;gap:12px;font-size:12px;font-weight:300;color:var(--muted-lg);line-height:1.7}
+.sponsor-impact-point-num{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;color:var(--gold);line-height:1;flex-shrink:0;min-width:28px}
+@media(max-width:900px){.sponsor-intro{grid-template-columns:1fr;gap:40px}.sponsor-tiers{grid-template-columns:1fr}.sponsor-impact{grid-template-columns:1fr;gap:24px}}
+
 </style>
 </head>
 <body>
+
+
+<!-- ── Sticky bottom bar ── -->
+<div id="sticky-bar">
+  <div class="sticky-label"><strong>River Hub</strong> · Season One · May 2026</div>
+  <div class="sticky-pills">
+    <span class="sticky-pill">43 sessions</span>
+    <span class="sticky-pill">4 tracks</span>
+    <span class="sticky-pill">HRDC eligible</span>
+  </div>
+  <a href="#register" class="sticky-cta" onclick="document.getElementById('sticky-bar').classList.remove('visible')">Register interest →</a>
+  <button class="sticky-close" onclick="this.parentElement.classList.remove('visible');this.parentElement.style.display='none'" aria-label="Dismiss">×</button>
+</div>
 
 <div id="cursor-dot"></div>
 <div id="cursor-ring"></div>
@@ -463,13 +538,20 @@ footer{background:var(--bg-card);border-top:.5px solid var(--border-lg);padding:
     <span class="nav-logo-r">The Philanthropic Foundation<br>Capacity Building Centre</span>
   </a>
   <ul class="nav-links">
-    <li><a href="#about">About</a></li>
     <li><a href="#tracks">Courses</a></li>
-    <li><a href="#pedagogy">How we teach</a></li>
     <li><a href="#speakers">Faculty</a></li>
     <li><a href="#calendar">Calendar</a></li>
-    <li><a href="#hrdc">HRDC</a></li>
-    <li><a href="#venue">Hire the space</a></li>
+    <li><a href="#sponsor">Sponsor</a></li>
+    <li class="nav-more" id="nav-more">
+      <button class="nav-more-btn" onclick="toggleNavMore()" aria-label="More links">More <span>▾</span></button>
+      <div class="nav-dropdown">
+        <a href="#about">About</a>
+        <a href="#pedagogy">How we teach</a>
+        <a href="#hrdc">HRDC</a>
+        <a href="#venue">Hire the space</a>
+        <a href="#foundation">The Foundation</a>
+      </div>
+    </li>
     <li><a href="#register" class="nav-cta">Register</a></li>
   </ul>
 </nav>
@@ -540,226 +622,6 @@ footer{background:var(--bg-card);border-top:.5px solid var(--border-lg);padding:
   </div>
 </div>
 
-<section class="about" id="about">
-  <div class="container">
-    <div class="about-grid">
-      <div class="about-sticky reveal">
-        <div class="section-tag">About River Hub</div>
-        <h2 class="section-title">Where African<br>capital finds its<br><em>practitioners</em></h2>
-        <p class="section-body">River Hub is the Philanthropic Foundation's permanent Capacity Building Centre — located at River House, Tamarin, on the west coast of Mauritius. It serves as the primary delivery venue for the TAP Fund Technical Assistance Facility and as an open training centre for finance professionals across Africa and the Indian Ocean.</p>
-        <p class="section-body">Every course is delivered by a combination of Foundation-affiliated programme directors, Mauritius-based practitioners, and international faculty from the DFI, fund management, and legal advisory community.</p>
-      </div>
-      <div class="reveal" style="transition-delay:.15s">
-        <div class="pillars">
-          <div class="pillar"><div class="pillar-num">01</div><div><div class="pillar-name">Technical Assistance Facility — TAF</div><div class="pillar-text">River Hub is the designated delivery venue for the TAP Africa Partners Fund TAF — providing project preparation, capacity building, and stakeholder convening mandated under the TAF Operating Agreement.</div></div></div>
-          <div class="pillar"><div class="pillar-num">02</div><div><div class="pillar-name">African Circuit — Mauritius leg</div><div class="pillar-text">River Hub hosts the Mauritius session of the African Circuit — the Foundation's pan-African convening bringing together ministers, DFIs, and institutional investors across five cities each season.</div></div></div>
-          <div class="pillar"><div class="pillar-num">03</div><div><div class="pillar-name">HRDC-eligible commercial programme</div><div class="pillar-text">Courses are MQA-approved and HRDC-eligible via our CLBS partnership. Mauritius-based employers can claim up to 75% of course fees back through the national levy scheme.</div></div></div>
-          <div class="pillar"><div class="pillar-num">04</div><div><div class="pillar-name">Hybrid delivery — local and global</div><div class="pillar-text">Every session runs live hybrid: 15 participants on-site in Tamarin plus 20 joining online from across Africa, Europe, the Gulf, and Asia. Same faculty, same content, fair pricing for each market.</div></div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="tracks" id="tracks">
-  <div class="container">
-    <div class="tracks-header reveal">
-      <div><div class="section-tag">Curriculum</div><h2 class="section-title">Four tracks.<br><em>One destination.</em></h2></div>
-      <p class="tracks-intro">River Hub's programme is structured across four curriculum tracks — each addressing a distinct practitioner need in African finance. Courses run weekly, rotating across tracks so participants can build a complete curriculum over a year without schedule conflicts.</p>
-    </div>
-    <div class="tracks-grid reveal" style="transition-delay:.1s">
-      <div class="track-card"><div class="track-letter">A</div><div class="track-tag">Track A · <span class="badge b-taf">TAF Funded</span></div><div class="track-title">Blended Finance & DFIs</div><div class="track-desc">The mechanics of development finance — how capital stacks work, how DFIs think, how to position a project or fund for institutional capital from IFC, AfDB, BII, Proparco, and beyond.</div><div class="track-courses"><div class="track-course">A1 — Blended finance fundamentals</div><div class="track-course">A2 — How to raise capital from DFIs</div><div class="track-course">A3 — Project preparation & bankability</div><div class="track-course">A4 — Mauritius as an IFC gateway to Africa</div><div class="track-course">A5 — Structuring African investment funds</div></div></div>
-      <div class="track-card"><div class="track-letter">B</div><div class="track-tag">Track B · <span class="badge b-hrdc">HRDC Eligible</span></div><div class="track-title">ESG & Climate Finance</div><div class="track-desc">ESG from the investor and capital allocator perspective — not corporate reporting. How institutional LPs screen African funds, how the EU Green Taxonomy applies to African assets, and how the energy transition translates into investable opportunities.</div><div class="track-courses"><div class="track-course">B1 — ESG for African investments</div><div class="track-course">B2 — EU Green Taxonomy for fund managers</div><div class="track-course">B3 — Transition finance & net zero strategy</div><div class="track-course">B4 — Climate risk & TCFD for financial institutions</div><div class="track-course">B5 — Nature, biodiversity & emerging green frameworks</div></div></div>
-      <div class="track-card"><div class="track-letter">C</div><div class="track-tag">Track C · <span class="badge b-hrdc">HRDC Eligible</span></div><div class="track-title">Capital Markets & Governance</div><div class="track-desc">How African capital markets work in practice — from the SEM and NSE to private equity, sovereign debt, and trade finance. Combined with the governance frameworks institutional investors require.</div><div class="track-courses"><div class="track-course">C1 — African capital markets for practitioners</div><div class="track-course">C2 — Corporate governance for African boards</div><div class="track-course">C3 — Impact measurement & SDG reporting</div><div class="track-course">C4 — Private equity & venture capital in Africa</div><div class="track-course">C5 — Sovereign & sub-sovereign debt</div><div class="track-course">C6 — Trade finance & African supply chains</div></div></div>
-      <div class="track-card"><div class="track-letter">D</div><div class="track-tag">Track D · <span class="badge b-premium">Premium Convenings</span></div><div class="track-title">Premium Convenings</div><div class="track-desc">Invitation-only sessions where the value is the room — LP-GP dialogue roundtables, DFI Deal Clinics where project developers receive live panel feedback, and the African Circuit pre-session for ministerial and institutional delegates.</div><div class="track-courses"><div class="track-course">D1 — LP–GP dialogue session</div><div class="track-course">D2 — DFI deal clinic</div><div class="track-course">D3 — African Circuit pre-session</div><div class="track-course">D4 — Year-end investor briefing</div></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- PEDAGOGY -->
-<section class="pedagogy" id="pedagogy">
-  <div class="container">
-    <div class="ped-header reveal">
-      <div>
-        <div class="section-tag">How we teach</div>
-        <h2 class="section-title">Not a lecture.<br><em>A practitioner room.</em></h2>
-      </div>
-      <p class="ped-intro">Every River Hub session is designed around one principle — you leave with something you can use on Monday morning. No slides read aloud. No generic frameworks. Real transactions, real DFI processes, real deal structures. Click any method to see how it works in the room.</p>
-    </div>
-
-    <div class="ped-tabs reveal" style="transition-delay:.1s">
-      <button class="ped-tab active" onclick="showPed('case')">Case method</button>
-      <button class="ped-tab" onclick="showPed('clinic')">Deal clinic</button>
-      <button class="ped-tab" onclick="showPed('simulation')">Live simulation</button>
-      <button class="ped-tab" onclick="showPed('panel')">Expert panel</button>
-      <button class="ped-tab" onclick="showPed('workshop')">Workshop lab</button>
-    </div>
-
-    <div class="ped-panels reveal" style="transition-delay:.15s">
-
-      <div class="ped-panel active" id="ped-case">
-        <div class="ped-panel-grid">
-          <div class="ped-panel-left">
-            <div class="ped-panel-tag">Method 01</div>
-            <div class="ped-panel-title">Case method</div>
-            <div class="ped-panel-desc">Every session anchors to a real African transaction — a blended finance deal, a DFI co-investment, a renewable energy project preparation. Participants read the case before the session, then work through it live with the faculty as the expert guide. You are not told what happened. You decide what should happen — then we show you the outcome and why.</div>
-            <div class="ped-features">
-              <div class="ped-feature"><span class="ped-check">✓</span> Real transactions from the Foundation's network and public DFI deal databases</div>
-              <div class="ped-feature"><span class="ped-check">✓</span> Pre-read distributed 48 hours before the session</div>
-              <div class="ped-feature"><span class="ped-check">✓</span> Small group discussion — in-room and online participants in the same conversation</div>
-              <div class="ped-feature"><span class="ped-check">✓</span> Faculty debrief with the real outcome and the lessons that transfer to your context</div>
-            </div>
-          </div>
-          <div class="ped-panel-right">
-            <div class="ped-visual-card">
-              <div class="ped-visual-label">Example — Track A, Session A2</div>
-              <div class="ped-visual-title">"You are the fund manager. IFC has just asked for your E&S policy. What do you send them?"</div>
-              <div class="ped-visual-steps">
-                <div class="ped-step"><div class="ped-step-n">Pre-session</div><div class="ped-step-t">Read the deal summary — a Kenyan solar project seeking AfDB co-investment. Identify what is missing from the information memorandum.</div></div>
-                <div class="ped-step"><div class="ped-step-n">In session</div><div class="ped-step-t">Groups debate the capital structure. Faculty introduces the DFI's actual investment criteria. Participants revise their recommendation.</div></div>
-                <div class="ped-step"><div class="ped-step-n">Debrief</div><div class="ped-step-t">The real outcome is revealed. What the DFI said. What changed. What you would take back to your own deal.</div></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="ped-panel" id="ped-clinic">
-        <div class="ped-panel-grid">
-          <div class="ped-panel-left">
-            <div class="ped-panel-tag">Method 02</div>
-            <div class="ped-panel-title">Deal clinic</div>
-            <div class="ped-panel-desc">Used in Track A project preparation sessions and the premium D2 Deal Clinic convening. Participants bring their own project — a live deal, a pipeline opportunity, or a structured case — and present it to a panel of faculty, DFI representatives, and peers. The panel gives structured live feedback on bankability, E&S readiness, and capital structure. Not a pitch. A preparation session.</div>
-            <div class="ped-features">
-              <div class="ped-feature"><span class="ped-check">✓</span> 10-minute structured presentation per project</div>
-              <div class="ped-feature"><span class="ped-check">✓</span> Panel includes DFI investment officers and legal advisors</div>
-              <div class="ped-feature"><span class="ped-check">✓</span> Written feedback summary issued within 48 hours</div>
-              <div class="ped-feature"><span class="ped-check">✓</span> Confidential — NDA signed by all participants</div>
-            </div>
-          </div>
-          <div class="ped-panel-right">
-            <div class="ped-visual-card">
-              <div class="ped-visual-label">How a deal clinic runs</div>
-              <div class="ped-visual-title">Your project. A real panel. Structured feedback you can act on.</div>
-              <div class="ped-visual-steps">
-                <div class="ped-step"><div class="ped-step-n">Before</div><div class="ped-step-t">Submit a one-page project summary 5 days prior. Panel reviews and prepares targeted questions.</div></div>
-                <div class="ped-step"><div class="ped-step-n">Presentation</div><div class="ped-step-t">10-minute structured pitch covering opportunity, structure, E&S profile, and funding ask.</div></div>
-                <div class="ped-step"><div class="ped-step-n">Panel Q&A</div><div class="ped-step-t">15 minutes of structured questions from DFI officer, legal advisor, and transaction advisor.</div></div>
-                <div class="ped-step"><div class="ped-step-n">After</div><div class="ped-step-t">Written panel feedback within 48 hours. Three specific actions to take before approaching a DFI.</div></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="ped-panel" id="ped-simulation">
-        <div class="ped-panel-grid">
-          <div class="ped-panel-left">
-            <div class="ped-panel-tag">Method 03</div>
-            <div class="ped-panel-title">Live simulation</div>
-            <div class="ped-panel-desc">Used in capital markets and blended finance sessions. Participants are assigned roles — fund manager, DFI investment officer, LP, legal counsel, project developer — and run a simulated deal process in real time. Decisions have consequences within the simulation. The faculty pauses the action to debrief key decision points. By the end you have lived through the deal rather than been told about it.</div>
-            <div class="ped-features">
-              <div class="ped-feature"><span class="ped-check">✓</span> Role assignments sent with pre-read 48 hours before</div>
-              <div class="ped-feature"><span class="ped-check">✓</span> In-room and online participants take different roles</div>
-              <div class="ped-feature"><span class="ped-check">✓</span> Structured debrief after each decision round</div>
-              <div class="ped-feature"><span class="ped-check">✓</span> Simulation summary and role notes issued post-session</div>
-            </div>
-          </div>
-          <div class="ped-panel-right">
-            <div class="ped-visual-card">
-              <div class="ped-visual-label">Example — Track C, Session C1</div>
-              <div class="ped-visual-title">African Capital Markets simulation — four roles, one deal, one afternoon.</div>
-              <div class="ped-visual-steps">
-                <div class="ped-step"><div class="ped-step-n">Round 1</div><div class="ped-step-t">LP announces allocation criteria. Fund managers compete to structure the most attractive vehicle. Legal counsel flags compliance issues.</div></div>
-                <div class="ped-step"><div class="ped-step-n">Round 2</div><div class="ped-step-t">Market event introduced — currency shock. Teams must restructure. DFI officer announces new conditions.</div></div>
-                <div class="ped-step"><div class="ped-step-n">Resolution</div><div class="ped-step-t">Each team presents their final structure. Faculty scores and debriefs. Participants compare their decision to what real managers did in the same scenario.</div></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="ped-panel" id="ped-panel">
-        <div class="ped-panel-grid">
-          <div class="ped-panel-left">
-            <div class="ped-panel-tag">Method 04</div>
-            <div class="ped-panel-title">Expert panel</div>
-            <div class="ped-panel-desc">Used in ESG, climate, and governance sessions where the landscape shifts faster than any textbook. Two or three practitioners with different vantage points — a DFI E&S officer, a fund manager, a legal specialist — debate a live question in front of participants, who then interrogate them. No prepared answers. The disagreement is the learning.</div>
-            <div class="ped-features">
-              <div class="ped-feature"><span class="ped-check">✓</span> Panellists are active practitioners, not academics</div>
-              <div class="ped-feature"><span class="ped-check">✓</span> Question set submitted by participants 24 hours prior</div>
-              <div class="ped-feature"><span class="ped-check">✓</span> Online participants can submit live questions via chat</div>
-              <div class="ped-feature"><span class="ped-check">✓</span> Session recorded and shared with all registered participants</div>
-            </div>
-          </div>
-          <div class="ped-panel-right">
-            <div class="ped-visual-card">
-              <div class="ped-visual-label">Example — Track B, Session B1</div>
-              <div class="ped-visual-title">"Does ESG actually change how DFIs make investment decisions in Africa — or is it theatre?"</div>
-              <div class="ped-visual-steps">
-                <div class="ped-step"><div class="ped-step-n">Panellist A</div><div class="ped-step-t">DFI E&S officer — argues IFC PS have fundamentally changed project structures in East Africa.</div></div>
-                <div class="ped-step"><div class="ped-step-n">Panellist B</div><div class="ped-step-t">Fund manager — argues ESG screening adds cost without changing outcomes for smaller deals below USD 5M.</div></div>
-                <div class="ped-step"><div class="ped-step-n">Open floor</div><div class="ped-step-t">Participants interrogate both positions. Faculty synthesises the practical implications for the room's own contexts.</div></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="ped-panel" id="ped-workshop">
-        <div class="ped-panel-grid">
-          <div class="ped-panel-left">
-            <div class="ped-panel-tag">Method 05</div>
-            <div class="ped-panel-title">Workshop lab</div>
-            <div class="ped-panel-desc">Used in sessions where the output is a working document — an impact framework, an ESG screening template, a DFI approach memo. Participants work in small groups on a structured task with a defined deliverable. Faculty circulates and advises. By the end of the session each group has produced something they can take back and adapt for their own organisation.</div>
-            <div class="ped-features">
-              <div class="ped-feature"><span class="ped-check">✓</span> Groups of 3–4 — mixed in-room and online participants</div>
-              <div class="ped-feature"><span class="ped-check">✓</span> Template and brief distributed at session start</div>
-              <div class="ped-feature"><span class="ped-check">✓</span> Groups present their output — peer feedback structured by faculty</div>
-              <div class="ped-feature"><span class="ped-check">✓</span> All group outputs compiled and circulated post-session</div>
-            </div>
-          </div>
-          <div class="ped-panel-right">
-            <div class="ped-visual-card">
-              <div class="ped-visual-label">Example — Track B, Session B3</div>
-              <div class="ped-visual-title">Build a transition finance screening framework for your portfolio in 90 minutes.</div>
-              <div class="ped-visual-steps">
-                <div class="ped-step"><div class="ped-step-n">Brief</div><div class="ped-step-t">Each group receives a fictional African portfolio of three assets. Task: screen them against the EU Green Taxonomy and flag the gaps.</div></div>
-                <div class="ped-step"><div class="ped-step-n">Lab</div><div class="ped-step-t">60 minutes of structured work. Faculty advises each group in rotation. Online participants collaborate via shared doc.</div></div>
-                <div class="ped-step"><div class="ped-step-n">Present</div><div class="ped-step-t">Each group presents their screening output. Faculty marks against what a real European LP would actually require.</div></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="ped-footer reveal" style="transition-delay:.2s">
-      <div class="ped-footer-grid">
-        <div class="ped-footer-item">
-          <div class="ped-footer-num">48h</div>
-          <div class="ped-footer-label">Pre-read distributed before every session</div>
-        </div>
-        <div class="ped-footer-item">
-          <div class="ped-footer-num">3–4</div>
-          <div class="ped-footer-label">Group size for workshop and simulation methods</div>
-        </div>
-        <div class="ped-footer-item">
-          <div class="ped-footer-num">100%</div>
-          <div class="ped-footer-label">Practitioner faculty — no career academics</div>
-        </div>
-        <div class="ped-footer-item">
-          <div class="ped-footer-num">48h</div>
-          <div class="ped-footer-label">Post-session summary and outputs to all participants</div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- SPEAKERS -->
 <section class="speakers" id="speakers">
   <div class="container">
     <div class="reveal">
@@ -990,6 +852,43 @@ footer{background:var(--bg-card);border-top:.5px solid var(--border-lg);padding:
 </section>
 
 
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-sticky reveal">
+        <div class="section-tag">About River Hub</div>
+        <h2 class="section-title">Where African<br>capital finds its<br><em>practitioners</em></h2>
+        <p class="section-body">River Hub is the Philanthropic Foundation's permanent Capacity Building Centre — located at River House, Tamarin, on the west coast of Mauritius. It serves as the primary delivery venue for the TAP Fund Technical Assistance Facility and as an open training centre for finance professionals across Africa and the Indian Ocean.</p>
+        <p class="section-body">Every course is delivered by a combination of Foundation-affiliated programme directors, Mauritius-based practitioners, and international faculty from the DFI, fund management, and legal advisory community.</p>
+      </div>
+      <div class="reveal" style="transition-delay:.15s">
+        <div class="pillars">
+          <div class="pillar"><div class="pillar-num">01</div><div><div class="pillar-name">Technical Assistance Facility — TAF</div><div class="pillar-text">River Hub is the designated delivery venue for the TAP Africa Partners Fund TAF — providing project preparation, capacity building, and stakeholder convening mandated under the TAF Operating Agreement.</div></div></div>
+          <div class="pillar"><div class="pillar-num">02</div><div><div class="pillar-name">African Circuit — Mauritius leg</div><div class="pillar-text">River Hub hosts the Mauritius session of the African Circuit — the Foundation's pan-African convening bringing together ministers, DFIs, and institutional investors across five cities each season.</div></div></div>
+          <div class="pillar"><div class="pillar-num">03</div><div><div class="pillar-name">HRDC-eligible commercial programme</div><div class="pillar-text">Courses are MQA-approved and HRDC-eligible via our CLBS partnership. Mauritius-based employers can claim up to 75% of course fees back through the national levy scheme.</div></div></div>
+          <div class="pillar"><div class="pillar-num">04</div><div><div class="pillar-name">Hybrid delivery — local and global</div><div class="pillar-text">Every session runs live hybrid: 15 participants on-site in Tamarin plus 20 joining online from across Africa, Europe, the Gulf, and Asia. Same faculty, same content, fair pricing for each market.</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tracks" id="tracks">
+  <div class="container">
+    <div class="tracks-header reveal">
+      <div><div class="section-tag">Curriculum</div><h2 class="section-title">Four tracks.<br><em>One destination.</em></h2></div>
+      <p class="tracks-intro">River Hub's programme is structured across four curriculum tracks — each addressing a distinct practitioner need in African finance. Courses run weekly, rotating across tracks so participants can build a complete curriculum over a year without schedule conflicts.</p>
+    </div>
+    <div class="tracks-grid reveal" style="transition-delay:.1s">
+      <div class="track-card"><div class="track-letter">A</div><div class="track-tag">Track A · <span class="badge b-taf">TAF Funded</span></div><div class="track-title">Blended Finance & DFIs</div><div class="track-desc">The mechanics of development finance — how capital stacks work, how DFIs think, how to position a project or fund for institutional capital from IFC, AfDB, BII, Proparco, and beyond.</div><div class="track-courses"><div class="track-course">A1 — Blended finance fundamentals</div><div class="track-course">A2 — How to raise capital from DFIs</div><div class="track-course">A3 — Project preparation & bankability</div><div class="track-course">A4 — Mauritius as an IFC gateway to Africa</div><div class="track-course">A5 — Structuring African investment funds</div></div></div>
+      <div class="track-card"><div class="track-letter">B</div><div class="track-tag">Track B · <span class="badge b-hrdc">HRDC Eligible</span></div><div class="track-title">ESG & Climate Finance</div><div class="track-desc">ESG from the investor and capital allocator perspective — not corporate reporting. How institutional LPs screen African funds, how the EU Green Taxonomy applies to African assets, and how the energy transition translates into investable opportunities.</div><div class="track-courses"><div class="track-course">B1 — ESG for African investments</div><div class="track-course">B2 — EU Green Taxonomy for fund managers</div><div class="track-course">B3 — Transition finance & net zero strategy</div><div class="track-course">B4 — Climate risk & TCFD for financial institutions</div><div class="track-course">B5 — Nature, biodiversity & emerging green frameworks</div></div></div>
+      <div class="track-card"><div class="track-letter">C</div><div class="track-tag">Track C · <span class="badge b-hrdc">HRDC Eligible</span></div><div class="track-title">Capital Markets & Governance</div><div class="track-desc">How African capital markets work in practice — from the SEM and NSE to private equity, sovereign debt, and trade finance. Combined with the governance frameworks institutional investors require.</div><div class="track-courses"><div class="track-course">C1 — African capital markets for practitioners</div><div class="track-course">C2 — Corporate governance for African boards</div><div class="track-course">C3 — Impact measurement & SDG reporting</div><div class="track-course">C4 — Private equity & venture capital in Africa</div><div class="track-course">C5 — Sovereign & sub-sovereign debt</div><div class="track-course">C6 — Trade finance & African supply chains</div></div></div>
+      <div class="track-card"><div class="track-letter">D</div><div class="track-tag">Track D · <span class="badge b-premium">Premium Convenings</span></div><div class="track-title">Premium Convenings</div><div class="track-desc">Invitation-only sessions where the value is the room — LP-GP dialogue roundtables, DFI Deal Clinics where project developers receive live panel feedback, and the African Circuit pre-session for ministerial and institutional delegates.</div><div class="track-courses"><div class="track-course">D1 — LP–GP dialogue session</div><div class="track-course">D2 — DFI deal clinic</div><div class="track-course">D3 — African Circuit pre-session</div><div class="track-course">D4 — Year-end investor briefing</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PEDAGOGY -->
 <section class="delivery" id="delivery">
   <div class="container">
     <div class="delivery-grid">
@@ -1053,6 +952,48 @@ footer{background:var(--bg-card);border-top:.5px solid var(--border-lg);padding:
           <span>Register — confirmation within 48 hours</span>
           <span>→</span>
         </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div style="background:linear-gradient(to bottom,var(--bg-card),var(--bg));padding:0;border-top:.5px solid var(--border)">
+  <div class="container" style="padding-top:28px;padding-bottom:28px;display:flex;align-items:center;gap:16px">
+    <div style="width:2px;height:36px;background:var(--gold);opacity:.6;flex-shrink:0"></div>
+    <div>
+      <div style="font-size:9px;font-weight:500;color:var(--gold);letter-spacing:.18em;text-transform:uppercase;margin-bottom:5px">HRDC Levy Scheme</div>
+      <div style="font-size:12px;font-weight:300;color:var(--muted-lg);line-height:1.6">Mauritius-based participants: your employer can claim up to <strong style="color:var(--white);font-weight:400">75% back</strong> through the national levy scheme — bringing the net cost to as little as <strong style="color:var(--gold);font-weight:400">Rs 3,750 per session.</strong> See how below.</div>
+    </div>
+    <a href="#hrdc" style="font-size:9px;font-weight:500;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;text-decoration:none;white-space:nowrap;border:.5px solid rgba(201,168,76,0.35);padding:6px 14px;flex-shrink:0;transition:border-color .2s" onmouseenter="this.style.borderColor='var(--gold)'" onmouseleave="this.style.borderColor='rgba(201,168,76,0.35)'">How it works ↓</a>
+  </div>
+</div>
+
+<section class="hrdc" id="hrdc">
+  <div class="container">
+    <div class="hrdc-grid">
+      <div class="reveal">
+        <div class="section-tag">HRDC Levy Scheme</div>
+        <h2 class="section-title">Up to <em>75%</em><br>back for your<br>employer</h2>
+        <p class="section-body">All River Hub courses are MQA-approved and HRDC-eligible via our CLBS partnership. Your company claims the refund — you attend. Share this page with your HR or finance team.</p>
+        <div class="hrdc-panel">
+          <div class="hrdc-panel-label">HRDC refund rates</div>
+          <div class="hrdc-panel-title">National Training Levy Scheme</div>
+          <div class="hrdc-rates">
+            <div><div class="hrdc-rate-num">75%</div><div class="hrdc-rate-text">Levy ≤ Rs 100k / year</div></div>
+            <div><div class="hrdc-rate-num">70%</div><div class="hrdc-rate-text">Levy > Rs 100k / year</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal" style="transition-delay:.15s">
+        <div class="section-tag">How to claim</div>
+        <h2 class="section-title" style="font-size:clamp(28px,3.5vw,44px)">Simple four-step<br><em>process</em></h2>
+        <p class="section-body">The refund is claimed by the employer on behalf of the participant.</p>
+        <div class="hrdc-steps">
+          <div class="hrdc-step"><div class="hrdc-step-num">1</div><div><div class="hrdc-step-title">Company submits G1 form</div><div class="hrdc-step-text">Minimum 5 working days before the course start date. We provide all course details needed for the form on request.</div></div></div>
+          <div class="hrdc-step"><div class="hrdc-step-num">2</div><div><div class="hrdc-step-title">Attend the session</div><div class="hrdc-step-text">On-site at River Hub or online. Attendance is recorded — both modes qualify equally for the refund.</div></div></div>
+          <div class="hrdc-step"><div class="hrdc-step-num">3</div><div><div class="hrdc-step-title">Company submits G3 form</div><div class="hrdc-step-text">Post-course, with invoice, receipt, and attendance record. We provide the platform attendance log for online participants.</div></div></div>
+          <div class="hrdc-step"><div class="hrdc-step-num">4</div><div><div class="hrdc-step-title">Refund processed</div><div class="hrdc-step-text">Typically 4–8 weeks. Refund goes directly to the employer. Minimum 3 months of levy contribution required before first claim.</div></div></div>
+        </div>
       </div>
     </div>
   </div>
@@ -1220,37 +1161,189 @@ footer{background:var(--bg-card);border-top:.5px solid var(--border-lg);padding:
   </div>
 </section>
 
-<section class="hrdc" id="hrdc">
+<section class="pedagogy" id="pedagogy">
   <div class="container">
-    <div class="hrdc-grid">
-      <div class="reveal">
-        <div class="section-tag">HRDC Levy Scheme</div>
-        <h2 class="section-title">Up to <em>75%</em><br>back for your<br>employer</h2>
-        <p class="section-body">All River Hub courses are MQA-approved and HRDC-eligible via our CLBS partnership. Your company claims the refund — you attend. Share this page with your HR or finance team.</p>
-        <div class="hrdc-panel">
-          <div class="hrdc-panel-label">HRDC refund rates</div>
-          <div class="hrdc-panel-title">National Training Levy Scheme</div>
-          <div class="hrdc-rates">
-            <div><div class="hrdc-rate-num">75%</div><div class="hrdc-rate-text">Levy ≤ Rs 100k / year</div></div>
-            <div><div class="hrdc-rate-num">70%</div><div class="hrdc-rate-text">Levy > Rs 100k / year</div></div>
+    <div class="ped-header reveal">
+      <div>
+        <div class="section-tag">How we teach</div>
+        <h2 class="section-title">Not a lecture.<br><em>A practitioner room.</em></h2>
+      </div>
+      <p class="ped-intro">Every River Hub session is designed around one principle — you leave with something you can use on Monday morning. No slides read aloud. No generic frameworks. Real transactions, real DFI processes, real deal structures. Click any method to see how it works in the room.</p>
+    </div>
+
+    <div class="ped-tabs reveal" style="transition-delay:.1s">
+      <button class="ped-tab active" onclick="showPed('case')">Case method</button>
+      <button class="ped-tab" onclick="showPed('clinic')">Deal clinic</button>
+      <button class="ped-tab" onclick="showPed('simulation')">Live simulation</button>
+      <button class="ped-tab" onclick="showPed('panel')">Expert panel</button>
+      <button class="ped-tab" onclick="showPed('workshop')">Workshop lab</button>
+    </div>
+
+    <div class="ped-panels reveal" style="transition-delay:.15s">
+
+      <div class="ped-panel active" id="ped-case">
+        <div class="ped-panel-grid">
+          <div class="ped-panel-left">
+            <div class="ped-panel-tag">Method 01</div>
+            <div class="ped-panel-title">Case method</div>
+            <div class="ped-panel-desc">Every session anchors to a real African transaction — a blended finance deal, a DFI co-investment, a renewable energy project preparation. Participants read the case before the session, then work through it live with the faculty as the expert guide. You are not told what happened. You decide what should happen — then we show you the outcome and why.</div>
+            <div class="ped-features">
+              <div class="ped-feature"><span class="ped-check">✓</span> Real transactions from the Foundation's network and public DFI deal databases</div>
+              <div class="ped-feature"><span class="ped-check">✓</span> Pre-read distributed 48 hours before the session</div>
+              <div class="ped-feature"><span class="ped-check">✓</span> Small group discussion — in-room and online participants in the same conversation</div>
+              <div class="ped-feature"><span class="ped-check">✓</span> Faculty debrief with the real outcome and the lessons that transfer to your context</div>
+            </div>
+          </div>
+          <div class="ped-panel-right">
+            <div class="ped-visual-card">
+              <div class="ped-visual-label">Example — Track A, Session A2</div>
+              <div class="ped-visual-title">"You are the fund manager. IFC has just asked for your E&S policy. What do you send them?"</div>
+              <div class="ped-visual-steps">
+                <div class="ped-step"><div class="ped-step-n">Pre-session</div><div class="ped-step-t">Read the deal summary — a Kenyan solar project seeking AfDB co-investment. Identify what is missing from the information memorandum.</div></div>
+                <div class="ped-step"><div class="ped-step-n">In session</div><div class="ped-step-t">Groups debate the capital structure. Faculty introduces the DFI's actual investment criteria. Participants revise their recommendation.</div></div>
+                <div class="ped-step"><div class="ped-step-n">Debrief</div><div class="ped-step-t">The real outcome is revealed. What the DFI said. What changed. What you would take back to your own deal.</div></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="reveal" style="transition-delay:.15s">
-        <div class="section-tag">How to claim</div>
-        <h2 class="section-title" style="font-size:clamp(28px,3.5vw,44px)">Simple four-step<br><em>process</em></h2>
-        <p class="section-body">The refund is claimed by the employer on behalf of the participant.</p>
-        <div class="hrdc-steps">
-          <div class="hrdc-step"><div class="hrdc-step-num">1</div><div><div class="hrdc-step-title">Company submits G1 form</div><div class="hrdc-step-text">Minimum 5 working days before the course start date. We provide all course details needed for the form on request.</div></div></div>
-          <div class="hrdc-step"><div class="hrdc-step-num">2</div><div><div class="hrdc-step-title">Attend the session</div><div class="hrdc-step-text">On-site at River Hub or online. Attendance is recorded — both modes qualify equally for the refund.</div></div></div>
-          <div class="hrdc-step"><div class="hrdc-step-num">3</div><div><div class="hrdc-step-title">Company submits G3 form</div><div class="hrdc-step-text">Post-course, with invoice, receipt, and attendance record. We provide the platform attendance log for online participants.</div></div></div>
-          <div class="hrdc-step"><div class="hrdc-step-num">4</div><div><div class="hrdc-step-title">Refund processed</div><div class="hrdc-step-text">Typically 4–8 weeks. Refund goes directly to the employer. Minimum 3 months of levy contribution required before first claim.</div></div></div>
+
+      <div class="ped-panel" id="ped-clinic">
+        <div class="ped-panel-grid">
+          <div class="ped-panel-left">
+            <div class="ped-panel-tag">Method 02</div>
+            <div class="ped-panel-title">Deal clinic</div>
+            <div class="ped-panel-desc">Used in Track A project preparation sessions and the premium D2 Deal Clinic convening. Participants bring their own project — a live deal, a pipeline opportunity, or a structured case — and present it to a panel of faculty, DFI representatives, and peers. The panel gives structured live feedback on bankability, E&S readiness, and capital structure. Not a pitch. A preparation session.</div>
+            <div class="ped-features">
+              <div class="ped-feature"><span class="ped-check">✓</span> 10-minute structured presentation per project</div>
+              <div class="ped-feature"><span class="ped-check">✓</span> Panel includes DFI investment officers and legal advisors</div>
+              <div class="ped-feature"><span class="ped-check">✓</span> Written feedback summary issued within 48 hours</div>
+              <div class="ped-feature"><span class="ped-check">✓</span> Confidential — NDA signed by all participants</div>
+            </div>
+          </div>
+          <div class="ped-panel-right">
+            <div class="ped-visual-card">
+              <div class="ped-visual-label">How a deal clinic runs</div>
+              <div class="ped-visual-title">Your project. A real panel. Structured feedback you can act on.</div>
+              <div class="ped-visual-steps">
+                <div class="ped-step"><div class="ped-step-n">Before</div><div class="ped-step-t">Submit a one-page project summary 5 days prior. Panel reviews and prepares targeted questions.</div></div>
+                <div class="ped-step"><div class="ped-step-n">Presentation</div><div class="ped-step-t">10-minute structured pitch covering opportunity, structure, E&S profile, and funding ask.</div></div>
+                <div class="ped-step"><div class="ped-step-n">Panel Q&A</div><div class="ped-step-t">15 minutes of structured questions from DFI officer, legal advisor, and transaction advisor.</div></div>
+                <div class="ped-step"><div class="ped-step-n">After</div><div class="ped-step-t">Written panel feedback within 48 hours. Three specific actions to take before approaching a DFI.</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ped-panel" id="ped-simulation">
+        <div class="ped-panel-grid">
+          <div class="ped-panel-left">
+            <div class="ped-panel-tag">Method 03</div>
+            <div class="ped-panel-title">Live simulation</div>
+            <div class="ped-panel-desc">Used in capital markets and blended finance sessions. Participants are assigned roles — fund manager, DFI investment officer, LP, legal counsel, project developer — and run a simulated deal process in real time. Decisions have consequences within the simulation. The faculty pauses the action to debrief key decision points. By the end you have lived through the deal rather than been told about it.</div>
+            <div class="ped-features">
+              <div class="ped-feature"><span class="ped-check">✓</span> Role assignments sent with pre-read 48 hours before</div>
+              <div class="ped-feature"><span class="ped-check">✓</span> In-room and online participants take different roles</div>
+              <div class="ped-feature"><span class="ped-check">✓</span> Structured debrief after each decision round</div>
+              <div class="ped-feature"><span class="ped-check">✓</span> Simulation summary and role notes issued post-session</div>
+            </div>
+          </div>
+          <div class="ped-panel-right">
+            <div class="ped-visual-card">
+              <div class="ped-visual-label">Example — Track C, Session C1</div>
+              <div class="ped-visual-title">African Capital Markets simulation — four roles, one deal, one afternoon.</div>
+              <div class="ped-visual-steps">
+                <div class="ped-step"><div class="ped-step-n">Round 1</div><div class="ped-step-t">LP announces allocation criteria. Fund managers compete to structure the most attractive vehicle. Legal counsel flags compliance issues.</div></div>
+                <div class="ped-step"><div class="ped-step-n">Round 2</div><div class="ped-step-t">Market event introduced — currency shock. Teams must restructure. DFI officer announces new conditions.</div></div>
+                <div class="ped-step"><div class="ped-step-n">Resolution</div><div class="ped-step-t">Each team presents their final structure. Faculty scores and debriefs. Participants compare their decision to what real managers did in the same scenario.</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ped-panel" id="ped-panel">
+        <div class="ped-panel-grid">
+          <div class="ped-panel-left">
+            <div class="ped-panel-tag">Method 04</div>
+            <div class="ped-panel-title">Expert panel</div>
+            <div class="ped-panel-desc">Used in ESG, climate, and governance sessions where the landscape shifts faster than any textbook. Two or three practitioners with different vantage points — a DFI E&S officer, a fund manager, a legal specialist — debate a live question in front of participants, who then interrogate them. No prepared answers. The disagreement is the learning.</div>
+            <div class="ped-features">
+              <div class="ped-feature"><span class="ped-check">✓</span> Panellists are active practitioners, not academics</div>
+              <div class="ped-feature"><span class="ped-check">✓</span> Question set submitted by participants 24 hours prior</div>
+              <div class="ped-feature"><span class="ped-check">✓</span> Online participants can submit live questions via chat</div>
+              <div class="ped-feature"><span class="ped-check">✓</span> Session recorded and shared with all registered participants</div>
+            </div>
+          </div>
+          <div class="ped-panel-right">
+            <div class="ped-visual-card">
+              <div class="ped-visual-label">Example — Track B, Session B1</div>
+              <div class="ped-visual-title">"Does ESG actually change how DFIs make investment decisions in Africa — or is it theatre?"</div>
+              <div class="ped-visual-steps">
+                <div class="ped-step"><div class="ped-step-n">Panellist A</div><div class="ped-step-t">DFI E&S officer — argues IFC PS have fundamentally changed project structures in East Africa.</div></div>
+                <div class="ped-step"><div class="ped-step-n">Panellist B</div><div class="ped-step-t">Fund manager — argues ESG screening adds cost without changing outcomes for smaller deals below USD 5M.</div></div>
+                <div class="ped-step"><div class="ped-step-n">Open floor</div><div class="ped-step-t">Participants interrogate both positions. Faculty synthesises the practical implications for the room's own contexts.</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ped-panel" id="ped-workshop">
+        <div class="ped-panel-grid">
+          <div class="ped-panel-left">
+            <div class="ped-panel-tag">Method 05</div>
+            <div class="ped-panel-title">Workshop lab</div>
+            <div class="ped-panel-desc">Used in sessions where the output is a working document — an impact framework, an ESG screening template, a DFI approach memo. Participants work in small groups on a structured task with a defined deliverable. Faculty circulates and advises. By the end of the session each group has produced something they can take back and adapt for their own organisation.</div>
+            <div class="ped-features">
+              <div class="ped-feature"><span class="ped-check">✓</span> Groups of 3–4 — mixed in-room and online participants</div>
+              <div class="ped-feature"><span class="ped-check">✓</span> Template and brief distributed at session start</div>
+              <div class="ped-feature"><span class="ped-check">✓</span> Groups present their output — peer feedback structured by faculty</div>
+              <div class="ped-feature"><span class="ped-check">✓</span> All group outputs compiled and circulated post-session</div>
+            </div>
+          </div>
+          <div class="ped-panel-right">
+            <div class="ped-visual-card">
+              <div class="ped-visual-label">Example — Track B, Session B3</div>
+              <div class="ped-visual-title">Build a transition finance screening framework for your portfolio in 90 minutes.</div>
+              <div class="ped-visual-steps">
+                <div class="ped-step"><div class="ped-step-n">Brief</div><div class="ped-step-t">Each group receives a fictional African portfolio of three assets. Task: screen them against the EU Green Taxonomy and flag the gaps.</div></div>
+                <div class="ped-step"><div class="ped-step-n">Lab</div><div class="ped-step-t">60 minutes of structured work. Faculty advises each group in rotation. Online participants collaborate via shared doc.</div></div>
+                <div class="ped-step"><div class="ped-step-n">Present</div><div class="ped-step-t">Each group presents their screening output. Faculty marks against what a real European LP would actually require.</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="ped-footer reveal" style="transition-delay:.2s">
+      <div class="ped-footer-grid">
+        <div class="ped-footer-item">
+          <div class="ped-footer-num">48h</div>
+          <div class="ped-footer-label">Pre-read distributed before every session</div>
+        </div>
+        <div class="ped-footer-item">
+          <div class="ped-footer-num">3–4</div>
+          <div class="ped-footer-label">Group size for workshop and simulation methods</div>
+        </div>
+        <div class="ped-footer-item">
+          <div class="ped-footer-num">100%</div>
+          <div class="ped-footer-label">Practitioner faculty — no career academics</div>
+        </div>
+        <div class="ped-footer-item">
+          <div class="ped-footer-num">48h</div>
+          <div class="ped-footer-label">Post-session summary and outputs to all participants</div>
         </div>
       </div>
     </div>
+
   </div>
 </section>
 
+<!-- SPEAKERS -->
 <section class="venue-hire" id="venue">
   <div class="container">
     <div class="vh-grid">
@@ -1589,6 +1682,222 @@ footer{background:var(--bg-card);border-top:.5px solid var(--border-lg);padding:
   </div>
 </section>
 
+
+<section class="sponsor" id="sponsor">
+  <div class="container">
+
+    <!-- ── Hero argument ── -->
+    <div class="sponsor-intro reveal">
+      <div>
+        <div class="section-tag">Partner with River Hub</div>
+        <h2 class="section-title">Your reporting<br>obligations are<br><em>growing.</em></h2>
+        <p class="section-body">Every financial institution in Mauritius — banks, fund managers, insurers, fund administrators — is facing an expanding set of sustainability reporting requirements from regulators, international investors, and counterparties. The question is no longer whether to demonstrate ESG commitment. It is how to demonstrate it credibly, with evidence that survives scrutiny.</p>
+        <p class="section-body">River Hub sponsorship generates that evidence. It connects your institution directly to the professional development of African finance — and gives your compliance, ESG, and communications teams a structured, documented, and defensible annual contribution to report against.</p>
+        <a href="mailto:admin@philanthropicfoundation.net?subject=River Hub — Partnership Brief Request" class="btn-primary" style="display:inline-block;margin-top:8px">Request the partnership brief →</a>
+      </div>
+      <div>
+        <!-- Reporting obligations panel -->
+        <div style="background:var(--bg);border:.5px solid rgba(201,168,76,0.3);border-left:2px solid var(--gold);padding:24px 26px;margin-bottom:16px">
+          <div style="font-size:9px;font-weight:500;color:var(--gold);letter-spacing:.16em;text-transform:uppercase;margin-bottom:16px">Reporting frameworks River Hub addresses</div>
+          <div style="display:flex;flex-direction:column;gap:0">
+            <div style="display:grid;grid-template-columns:1fr 1.4fr;gap:12px;padding:11px 0;border-bottom:.5px solid var(--border)">
+              <div style="font-size:10px;font-weight:500;color:var(--white);letter-spacing:.02em">Bank of Mauritius</div>
+              <div style="font-size:10px;font-weight:300;color:var(--muted-lg);line-height:1.6">Sustainable Finance Roadmap — supervised entities required to integrate climate and ESG risk disclosures</div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1.4fr;gap:12px;padding:11px 0;border-bottom:.5px solid var(--border)">
+              <div style="font-size:10px;font-weight:500;color:var(--white);letter-spacing:.02em">FSC Mauritius</div>
+              <div style="font-size:10px;font-weight:300;color:var(--muted-lg);line-height:1.6">ESG disclosure requirements for fund managers and CIS operators — increasingly enforced under the Securities Act</div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1.4fr;gap:12px;padding:11px 0;border-bottom:.5px solid var(--border)">
+              <div style="font-size:10px;font-weight:500;color:var(--white);letter-spacing:.02em">SEM Listed Co.</div>
+              <div style="font-size:10px;font-weight:300;color:var(--muted-lg);line-height:1.6">Stock Exchange of Mauritius corporate governance code — sustainability reporting section in annual reports</div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1.4fr;gap:12px;padding:11px 0;border-bottom:.5px solid var(--border)">
+              <div style="font-size:10px;font-weight:500;color:var(--white);letter-spacing:.02em">DFI & LP covenants</div>
+              <div style="font-size:10px;font-weight:300;color:var(--muted-lg);line-height:1.6">IFC, FMO, Proparco and bilateral DFI shareholders increasingly require ESG performance data as a condition of investment agreements</div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1.4fr;gap:12px;padding:11px 0">
+              <div style="font-size:10px;font-weight:500;color:var(--white);letter-spacing:.02em">GRI / TCFD / ISSB</div>
+              <div style="font-size:10px;font-weight:300;color:var(--muted-lg);line-height:1.6">International voluntary frameworks now expected by institutional counterparties — capacity building spend maps directly to GRI 404 and social impact disclosures</div>
+            </div>
+          </div>
+        </div>
+        <!-- HRDC panel -->
+        <div style="background:var(--bg);border:.5px solid var(--border);padding:20px 24px">
+          <div style="font-size:9px;font-weight:500;color:var(--gold);letter-spacing:.16em;text-transform:uppercase;margin-bottom:10px">HRDC levy — recover up to 75% of staff seat costs</div>
+          <p style="font-size:11px;font-weight:300;color:var(--muted-lg);line-height:1.75">The HRDC National Training Levy allows Mauritius employers to claim back up to 75% of approved training costs. All River Hub sessions are HRDC-eligible. Your staff seat allocation under any partnership tier can be submitted for levy recovery — substantially reducing the net cost of the partnership for Mauritius-based employers.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Three arguments ── -->
+    <div class="reveal" style="transition-delay:.04s;margin-bottom:64px">
+      <div style="font-size:10px;font-weight:500;color:var(--gold);letter-spacing:.18em;text-transform:uppercase;margin-bottom:32px;display:flex;align-items:center;gap:10px"><span style="display:block;width:24px;height:.5px;background:var(--gold)"></span>Three reasons to sponsor — beyond reporting</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px">
+
+        <!-- Growth -->
+        <div style="background:var(--bg-card);border:.5px solid var(--border);padding:32px 28px">
+          <div style="font-size:9px;font-weight:500;color:var(--gold);letter-spacing:.16em;text-transform:uppercase;margin-bottom:20px">01 · Growth</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:var(--white);line-height:1.2;margin-bottom:16px">You are investing in your future clients and counterparties.</div>
+          <p style="font-size:11px;font-weight:300;color:var(--muted-lg);line-height:1.75;margin-bottom:14px">River Hub participants are not students — they are working finance professionals at the mid-to-senior level. Fund managers raising their next vehicle. Bankers structuring their next deal. Regulators shaping the next policy framework.</p>
+          <p style="font-size:11px;font-weight:300;color:var(--muted-lg);line-height:1.75">A bank sponsoring Track C sessions on African capital markets is training the people who will list on the SEM, raise sovereign debt, and choose which institution to work with. A fund administrator sponsoring Track A is in the room when blended finance practitioners learn how to structure the deals they will later need to administer. That is not philanthropy. That is pipeline development.</p>
+        </div>
+
+        <!-- Participation -->
+        <div style="background:var(--bg-card);border:.5px solid var(--border);padding:32px 28px">
+          <div style="font-size:9px;font-weight:500;color:var(--gold);letter-spacing:.16em;text-transform:uppercase;margin-bottom:20px">02 · Participation</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:var(--white);line-height:1.2;margin-bottom:16px">Your people learn. Your leaders speak. Your name is on their certificate.</div>
+          <p style="font-size:11px;font-weight:300;color:var(--muted-lg);line-height:1.75;margin-bottom:14px">Every partnership tier includes staff seats — priority-booked, before public registration opens. Your team attends the only practitioner-grade African finance programme in the Indian Ocean region, taught by faculty from BII, IFC, and the Nordic DFIs.</p>
+          <p style="font-size:11px;font-weight:300;color:var(--muted-lg);line-height:1.75">Founding Partners receive a podium — a 30-minute address slot per quarter where your leadership speaks directly to a room of DFI officers, fund managers, and senior bankers. No other format gives you that access. Your name appears on every certificate of completion issued across the season — a document participants keep, reference, and share.</p>
+        </div>
+
+        <!-- Visibility -->
+        <div style="background:var(--bg-card);border:.5px solid var(--border);padding:32px 28px">
+          <div style="font-size:9px;font-weight:500;color:var(--gold);letter-spacing:.16em;text-transform:uppercase;margin-bottom:20px">03 · Visibility</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:var(--white);line-height:1.2;margin-bottom:16px">43 sessions. 13 months. An audience you cannot reach any other way.</div>
+          <p style="font-size:11px;font-weight:300;color:var(--muted-lg);line-height:1.75;margin-bottom:14px">River Hub runs 43 sessions across Season One — one per week, across four curriculum tracks. Each session puts your brand in front of 35 finance professionals in a focused, high-attention environment. That is 43 separate touchpoints with a self-selected audience of senior practitioners.</p>
+          <p style="font-size:11px;font-weight:300;color:var(--muted-lg);line-height:1.75">This is not a conference where your logo appears on a banner behind a stage. It is a practitioner room where your institution is introduced as the partner that made the session possible. The association is direct and repeated across the full season.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── SDG alignment ── -->
+    <div class="reveal" style="transition-delay:.05s;margin-bottom:48px">
+      <div style="font-size:10px;font-weight:500;color:var(--gold);letter-spacing:.18em;text-transform:uppercase;margin-bottom:24px;display:flex;align-items:center;gap:10px"><span style="display:block;width:24px;height:.5px;background:var(--gold)"></span>SDG alignment · verified annual report provided to all partners</div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px">
+        <div style="background:var(--bg);border:.5px solid var(--border);padding:20px 22px">
+          <div class="sdg-badge" style="margin-bottom:14px;border:none;padding:0;gap:12px">
+            <div class="sdg-num" style="font-size:28px">4</div>
+            <div class="sdg-label" style="font-size:10px">Quality<br>Education</div>
+          </div>
+          <p style="font-size:11px;font-weight:300;color:var(--muted);line-height:1.7">Direct contribution to practitioner-grade finance education across Sub-Saharan Africa and the Indian Ocean — quantified by participant hours and geography for GRI 404 reporting.</p>
+        </div>
+        <div style="background:var(--bg);border:.5px solid var(--border);padding:20px 22px">
+          <div class="sdg-badge" style="margin-bottom:14px;border:none;padding:0;gap:12px">
+            <div class="sdg-num" style="font-size:28px">8</div>
+            <div class="sdg-label" style="font-size:10px">Decent Work &<br>Economic Growth</div>
+          </div>
+          <p style="font-size:11px;font-weight:300;color:var(--muted);line-height:1.7">Building the professional capacity that enables productive employment and economic activity in African financial markets — measurable against SDG 8.6 targets on youth and professional skills.</p>
+        </div>
+        <div style="background:var(--bg);border:.5px solid var(--border);padding:20px 22px">
+          <div class="sdg-badge" style="margin-bottom:14px;border:none;padding:0;gap:12px">
+            <div class="sdg-num" style="font-size:28px">10</div>
+            <div class="sdg-label" style="font-size:10px">Reduced<br>Inequalities</div>
+          </div>
+          <p style="font-size:11px;font-weight:300;color:var(--muted);line-height:1.7">Expanding access to institutional-grade finance training beyond the traditional centres of London, Geneva, and New York — extending opportunity to practitioners based across Africa and the Indian Ocean.</p>
+        </div>
+        <div style="background:var(--bg);border:.5px solid var(--border);padding:20px 22px">
+          <div class="sdg-badge" style="margin-bottom:14px;border:none;padding:0;gap:12px">
+            <div class="sdg-num" style="font-size:28px">17</div>
+            <div class="sdg-label" style="font-size:10px">Partnerships<br>for Goals</div>
+          </div>
+          <p style="font-size:11px;font-weight:300;color:var(--muted);line-height:1.7">A multi-stakeholder partnership between the Foundation, corporate sponsors, DFI faculty, and practitioners — structured to generate systemic capacity across the African finance ecosystem.</p>
+        </div>
+      </div>
+      <div style="background:var(--bg-mid);border:.5px solid var(--border);border-top:none;padding:16px 22px;font-size:11px;font-weight:300;color:var(--muted-lg);line-height:1.7">
+        All partners receive an annual SDG impact report: participant hours by session, geographic reach, seniority breakdown, and SDG code mapping — formatted for direct inclusion in GRI, TCFD, ISSB, and annual report sustainability sections.
+      </div>
+    </div>
+
+    <!-- ── Tiers heading ── -->
+    <div class="reveal" style="transition-delay:.06s;margin-bottom:16px">
+      <div style="font-size:10px;font-weight:500;color:var(--gold);letter-spacing:.18em;text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;gap:10px"><span style="display:block;width:24px;height:.5px;background:var(--gold)"></span>Season One partnership tiers</div>
+      <p style="font-size:12px;font-weight:300;color:var(--muted);line-height:1.7;max-width:640px">Priced at Season One introductory rates. Partners who renew for Season Two lock in the same rate before public pricing is released. All tiers include HRDC-eligible staff seats.</p>
+    </div>
+
+    <div class="sponsor-tiers reveal" style="transition-delay:.08s">
+
+      <!-- Tier 1 -->
+      <div class="tier-card tier-founding">
+        <div class="tier-name">Tier 1 · 2 slots only · Season One</div>
+        <div class="tier-title">Season<br>Founding<br>Partner</div>
+        <div class="tier-price">MUR 200,000 / season</div>
+        <div style="font-size:10px;font-weight:300;color:var(--muted);margin-bottom:6px;margin-top:-2px">≈ MUR 15,400 / month &nbsp;·&nbsp; USD 4,600</div>
+        <div class="tier-slots">2 slots · this price closes at Season One</div>
+        <div style="font-size:11px;font-weight:300;color:var(--muted-lg);line-height:1.75;margin-bottom:20px;padding-bottom:20px;border-bottom:.5px solid var(--border)">The most visible partnership River Hub offers. Your institution is named as a founding force behind the only practitioner finance training centre in the Indian Ocean. Season One founding partners shape how the programme is known from the start — and hold renewal rights before any other organisation.</div>
+        <div class="tier-perks">
+          <div class="tier-perk">Premier logo on all 43 session materials, the River Hub website, and every participant certificate — 13 months of continuous brand presence across the full season</div>
+          <div class="tier-perk">Named Founding Partner on all participant communications — your institution reaches every registrant across the season</div>
+          <div class="tier-perk">6 complimentary HRDC-eligible staff seats — allocate freely across any session, any track</div>
+          <div class="tier-perk">One 30-minute address slot per quarter — your leadership or nominee speaks directly to a room of DFI officers, fund managers, and senior practitioners</div>
+          <div class="tier-perk">Verified annual SDG impact report — participant hours, geography, seniority breakdown, GRI 404 and SDG 4 / 8 / 17 mapping, formatted for direct use in your sustainability report</div>
+          <div class="tier-perk">Right of first renewal for Season Two at the same rate, before public pricing is announced</div>
+        </div>
+        <a href="mailto:admin@philanthropicfoundation.net?subject=River Hub — Founding Partner Enquiry · Season One&body=I would like to discuss the River Hub Season One Founding Partner tier. Please send the partnership brief and confirm slot availability." class="tier-enquire">Reserve a founding partner slot →</a>
+      </div>
+
+      <!-- Tier 2 -->
+      <div class="tier-card">
+        <div class="tier-name">Tier 2 · One per track · Exclusive</div>
+        <div class="tier-title">Track<br>Sponsor</div>
+        <div class="tier-price">MUR 75,000 / track</div>
+        <div style="font-size:10px;font-weight:300;color:var(--muted);margin-bottom:6px;margin-top:-2px">≈ MUR 5,800 / month &nbsp;·&nbsp; USD 1,700</div>
+        <div class="tier-slots">4 slots · one per track · exclusive per track</div>
+        <div style="font-size:11px;font-weight:300;color:var(--muted-lg);line-height:1.75;margin-bottom:20px;padding-bottom:20px;border-bottom:.5px solid var(--border)">Own the track most aligned to your business — exclusively. No other organisation can sponsor your track. A fund administrator on Track A (Blended Finance) is not just supporting education — they are the named institution every blended finance practitioner in the room associates with the subject for the full season.</div>
+        <div class="tier-perks">
+          <div class="tier-perk">Exclusive naming rights across all sessions in your chosen track — Track A, B, C, or D — for the full season</div>
+          <div class="tier-perk">Logo on all materials, slides, and digital communications for every session in your track</div>
+          <div class="tier-perk">2 complimentary HRDC-eligible staff seats within your track — for professional development or client allocation</div>
+          <div class="tier-perk">SDG contribution certificate per track: verified participant hours and SDG code mapping for your annual sustainability report</div>
+          <div class="tier-perk">Named in the post-season impact summary — distributed to all partners, participants, and the Foundation's institutional network across Africa and the Indian Ocean</div>
+        </div>
+        <a href="mailto:admin@philanthropicfoundation.net?subject=River Hub — Track Sponsorship Enquiry · Season One&body=I am interested in sponsoring a River Hub curriculum track for Season One. Please confirm available tracks and send the sponsorship details." class="tier-enquire">Enquire about track sponsorship →</a>
+      </div>
+
+      <!-- Tier 3 -->
+      <div class="tier-card">
+        <div class="tier-name">Tier 3 · Open · No slot limit</div>
+        <div class="tier-title">Access<br>Partner</div>
+        <div class="tier-price">MUR 35,000 / season</div>
+        <div style="font-size:10px;font-weight:300;color:var(--muted);margin-bottom:6px;margin-top:-2px">≈ MUR 2,700 / month &nbsp;·&nbsp; USD 800</div>
+        <div class="tier-slots">Open · no slot limit · any qualifying organisation</div>
+        <div style="font-size:11px;font-weight:300;color:var(--muted-lg);line-height:1.75;margin-bottom:20px;padding-bottom:20px;border-bottom:.5px solid var(--border)">The entry point for organisations that want to invest in their people, generate SDG reporting evidence, and associate with the River Hub network — without a large commitment. At under MUR 3,000 per month, this is a sustainability manager or HR director decision, not a board conversation.</div>
+        <div class="tier-perks">
+          <div class="tier-perk">3 priority HRDC-eligible staff seats per session — booked before public registration opens, ensuring access for your team throughout the season</div>
+          <div class="tier-perk">Company listed in the River Hub Access Partner directory — on the website and in all session programmes across 13 months</div>
+          <div class="tier-perk">Annual SDG contribution letter with verified participant hours, SDG 4 / 8 / 10 / 17 codes, and GRI 404 data — ready to attach directly to your sustainability or annual report</div>
+          <div class="tier-perk">Invitation to the Season One closing convening — a private gathering of participants, faculty, and all River Hub partners</div>
+        </div>
+        <a href="mailto:admin@philanthropicfoundation.net?subject=River Hub — Access Partner Enquiry · Season One&body=I am interested in becoming a River Hub Access Partner for Season One. Please send the onboarding details." class="tier-enquire">Become an access partner →</a>
+      </div>
+
+    </div>
+
+    <!-- ── Reach stats ── -->
+    <div class="sponsor-impact reveal" style="transition-delay:.1s;margin-top:2px">
+      <div>
+        <div class="sponsor-impact-label">Season One reach</div>
+        <div class="sponsor-impact-stat">1,505</div>
+        <div class="sponsor-impact-sub">participant seats across<br>43 sessions · 13 months<br>Africa · Indian Ocean · Europe · Gulf</div>
+      </div>
+      <div class="sponsor-impact-points">
+        <div class="sponsor-impact-point">
+          <div class="sponsor-impact-point-num">35+</div>
+          <div><strong style="color:var(--white);font-weight:400">Finance professionals per session.</strong> Fund managers, DFI investment officers, regulators, senior bankers, and institutional capital allocators. Not a general business audience — practitioners who make decisions about capital, deals, and institutional relationships across Africa and the Indian Ocean.</div>
+        </div>
+        <div class="sponsor-impact-point">
+          <div class="sponsor-impact-point-num">4</div>
+          <div><strong style="color:var(--white);font-weight:400">Curriculum tracks — each with a distinct professional audience.</strong> Blended Finance (Track A), ESG & Climate (Track B), Capital Markets & Governance (Track C), Premium Convenings (Track D). Sponsor one track and own the subject in that room. Sponsor all four and your institution is present across the entire River Hub programme.</div>
+        </div>
+        <div class="sponsor-impact-point">
+          <div class="sponsor-impact-point-num">1st</div>
+          <div><strong style="color:var(--white);font-weight:400">And only practitioner venue of its kind in the Indian Ocean region.</strong> There is no comparable programme in Mauritius, Madagascar, Réunion, or the Seychelles. Season One sponsors are not joining an established institution — they are named as the founding partners of one. That association carries long-term reputational value that cannot be purchased in later seasons at any price.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Bottom CTA ── -->
+    <div class="reveal" style="transition-delay:.12s;margin-top:2px;background:var(--bg);border:.5px solid var(--border);padding:36px 40px;display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap">
+      <div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;color:var(--white);margin-bottom:8px">Request the Season One<br>Partnership Brief</div>
+        <div style="font-size:11px;font-weight:300;color:var(--muted-lg);line-height:1.7;max-width:480px">A four-page document covering programme reach, participant profile, reporting framework alignment, SDG methodology, and the full benefit schedule for all three tiers. Sent within 24 hours of request.</div>
+      </div>
+      <a href="mailto:admin@philanthropicfoundation.net?subject=River Hub — Partnership Brief Request · Season One&body=Please send me the River Hub Season One Partnership Brief." class="btn-primary" style="white-space:nowrap;flex-shrink:0">Request the brief →</a>
+    </div>
+
+  </div>
+</section>
 <section class="register" id="register">
   <div class="register-bg"></div>
   <div class="container">
@@ -1696,6 +2005,7 @@ footer{background:var(--bg-card);border-top:.5px solid var(--border-lg);padding:
           <li><a href="#venue">Hire the space</a></li>
           <li><a href="#delivery">Pricing & delivery</a></li>
           <li><a href="#foundation">The Foundation</a></li>
+          <li><a href="#sponsor">Sponsor a session</a></li>
           <li><a href="#register">Register interest</a></li>
           <li><a href="https://philanthropicfoundation.net" target="_blank">Foundation website ↗</a></li>
         </ul>
@@ -1824,6 +2134,34 @@ function submitForm() {
     ? 'Please send the email that just opened. We will confirm your place, fee in MUR, and send your employer\'s HRDC claim guide within 48 hours.'
     : 'Please send the email that just opened. We will confirm your place and send your fee confirmation in USD within 48 hours.';
 }
+
+// ── Sticky bar ──
+(function(){
+  const bar = document.getElementById('sticky-bar');
+  const hero = document.querySelector('.hero');
+  let dismissed = false;
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(!dismissed) bar.classList.toggle('visible', !e.isIntersecting);
+    });
+  }, {threshold: 0});
+  if(hero) io.observe(hero);
+  bar.querySelector('.sticky-close').addEventListener('click', () => { dismissed = true; });
+})();
+
+
+// ── Nav more dropdown ──
+function toggleNavMore() {
+  document.getElementById('nav-more').classList.toggle('open');
+}
+document.addEventListener('click', function(e) {
+  const m = document.getElementById('nav-more');
+  if (m && !m.contains(e.target)) m.classList.remove('open');
+});
+document.querySelectorAll('.nav-dropdown a').forEach(a => {
+  a.addEventListener('click', () => document.getElementById('nav-more').classList.remove('open'));
+});
+
 // ── Custom cursor (matches The Philanthropic Foundation) ──
 const cursorRing = document.getElementById('cursor-ring');
 const cursorDot  = document.getElementById('cursor-dot');
