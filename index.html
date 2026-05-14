@@ -415,9 +415,9 @@ footer{background:var(--bg-card);border-top:.5px solid var(--border-lg);padding:
 /* ── SPEAKERS ── */
 .speakers{padding:100px 0;background:var(--bg-card);border-top:.5px solid var(--border);border-bottom:.5px solid var(--border)}
 .speakers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:52px}
-.sp-card{background:var(--bg);border:.5px solid var(--border);padding:32px 28px;position:relative;transition:border-color .25s,transform .25s}
+.sp-card{background:var(--bg);border:.5px solid var(--border);padding:28px 24px;position:relative;transition:border-color .25s,transform .25s}
 .sp-card:hover{border-color:var(--border-lg);transform:translateY(-3px)}
-.sp-avatar{width:52px;height:52px;border-radius:50%;background:var(--bg-mid);border:.5px solid var(--border-lg);display:flex;align-items:center;justify-content:center;margin-bottom:20px;position:relative;overflow:hidden}
+.sp-avatar{width:44px;height:44px;border-radius:50%;background:var(--bg-mid);border:.5px solid var(--border-lg);display:flex;align-items:center;justify-content:center;margin-bottom:14px;position:relative;overflow:hidden}
 .sp-avatar-inner{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
 .sp-track{font-size:9px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px}
 .sp-role{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;color:var(--white);line-height:1.25;margin-bottom:8px}
@@ -454,7 +454,18 @@ footer{background:var(--bg-card);border-top:.5px solid var(--border-lg);padding:
   letter-spacing:.08em;text-align:center;
 }
 @media(max-width:900px){.speakers-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:600px){.speakers-grid{grid-template-columns:1fr}}
+@media(max-width:600px){
+  .speakers-grid{grid-template-columns:1fr;gap:1px}
+  .sp-card{padding:20px 18px}
+  .sp-avatar{width:40px;height:40px;margin-bottom:12px}
+  .sp-role{font-size:16px}
+  .sp-bio{font-size:10px;line-height:1.6}
+  .sp-tags{margin-top:10px}
+  .sp-redact-label{font-size:7px}
+  .sp-redact-sub{font-size:8px}
+  .sp-redact-icon{width:28px;height:28px}
+  .sp-note{padding:16px 18px;font-size:11px}
+}
 
 /* ── Sticky bottom bar ── */
 #sticky-bar{
@@ -628,6 +639,10 @@ footer{background:var(--bg-card);border-top:.5px solid var(--border-lg);padding:
       <div class="section-tag">Faculty & guest speakers</div>
       <h2 class="section-title">Practitioners.<br>Not <em>presenters.</em></h2>
       <p class="section-body" style="max-width:560px">Every River Hub session is led by someone who has done the work — not someone who teaches about it. Our faculty and guest speakers are drawn from the institutions and firms that define the field. Names are confirmed and shared with registered participants ahead of each session.</p>
+    </div>
+
+    <div class="sp-note reveal" style="margin-top:24px;transition-delay:.04s">
+      <strong style="color:var(--white);font-weight:400">Every faculty member below is confirmed. Names are disclosed to registered participants 10 days before each session.</strong> River Hub withholds names by design — not because speakers are unconfirmed, but because calibre should speak before personality does. You see the institution, the track record, and the mandate. The name follows when you're in the room.
     </div>
 
     <div class="speakers-grid reveal" style="transition-delay:.08s">
@@ -842,10 +857,6 @@ footer{background:var(--bg-card);border-top:.5px solid var(--border-lg);padding:
         </div>
       </div>
 
-    </div>
-
-    <div class="sp-note reveal" style="transition-delay:.12s">
-      <strong style="color:var(--white);font-weight:400">Every faculty member above is confirmed. Names are disclosed to registered participants 10 days before each session.</strong> River Hub withholds names by design — not because speakers are unconfirmed, but because calibre should speak before personality does. You see the institution, the track record, and the mandate. The name follows when you're in the room.
     </div>
 
   </div>
