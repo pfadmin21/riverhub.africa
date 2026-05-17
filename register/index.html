@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register Interest · River Hub</title>
+<meta name="description" content="Register your interest in River Hub Season One. No payment required. We confirm your place, fee, and HRDC documentation within 48 hours.">
+<link rel="canonical" href="https://riverhub.africa/register/">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230d1117'/><text x='50%25' y='55%25' font-family='serif' font-size='18' fill='%23c9a84c' text-anchor='middle' dominant-baseline='middle'>R</text></svg>">
+<meta name="theme-color" content="#0d1117">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/main.css">
+<style>
+.reg-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;padding:80px 0;align-items:start}
+.steps{display:flex;flex-direction:column;gap:0;margin-top:32px}
+.step{display:grid;grid-template-columns:36px 1fr;gap:16px;padding:18px 0;border-top:.5px solid var(--border)}
+.step:last-child{border-bottom:.5px solid var(--border)}
+.step-num{font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--gold);padding-top:2px}
+.step-title{font-size:13px;font-weight:500;color:var(--white);margin-bottom:4px}
+.step-text{font-size:12px;font-weight:300;color:var(--muted);line-height:1.7}
+.form-card{background:var(--bg-card);border:.5px solid var(--border-lg);border-radius:var(--radius);padding:40px}
+.form-title{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:300;color:var(--white);margin-bottom:28px;font-style:italic}
+.form-row{margin-bottom:14px}
+.form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form-label{font-size:9px;font-weight:400;color:var(--muted);letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:6px}
+.form-input,.form-select{width:100%;background:var(--bg);border:.5px solid var(--border-lg);border-radius:var(--radius);padding:11px 14px;font-family:'Inter',sans-serif;font-size:12px;font-weight:300;color:var(--white);outline:none;transition:border-color .2s;-webkit-appearance:none}
+.form-input::placeholder{color:var(--muted)}
+.form-input:focus,.form-select:focus{border-color:var(--gold)}
+.form-select option{background:var(--bg-card)}
+.form-context{background:rgba(201,168,76,.08);border:.5px solid rgba(201,168,76,.25);border-radius:var(--radius);padding:12px 16px;font-size:11px;font-weight:300;color:var(--gold-lt);line-height:1.7;margin-bottom:14px}
+.form-submit{width:100%;background:var(--gold);color:var(--bg);border:none;padding:13px 28px;font-family:'Inter',sans-serif;font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;cursor:none;border-radius:var(--radius);margin-top:10px;transition:background .2s,transform .15s}
+.form-submit:hover{background:var(--gold-lt);transform:translateY(-1px)}
+.form-note{font-size:10px;color:var(--muted);text-align:center;margin-top:12px;line-height:1.6}
+.li-prefix{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:11px;color:rgba(201,168,76,0.5);font-weight:400;pointer-events:none;letter-spacing:.02em}
+.quick-links{margin-top:48px;padding-top:32px;border-top:.5px solid var(--border)}
+.ql-title{font-size:9px;font-weight:500;color:var(--gold);letter-spacing:.16em;text-transform:uppercase;margin-bottom:16px}
+.ql-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ql-link{background:var(--bg-mid);border:.5px solid var(--border);padding:14px 16px;text-decoration:none;transition:border-color .2s}
+.ql-link:hover{border-color:var(--gold)}
+.ql-link-tag{font-size:9px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px}
+.ql-link-text{font-size:12px;color:var(--white);font-weight:300}
+@media(max-width:900px){.reg-layout{grid-template-columns:1fr;gap:48px}.form-row-2{grid-template-columns:1fr}.ql-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div id="cursor-dot"></div><div id="cursor-ring"></div>
+<nav id="nav">
+  <a href="/" class="nav-logo"><div class="nav-logo-l"><span class="nav-logo-main">River Hub</span><span class="nav-logo-sub">Tamarin · Mauritius</span></div><div class="nav-logo-div"></div><span class="nav-logo-r">The Philanthropic Foundation<br>Capacity Building Centre</span></a>
+  <ul class="nav-links">
+    <li><a href="/courses/">Courses</a></li>
+    <li><a href="/calendar/">Calendar</a></li>
+    <li><a href="/faculty/">Faculty</a></li>
+    <li><a href="/hrdc/">HRDC</a></li>
+    <li class="nav-more" id="nav-more"><button class="nav-more-btn" onclick="toggleNavMore()">More <span>▾</span></button><div class="nav-dropdown"><a href="/venue/">Hire the space</a><a href="/sponsor/">Sponsor</a><a href="https://philanthropicfoundation.net" target="_blank">Foundation ↗</a></div></li>
+    <li><a href="/register/" class="nav-cta">Register</a></li>
+  </ul>
+</nav>
+<div style="padding-top:65px"></div>
+
+<div class="page-header">
+  <div class="page-header-grid"></div>
+  <div class="page-header-inner">
+    <div class="page-eyebrow">Register · Season One · May 2026</div>
+    <h1 class="page-title">Reserve your<br><em>seat</em></h1>
+    <p class="page-subtitle">No payment at this stage. Tell us where you are and what you want to attend — we will confirm your place, your fee, and everything you need to participate within 48 hours.</p>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+    <div class="reg-layout">
+      <div class="reveal">
+        <div class="section-tag">How it works</div>
+        <h2 class="section-title">Three steps.<br><em>Simple.</em></h2>
+        <p class="section-body">No complex application. No commitment until you confirm. Mauritius employers receive HRDC documentation automatically with their confirmation.</p>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">01</div>
+            <div>
+              <div class="step-title">You register</div>
+              <div class="step-text">Name, organisation, location, track of interest. No payment, no commitment required at this stage.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">02</div>
+            <div>
+              <div class="step-title">We confirm within 48 hours</div>
+              <div class="step-text">Your place, your fee in your local currency, and — if you are in Mauritius — your employer's HRDC claim guide and all G1 form documentation.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">03</div>
+            <div>
+              <div class="step-title">You confirm and pay</div>
+              <div class="step-text">Invoice issued. Mauritius employers submit the G1 form minimum 5 working days before the course. Your seat is held from the point of registration confirmation.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="quick-links">
+          <div class="ql-title">Need more information first?</div>
+          <div class="ql-grid">
+            <a href="/courses/" class="ql-link"><div class="ql-link-tag">Curriculum</div><div class="ql-link-text">View all four tracks →</div></a>
+            <a href="/calendar/" class="ql-link"><div class="ql-link-tag">Dates</div><div class="ql-link-text">See the full calendar →</div></a>
+            <a href="/hrdc/" class="ql-link"><div class="ql-link-tag">Mauritius employers</div><div class="ql-link-text">HRDC funding — up to 75% back →</div></a>
+            <a href="/faculty/" class="ql-link"><div class="ql-link-tag">Who teaches</div><div class="ql-link-text">Meet the faculty →</div></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal" style="transition-delay:.12s">
+        <div class="form-card">
+          <div class="form-title">Register interest</div>
+          <div class="form-row-2">
+            <div class="form-row"><label class="form-label">First name</label><input type="text" class="form-input" placeholder="Given name" id="f-first"></div>
+            <div class="form-row"><label class="form-label">Last name</label><input type="text" class="form-input" placeholder="Family name" id="f-last"></div>
+          </div>
+          <div class="form-row"><label class="form-label">Work email</label><input type="email" class="form-input" placeholder="you@company.com" id="f-email"></div>
+          <div class="form-row"><label class="form-label">Organisation</label><input type="text" class="form-input" placeholder="Company or institution" id="f-org"></div>
+          <div class="form-row">
+            <label class="form-label">Where will you attend from?</label>
+            <select class="form-select" id="f-location" onchange="handleLocation(this.value)">
+              <option value="">Select your location</option>
+              <option value="mu-onsite">Mauritius — on-site at River Hub, Tamarin</option>
+              <option value="mu-online">Mauritius — online</option>
+              <option value="africa">Africa & Indian Ocean — online</option>
+              <option value="europe">Europe — online</option>
+              <option value="gulf">Gulf / Middle East — online</option>
+              <option value="asia">Asia — online</option>
+              <option value="americas">Americas — online</option>
+            </select>
+          </div>
+          <div class="form-context" id="f-context" style="display:none"></div>
+          <div class="form-row">
+            <label class="form-label">Track of interest</label>
+            <select class="form-select" id="f-track">
+              <option value="">Which curriculum track?</option>
+              <option>Track A — Blended finance & DFIs</option>
+              <option>Track B — ESG & climate finance</option>
+              <option>Track C — Capital markets & governance</option>
+              <option>Track D — Premium convenings (invitation)</option>
+              <option>Multiple tracks — advise me</option>
+            </select>
+          </div>
+          <div class="form-row"><label class="form-label">Anything specific? <span style="opacity:.4">(optional)</span></label><input type="text" class="form-input" placeholder="e.g. blended finance for a specific project type" id="f-note"></div>
+          <div class="form-row">
+            <label class="form-label">LinkedIn profile <span style="opacity:.4">(optional)</span></label>
+            <div style="position:relative">
+              <span class="li-prefix">linkedin.com/in/</span>
+              <input type="text" class="form-input" placeholder="yourhandle" id="f-linkedin" style="padding-left:114px">
+            </div>
+          </div>
+          <button class="form-submit" id="f-submit" onclick="submitForm()">Register interest — receive confirmation within 48h</button>
+          <div class="form-note" id="f-footnote">No payment required. We respond within 48 hours with your place confirmation and fee.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div><div class="footer-name">River Hub</div><div class="footer-sub">Tamarin · Mauritius · Est. 2026</div><p class="footer-desc">The Philanthropic Foundation's Capacity Building Centre.</p></div>
+      <div><div class="footer-col-title">Programme</div><ul class="footer-links"><li><a href="/courses/">Curriculum tracks</a></li><li><a href="/calendar/">Session calendar</a></li><li><a href="/faculty/">Faculty</a></li><li><a href="/hrdc/">HRDC funding</a></li></ul></div>
+      <div><div class="footer-col-title">Site</div><ul class="footer-links"><li><a href="/venue/">Venue hire</a></li><li><a href="/sponsor/">Sponsor</a></li><li><a href="/register/">Register</a></li></ul></div>
+      <div><div class="footer-col-title">Contact</div><ul class="footer-links"><li><a href="mailto:admin@philanthropicfoundation.net">admin@philanthropicfoundation.net</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><div class="footer-copy">© 2026 The Philanthropic Foundation · Reg. No. 679 · Mauritius</div><div class="footer-season">River Hub · Season One</div></div>
+  </div>
+</footer>
+<script src="/assets/main.js"></script>
+<script>
+const locationMessages = {
+  'mu-onsite': '🇲🇺 <strong>On-site at River Hub, Tamarin.</strong> Your fee confirmation will include the course fee in MUR and a full HRDC employer claim guide — your company can claim up to 75% back. Catering and F&B are included in your seat.',
+  'mu-online': '🇲🇺 <strong>Online from Mauritius.</strong> Your fee confirmation will include the course fee in MUR. If your employer contributes to the HRDC levy, they may be eligible to claim a refund — we will include the claim guide in your confirmation.',
+  'africa': '🌍 <strong>Online — Africa & Indian Ocean.</strong> Your fee confirmation will be in USD at our regional rate (USD 150 per session). A direct invoice will be issued on confirmation.',
+  'europe': '🌐 <strong>Online — Europe.</strong> Your fee confirmation will be in USD at our international rate (USD 350 per session). Invoice issued in USD on confirmation.',
+  'gulf': '🌐 <strong>Online — Gulf & Middle East.</strong> Your fee confirmation will be in USD at our international rate (USD 350 per session). Invoice issued in USD on confirmation.',
+  'asia': '🌐 <strong>Online — Asia.</strong> Your fee confirmation will be in USD at our international rate (USD 350 per session). Invoice issued in USD on confirmation.',
+  'americas': '🌐 <strong>Online — Americas.</strong> Your fee confirmation will be in USD at our international rate (USD 350 per session). Invoice issued in USD on confirmation.',
+};
+
+function handleLocation(val) {
+  const ctx = document.getElementById('f-context');
+  if (val && locationMessages[val]) {
+    ctx.innerHTML = locationMessages[val];
+    ctx.style.display = 'block';
+  } else {
+    ctx.style.display = 'none';
+  }
+}
+
+function submitForm() {
+  const first = document.getElementById('f-first').value.trim();
+  const last = document.getElementById('f-last').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  const org = document.getElementById('f-org').value.trim();
+  const loc = document.getElementById('f-location').value;
+  const track = document.getElementById('f-track').value;
+  const noteVal = document.getElementById('f-note').value.trim();
+  const linkedinRaw = document.getElementById('f-linkedin').value.trim();
+  const linkedin = linkedinRaw ? 'https://linkedin.com/in/' + linkedinRaw.replace(/.*linkedin\.com\/in\//, '') : '';
+  const btn = document.getElementById('f-submit');
+  const note = document.getElementById('f-footnote');
+  if (!first || !email || !org || !loc) {
+    note.textContent = 'Please complete your name, email, organisation and location to register.';
+    note.style.color = '#e07070';
+    return;
+  }
+  const locationLabels = {
+    'mu-onsite': 'Mauritius — on-site at River Hub, Tamarin',
+    'mu-online': 'Mauritius — online',
+    'africa': 'Africa & Indian Ocean — online',
+    'europe': 'Europe — online',
+    'gulf': 'Gulf / Middle East — online',
+    'asia': 'Asia — online',
+    'americas': 'Americas — online',
+  };
+  const body = [
+    'New registration interest from riverhub.africa',
+    '',
+    'NAME: ' + first + (last ? ' ' + last : ''),
+    'EMAIL: ' + email,
+    'ORGANISATION: ' + org,
+    'LOCATION: ' + (locationLabels[loc] || loc),
+    'TRACK: ' + (track || 'Not specified'),
+    'NOTES: ' + (noteVal || 'None'),
+    'LINKEDIN: ' + (linkedin || 'Not provided'),
+  ].join('\n');
+  const subject = 'River Hub Registration — ' + first + (last ? ' ' + last : '') + ' · ' + org;
+  window.location.href = 'mailto:admin@philanthropicfoundation.net'
+    + '?subject=' + encodeURIComponent(subject)
+    + '&body=' + encodeURIComponent(body);
+  btn.textContent = 'Opening your email client ✓';
+  btn.style.background = '#3d8a62';
+  btn.style.color = '#f5f3ef';
+  btn.disabled = true;
+  const isMauritius = loc.startsWith('mu');
+  note.style.color = '';
+  note.textContent = isMauritius
+    ? 'Please send the email that just opened. We will confirm your place, fee in MUR, and send your employer\'s HRDC claim guide within 48 hours.'
+    : 'Please send the email that just opened. We will confirm your place and send your fee confirmation in USD within 48 hours.';
+}
+</script>
+</body>
+</html>

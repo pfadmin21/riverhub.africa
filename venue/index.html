@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Venue Hire · River Hub · Tamarin</title>
+<meta name="description" content="Hire River Hub for your corporate offsite, board session or leadership day. Up to 15 participants, full catering included, hybrid AV. Tamarin, Mauritius.">
+<link rel="canonical" href="https://riverhub.africa/venue/">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230d1117'/><text x='50%25' y='55%25' font-family='serif' font-size='18' fill='%23c9a84c' text-anchor='middle' dominant-baseline='middle'>R</text></svg>">
+<meta name="theme-color" content="#0d1117">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/main.css">
+<style>
+.venue-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;padding:80px 0;align-items:start}
+.pkg{background:var(--bg-card);border:.5px solid var(--border-lg);border-radius:var(--radius);padding:28px 32px;margin-bottom:2px;transition:border-color .25s}
+.pkg:hover{border-color:var(--gold)}
+.pkg.featured{border-color:var(--gold)}
+.pkg-tag{font-size:9px;font-weight:500;color:var(--gold);letter-spacing:.16em;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between}
+.pkg-badge{background:var(--gold);color:var(--bg);padding:2px 8px;border-radius:2px;font-size:8px}
+.pkg-name{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:var(--white);margin-bottom:6px}
+.pkg-desc{font-size:12px;font-weight:300;color:var(--muted);line-height:1.7;margin-bottom:18px}
+.pkg-price{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;color:var(--gold);margin-bottom:4px}
+.pkg-price-note{font-size:10px;font-weight:300;color:var(--muted);margin-bottom:16px;padding-bottom:16px;border-bottom:.5px solid var(--border)}
+.pkg-includes{display:flex;flex-direction:column;gap:7px}
+.pkg-inc{display:flex;align-items:flex-start;gap:10px;font-size:11px;font-weight:300;color:var(--muted-lg)}
+.pkg-inc::before{content:'✓';color:var(--gold);font-size:10px;flex-shrink:0;margin-top:1px;font-weight:500}
+.specs-card{background:var(--bg-card);border:.5px solid var(--border-lg);border-radius:var(--radius);padding:28px 32px;margin-bottom:16px}
+.specs-label{font-size:9px;font-weight:400;color:var(--gold);letter-spacing:.16em;text-transform:uppercase;margin-bottom:12px}
+.specs-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;color:var(--white);margin-bottom:20px;font-style:italic}
+.specs-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px}
+.spec-val{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--white);line-height:1}
+.spec-label{font-size:10px;font-weight:300;color:var(--muted)}
+.amenities{display:flex;flex-direction:column;gap:8px}
+.amenity{display:flex;align-items:center;gap:10px;font-size:11px;font-weight:300;color:var(--muted-lg)}
+.amenity::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--gold);flex-shrink:0}
+.enquire-cta{display:flex;align-items:center;justify-content:space-between;background:var(--gold);border-radius:var(--radius);padding:18px 24px;text-decoration:none;transition:background .2s;margin-top:16px}
+.enquire-cta:hover{background:var(--gold-lt)}
+.enquire-cta span{font-size:11px;font-weight:500;color:var(--bg);letter-spacing:.08em;text-transform:uppercase}
+.note-box{background:var(--bg-mid);border:.5px solid var(--border);border-radius:var(--radius);padding:16px 20px;font-size:11px;font-weight:300;color:var(--muted);line-height:1.7;margin-top:16px}
+.note-box strong{color:var(--white);font-weight:400}
+@media(max-width:900px){.venue-layout{grid-template-columns:1fr;gap:48px}.specs-grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div id="cursor-dot"></div><div id="cursor-ring"></div>
+<div id="sticky-bar">
+  <div class="sticky-label"><strong>River Hub</strong> · Venue hire · Tamarin</div>
+  <div class="sticky-pills"><span class="sticky-pill">Up to 15 pax</span><span class="sticky-pill">F&B included</span></div>
+  <a href="mailto:admin@philanthropicfoundation.net?subject=River Hub Venue Hire Enquiry" class="sticky-cta">Enquire →</a>
+  <button class="sticky-close" aria-label="Dismiss">×</button>
+</div>
+<nav id="nav">
+  <a href="/" class="nav-logo"><div class="nav-logo-l"><span class="nav-logo-main">River Hub</span><span class="nav-logo-sub">Tamarin · Mauritius</span></div><div class="nav-logo-div"></div><span class="nav-logo-r">The Philanthropic Foundation<br>Capacity Building Centre</span></a>
+  <ul class="nav-links">
+    <li><a href="/courses/">Courses</a></li>
+    <li><a href="/calendar/">Calendar</a></li>
+    <li><a href="/faculty/">Faculty</a></li>
+    <li><a href="/hrdc/">HRDC</a></li>
+    <li class="nav-more" id="nav-more"><button class="nav-more-btn" onclick="toggleNavMore()">More <span>▾</span></button><div class="nav-dropdown"><a href="/venue/">Hire the space</a><a href="/sponsor/">Sponsor</a><a href="https://philanthropicfoundation.net" target="_blank">Foundation ↗</a></div></li>
+    <li><a href="/register/" class="nav-cta">Register</a></li>
+  </ul>
+</nav>
+<div style="padding-top:65px"></div>
+
+<div class="page-header">
+  <div class="page-header-grid"></div>
+  <div class="page-header-inner">
+    <div class="page-eyebrow">Venue Hire · Tamarin · Mauritius</div>
+    <h1 class="page-title">Bring your team<br>to <em>River Hub</em></h1>
+    <p class="page-subtitle">River Hub is available for corporate hire on days when the public programme is not running. A dedicated, fully-equipped space for up to 15 participants — with catering and F&B included, on the west coast of Mauritius.</p>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+    <div class="venue-layout">
+      <div class="reveal">
+        <div class="section-tag">Packages</div>
+        <h2 class="section-title">Three ways<br>to <em>hire</em></h2>
+        <p class="section-body">All packages include full F&B — no external catering permitted on site. Book a half day, a full day, or discuss a bespoke multi-day arrangement.</p>
+
+        <div class="pkg">
+          <div class="pkg-tag">Half day · Up to 4 hours</div>
+          <div class="pkg-name">Morning or Afternoon</div>
+          <div class="pkg-desc">08:00–12:30 or 13:00–17:30. Full room with large-screen TV. Arrival refreshments and mid-session break included.</div>
+          <div class="pkg-price">Rs 25,000</div>
+          <div class="pkg-price-note">up to 15 participants · F&B included</div>
+          <div class="pkg-includes">
+            <div class="pkg-inc">Welcome coffee, tea & pastries on arrival</div>
+            <div class="pkg-inc">Mid-session refreshment break</div>
+            <div class="pkg-inc">Large-screen TV display & presentation setup</div>
+            <div class="pkg-inc">High-speed Wi-Fi & dedicated support</div>
+            <div class="pkg-inc">Stationery and flip charts</div>
+          </div>
+        </div>
+
+        <div class="pkg featured">
+          <div class="pkg-tag">Full day · Up to 8 hours <span class="pkg-badge">Most popular</span></div>
+          <div class="pkg-name">Full Day Corporate</div>
+          <div class="pkg-desc">08:00–17:30. Complete day hire with full catering — breakfast, mid-morning break, working lunch, afternoon break. Ideal for strategy days, board sessions, or multi-session workshops.</div>
+          <div class="pkg-price">Rs 40,000</div>
+          <div class="pkg-price-note">up to 15 participants · full F&B included</div>
+          <div class="pkg-includes">
+            <div class="pkg-inc">Full breakfast on arrival</div>
+            <div class="pkg-inc">Mid-morning refreshment break</div>
+            <div class="pkg-inc">Working lunch — seated, catered</div>
+            <div class="pkg-inc">Afternoon tea & refreshments</div>
+            <div class="pkg-inc">Large-screen TV display & hybrid AV</div>
+            <div class="pkg-inc">High-speed Wi-Fi & dedicated on-site support</div>
+            <div class="pkg-inc">Stationery, flip charts & parking</div>
+          </div>
+        </div>
+
+        <div class="pkg">
+          <div class="pkg-tag">Bespoke · On request</div>
+          <div class="pkg-name">Tailored Offsite</div>
+          <div class="pkg-desc">Multi-day hire, evening sessions, combined venue and programme design, or use of the space as part of a Foundation-facilitated workshop.</div>
+          <div class="pkg-price" style="font-size:22px;padding-top:4px">On request</div>
+          <div class="pkg-price-note">multi-day · evening · bespoke catering</div>
+          <div class="pkg-includes">
+            <div class="pkg-inc">Fully bespoke F&B — breakfast, lunch, dinner, cocktail receptions</div>
+            <div class="pkg-inc">Optional programme design and facilitation</div>
+            <div class="pkg-inc">Multi-day and evening availability</div>
+            <div class="pkg-inc">Coordination with African Circuit calendar on request</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal" style="transition-delay:.12s">
+        <div class="specs-card">
+          <div class="specs-label">The space</div>
+          <div class="specs-title">River Hub · Tamarin</div>
+          <div class="specs-grid">
+            <div><div class="spec-val">15</div><div class="spec-label">max participants</div></div>
+            <div><div class="spec-val">8h</div><div class="spec-label">max daily hire</div></div>
+            <div><div class="spec-val">F&B</div><div class="spec-label">always included</div></div>
+            <div><div class="spec-val">AV</div><div class="spec-label">hybrid-ready</div></div>
+          </div>
+          <div class="amenities">
+            <div class="amenity">Fully air-conditioned boardroom-style room</div>
+            <div class="amenity">Large-screen TV, HDMI & wireless presentation</div>
+            <div class="amenity">Live hybrid — camera, microphone, Zoom/Teams ready</div>
+            <div class="amenity">High-speed dedicated Wi-Fi</div>
+            <div class="amenity">F&B tailored to session format — always included</div>
+            <div class="amenity">On-site coordinator throughout the day</div>
+            <div class="amenity">Secure parking for all participants</div>
+            <div class="amenity">45 min from SSR International Airport</div>
+            <div class="amenity">West coast of Mauritius — Tamarin village</div>
+          </div>
+        </div>
+
+        <div class="specs-card">
+          <div class="specs-label">What makes it different</div>
+          <div class="specs-title">A destination venue — not a generic meeting room</div>
+          <p style="font-size:12px;font-weight:300;color:var(--muted-lg);line-height:1.8;margin-bottom:16px">The same room used by the TAP Fund's Technical Assistance Facility and the African Circuit. River Hub participants travel to Tamarin for sessions — your team will too.</p>
+          <p style="font-size:12px;font-weight:300;color:var(--muted-lg);line-height:1.8">The west coast setting — away from Port Louis and the business district — creates a genuine change of environment. Strategy days and leadership offsites produce better results when the space signals that something different is happening.</p>
+        </div>
+
+        <div class="note-box">
+          <strong>Availability.</strong> River Hub is available for corporate hire on days outside the programme calendar. Bookings are confirmed on a first-come basis. A minimum of 5 working days' notice is required. No external catering is permitted on site.
+        </div>
+
+        <a href="mailto:admin@philanthropicfoundation.net?subject=River Hub Venue Hire Enquiry&body=I would like to enquire about hiring River Hub for a corporate session. Please send availability and confirm the package details." class="enquire-cta">
+          <span>Enquire about availability</span>
+          <span style="font-size:18px;color:var(--bg)">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div><div class="footer-name">River Hub</div><div class="footer-sub">Tamarin · Mauritius · Est. 2026</div><p class="footer-desc">The Philanthropic Foundation's Capacity Building Centre.</p></div>
+      <div><div class="footer-col-title">Programme</div><ul class="footer-links"><li><a href="/courses/">Curriculum tracks</a></li><li><a href="/calendar/">Session calendar</a></li><li><a href="/faculty/">Faculty</a></li><li><a href="/hrdc/">HRDC funding</a></li></ul></div>
+      <div><div class="footer-col-title">Site</div><ul class="footer-links"><li><a href="/venue/">Venue hire</a></li><li><a href="/sponsor/">Sponsor</a></li><li><a href="/register/">Register</a></li></ul></div>
+      <div><div class="footer-col-title">Contact</div><ul class="footer-links"><li><a href="mailto:admin@philanthropicfoundation.net">admin@philanthropicfoundation.net</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><div class="footer-copy">© 2026 The Philanthropic Foundation · Reg. No. 679 · Mauritius</div><div class="footer-season">River Hub · Season One</div></div>
+  </div>
+</footer>
+<script src="/assets/main.js"></script>
+</body>
+</html>

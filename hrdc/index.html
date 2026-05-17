@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HRDC Funding · River Hub</title>
+<meta name="description" content="All River Hub sessions are HRDC-eligible. Mauritius employers can claim back up to 75% of course fees through the national levy scheme.">
+<link rel="canonical" href="https://riverhub.africa/hrdc/">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230d1117'/><text x='50%25' y='55%25' font-family='serif' font-size='18' fill='%23c9a84c' text-anchor='middle' dominant-baseline='middle'>R</text></svg>">
+<meta name="theme-color" content="#0d1117">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/main.css">
+<style>
+.hrdc-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;padding:80px 0;align-items:start}
+.hrdc-rates{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:32px}
+.rate-box{background:var(--bg-mid);border:.5px solid var(--border-lg);padding:28px 24px}
+.rate-num{font-family:'Cormorant Garamond',serif;font-size:60px;font-weight:300;color:var(--gold);line-height:1;margin-bottom:8px}
+.rate-label{font-size:12px;font-weight:300;color:var(--muted-lg);line-height:1.6}
+.hrdc-steps{margin-top:40px;display:flex;flex-direction:column;gap:0}
+.hrdc-step{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:20px 0;border-top:.5px solid var(--border)}
+.hrdc-step:last-child{border-bottom:.5px solid var(--border)}
+.hrdc-step-num{width:32px;height:32px;border:.5px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:14px;color:var(--gold);flex-shrink:0}
+.hrdc-step-title{font-size:13px;font-weight:500;color:var(--white);margin-bottom:5px}
+.hrdc-step-text{font-size:12px;font-weight:300;color:var(--muted);line-height:1.75}
+.example-calc{background:var(--bg-card);border:.5px solid var(--border-lg);border-radius:var(--radius);padding:32px;margin-top:32px}
+.calc-row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:.5px solid var(--border)}
+.calc-row:last-child{border-bottom:none;border-top:.5px solid var(--gold);margin-top:8px;padding-top:16px}
+.calc-label{font-size:12px;font-weight:300;color:var(--muted-lg)}
+.calc-val{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:var(--white)}
+.calc-val.gold{color:var(--gold)}
+.calc-val.green{color:#5ec490}
+.eligibility-band{background:var(--bg-card);border-top:.5px solid var(--border);border-bottom:.5px solid var(--border);padding:80px 0}
+.eligibility-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.elig-card{background:var(--bg);border:.5px solid var(--border);padding:28px 24px}
+.elig-icon{font-size:28px;margin-bottom:14px}
+.elig-title{font-size:13px;font-weight:500;color:var(--white);margin-bottom:8px}
+.elig-text{font-size:12px;font-weight:300;color:var(--muted);line-height:1.75}
+.faq{padding:80px 0}
+.faq-item{border-top:.5px solid var(--border);padding:20px 0}
+.faq-item:last-child{border-bottom:.5px solid var(--border)}
+.faq-q{font-size:14px;font-weight:400;color:var(--white);margin-bottom:10px;cursor:none;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.faq-a{font-size:12px;font-weight:300;color:var(--muted-lg);line-height:1.8;max-height:0;overflow:hidden;transition:max-height .3s ease}
+.faq-item.open .faq-a{max-height:300px}
+.faq-arrow{font-size:18px;color:var(--gold);flex-shrink:0;transition:transform .3s}
+.faq-item.open .faq-arrow{transform:rotate(45deg)}
+@media(max-width:900px){.hrdc-layout,.eligibility-grid{grid-template-columns:1fr;gap:48px}.hrdc-rates{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div id="cursor-dot"></div><div id="cursor-ring"></div>
+<div id="sticky-bar">
+  <div class="sticky-label"><strong>River Hub</strong> · HRDC eligible · Up to 75% back</div>
+  <div class="sticky-pills"><span class="sticky-pill">MQA approved</span><span class="sticky-pill">CLBS partnership</span></div>
+  <a href="/register/" class="sticky-cta">Register interest →</a>
+  <button class="sticky-close" aria-label="Dismiss">×</button>
+</div>
+<nav id="nav">
+  <a href="/" class="nav-logo"><div class="nav-logo-l"><span class="nav-logo-main">River Hub</span><span class="nav-logo-sub">Tamarin · Mauritius</span></div><div class="nav-logo-div"></div><span class="nav-logo-r">The Philanthropic Foundation<br>Capacity Building Centre</span></a>
+  <ul class="nav-links">
+    <li><a href="/courses/">Courses</a></li>
+    <li><a href="/calendar/">Calendar</a></li>
+    <li><a href="/faculty/">Faculty</a></li>
+    <li><a href="/hrdc/">HRDC</a></li>
+    <li class="nav-more" id="nav-more"><button class="nav-more-btn" onclick="toggleNavMore()">More <span>▾</span></button><div class="nav-dropdown"><a href="/venue/">Hire the space</a><a href="/sponsor/">Sponsor</a><a href="https://philanthropicfoundation.net" target="_blank">Foundation ↗</a></div></li>
+    <li><a href="/register/" class="nav-cta">Register</a></li>
+  </ul>
+</nav>
+<div style="padding-top:65px"></div>
+
+<div class="page-header">
+  <div class="page-header-grid"></div>
+  <div class="page-header-inner">
+    <div class="page-eyebrow">HRDC National Training Levy Scheme</div>
+    <h1 class="page-title">Up to <em>75%</em><br>back for your<br>employer</h1>
+    <p class="page-subtitle">All River Hub sessions are MQA-approved and HRDC-eligible via our CLBS partnership. Your company claims the refund — you attend. Share this page with your HR or finance team.</p>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+    <div class="hrdc-layout">
+      <div class="reveal">
+        <div class="section-tag">Refund rates</div>
+        <h2 class="section-title">How much<br>comes <em>back?</em></h2>
+        <p class="section-body">The refund rate depends on how much your employer contributes to the HRDC levy annually. Most companies in financial services qualify for the higher rate.</p>
+        <div class="hrdc-rates">
+          <div class="rate-box">
+            <div class="rate-num">75%</div>
+            <div class="rate-label">Levy contribution<br>≤ Rs 100,000 / year</div>
+          </div>
+          <div class="rate-box">
+            <div class="rate-num">70%</div>
+            <div class="rate-label">Levy contribution<br>> Rs 100,000 / year</div>
+          </div>
+        </div>
+        <div class="example-calc">
+          <div style="font-size:9px;font-weight:500;color:var(--gold);letter-spacing:.16em;text-transform:uppercase;margin-bottom:20px">Example — on-site Mauritius participant</div>
+          <div class="calc-row"><div class="calc-label">Course fee (on-site)</div><div class="calc-val">Rs 15,000</div></div>
+          <div class="calc-row"><div class="calc-label">HRDC refund (75%)</div><div class="calc-val gold">− Rs 11,250</div></div>
+          <div class="calc-row"><div class="calc-label">Net cost to your employer</div><div class="calc-val green">Rs 3,750</div></div>
+        </div>
+      </div>
+      <div class="reveal" style="transition-delay:.1s">
+        <div class="section-tag">How to claim</div>
+        <h2 class="section-title" style="font-size:clamp(28px,3.5vw,44px)">Four steps.<br><em>Simple process.</em></h2>
+        <p class="section-body">The refund is claimed by the employer on behalf of the participant. We provide all the documentation your HR team needs.</p>
+        <div class="hrdc-steps">
+          <div class="hrdc-step">
+            <div class="hrdc-step-num">1</div>
+            <div>
+              <div class="hrdc-step-title">Company submits G1 form</div>
+              <div class="hrdc-step-text">Minimum 5 working days before the course start date. We provide all course details needed for the form on request. Email us and we send it within 24 hours.</div>
+            </div>
+          </div>
+          <div class="hrdc-step">
+            <div class="hrdc-step-num">2</div>
+            <div>
+              <div class="hrdc-step-title">Attend the session</div>
+              <div class="hrdc-step-text">On-site at River Hub or online. Attendance is recorded for both modes — both qualify equally for the refund. We issue an attendance certificate on the day.</div>
+            </div>
+          </div>
+          <div class="hrdc-step">
+            <div class="hrdc-step-num">3</div>
+            <div>
+              <div class="hrdc-step-title">Company submits G3 form</div>
+              <div class="hrdc-step-text">Post-course, with invoice, receipt, and attendance record. We provide the platform attendance log for online participants automatically within 48 hours of the session.</div>
+            </div>
+          </div>
+          <div class="hrdc-step">
+            <div class="hrdc-step-num">4</div>
+            <div>
+              <div class="hrdc-step-title">Refund processed</div>
+              <div class="hrdc-step-text">Typically 4–8 weeks. Refund goes directly to the employer. Minimum 3 months of levy contribution required before the first claim can be submitted.</div>
+            </div>
+          </div>
+        </div>
+        <a href="mailto:admin@philanthropicfoundation.net?subject=River Hub — HRDC documentation request&body=Please send me the HRDC G1 form details and course documentation for River Hub Season One." class="btn-primary" style="margin-top:32px;display:inline-block">Request HRDC documentation →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ELIGIBILITY -->
+<section class="eligibility-band">
+  <div class="container">
+    <div class="reveal" style="margin-bottom:40px">
+      <div class="section-tag">Eligibility</div>
+      <h2 class="section-title">Who can<br><em>claim?</em></h2>
+    </div>
+    <div class="eligibility-grid reveal" style="transition-delay:.06s">
+      <div class="elig-card">
+        <div class="elig-icon">🏦</div>
+        <div class="elig-title">Banks & financial institutions</div>
+        <div class="elig-text">Any bank, insurer, or financial institution registered in Mauritius and contributing to the HRDC levy. Covers commercial banks, investment banks, insurance companies, and leasing companies.</div>
+      </div>
+      <div class="elig-card">
+        <div class="elig-icon">📊</div>
+        <div class="elig-title">Fund managers & administrators</div>
+        <div class="elig-text">Fund management companies, CIS operators, fund administrators, and Global Business companies domiciled in Mauritius. Staff attending any River Hub session qualify.</div>
+      </div>
+      <div class="elig-card">
+        <div class="elig-icon">⚖️</div>
+        <div class="elig-title">Law firms & advisory firms</div>
+        <div class="elig-text">Law firms, accounting firms, management consultants, and advisory businesses with Mauritius-registered employees contributing to the HRDC levy through payroll.</div>
+      </div>
+      <div class="elig-card">
+        <div class="elig-icon">🏛️</div>
+        <div class="elig-title">Regulators & government bodies</div>
+        <div class="elig-text">FSC, Bank of Mauritius, BOI, and other public sector entities may qualify depending on their levy contribution status. Contact HRDC directly to confirm eligibility before submitting.</div>
+      </div>
+      <div class="elig-card">
+        <div class="elig-icon">🌍</div>
+        <div class="elig-title">Online participants from Mauritius</div>
+        <div class="elig-text">Mauritius-based participants attending River Hub online are equally eligible for the HRDC refund. The platform attendance log we issue within 48 hours serves as the attendance record for the G3 form.</div>
+      </div>
+      <div class="elig-card">
+        <div class="elig-icon">❓</div>
+        <div class="elig-title">Not sure if you qualify?</div>
+        <div class="elig-text">Email us with your company name and sector. We check eligibility on your behalf and advise within 24 hours. Most Mauritius-registered companies with payroll employees contribute to the levy automatically.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="container">
+    <div class="reveal" style="margin-bottom:40px">
+      <div class="section-tag">Common questions</div>
+      <h2 class="section-title">HRDC<br><em>FAQ</em></h2>
+    </div>
+    <div class="reveal" style="transition-delay:.06s">
+      <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">Does the online fee qualify for HRDC, or only the on-site fee? <span class="faq-arrow">+</span></div>
+        <div class="faq-a">Both qualify equally. The HRDC levy scheme does not distinguish between in-room and online delivery — what matters is that the training is MQA-approved and the employer submits the correct forms. River Hub's CLBS partnership covers both delivery modes.</div>
+      </div>
+      <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">Can we claim for multiple sessions in the same year? <span class="faq-arrow">+</span></div>
+        <div class="faq-a">Yes. There is no cap on the number of sessions per employee per year under the standard levy scheme, subject to your employer's total levy contribution. Each session requires its own G1 and G3 submission. We batch-issue the documentation if you register for multiple sessions at once.</div>
+      </div>
+      <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">What if my company has only been registered for a few months? <span class="faq-arrow">+</span></div>
+        <div class="faq-a">A minimum of 3 months of levy contribution is required before the first claim can be submitted. If your company is newer than 3 months, you can still attend and pay the full fee — and submit the claim once the 3-month threshold is reached.</div>
+      </div>
+      <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">Who submits the forms — me or my employer? <span class="faq-arrow">+</span></div>
+        <div class="faq-a">Your employer (HR or finance team) submits both the G1 (before the course) and the G3 (after the course). You attend and collect your certificate. We provide your employer with a pre-filled course information pack to make the G1 submission straightforward.</div>
+      </div>
+      <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">How long does it take to receive the refund? <span class="faq-arrow">+</span></div>
+        <div class="faq-a">HRDC typically processes refunds within 4–8 weeks of receiving a complete G3 submission. Processing times can vary during peak periods. The refund is paid directly to the employer, not the participant.</div>
+      </div>
+      <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">Can international participants claim HRDC? <span class="faq-arrow">+</span></div>
+        <div class="faq-a">No. The HRDC levy scheme is available to Mauritius-registered employers only. International participants from Africa, Europe, the Gulf, and Asia pay the online fee with no levy refund. The regional online fee is priced accordingly to reflect this.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--bg-card);border-top:.5px solid var(--border);padding:64px 0">
+  <div class="container">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap">
+      <div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--white);margin-bottom:8px">Ready to register?</div>
+        <div style="font-size:12px;font-weight:300;color:var(--muted-lg)">We send your employer's HRDC documentation pack within 24 hours of registration confirmation.</div>
+      </div>
+      <div style="display:flex;gap:16px;flex-wrap:wrap">
+        <a href="/register/" class="btn-primary">Register interest →</a>
+        <a href="mailto:admin@philanthropicfoundation.net?subject=River Hub — HRDC documentation request" class="btn-ghost">Request HRDC docs</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div><div class="footer-name">River Hub</div><div class="footer-sub">Tamarin · Mauritius · Est. 2026</div><p class="footer-desc">The Philanthropic Foundation's Capacity Building Centre.</p></div>
+      <div><div class="footer-col-title">Programme</div><ul class="footer-links"><li><a href="/courses/">Curriculum tracks</a></li><li><a href="/calendar/">Session calendar</a></li><li><a href="/faculty/">Faculty</a></li><li><a href="/hrdc/">HRDC funding</a></li></ul></div>
+      <div><div class="footer-col-title">Site</div><ul class="footer-links"><li><a href="/venue/">Venue hire</a></li><li><a href="/sponsor/">Sponsor</a></li><li><a href="/register/">Register</a></li></ul></div>
+      <div><div class="footer-col-title">Contact</div><ul class="footer-links"><li><a href="mailto:admin@philanthropicfoundation.net">admin@philanthropicfoundation.net</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><div class="footer-copy">© 2026 The Philanthropic Foundation · Reg. No. 679 · Mauritius</div><div class="footer-season">River Hub · Season One</div></div>
+  </div>
+</footer>
+<script src="/assets/main.js"></script>
+</body>
+</html>

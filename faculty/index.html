@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Faculty & Speakers · River Hub</title>
+<meta name="description" content="River Hub faculty are practitioners from BII, IFC, Nordic DFIs, and the leading African capital markets institutions. Not academics — people who have done the work.">
+<link rel="canonical" href="https://riverhub.africa/faculty/">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230d1117'/><text x='50%25' y='55%25' font-family='serif' font-size='18' fill='%23c9a84c' text-anchor='middle' dominant-baseline='middle'>R</text></svg>">
+<meta name="theme-color" content="#0d1117">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/main.css">
+<style>
+.speakers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:52px}
+.sp-card{background:var(--bg-card);border:.5px solid var(--border);padding:28px 24px;position:relative;overflow:hidden;transition:border-color .25s,transform .25s}
+.sp-card:hover{border-color:var(--border-lg);transform:translateY(-3px)}
+.sp-avatar{width:44px;height:44px;border-radius:50%;background:var(--bg-mid);border:.5px solid var(--border-lg);display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.sp-track{font-size:9px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px}
+.sp-role{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;color:var(--white);line-height:1.25;margin-bottom:8px}
+.sp-inst{font-size:11px;font-weight:400;color:var(--gold);letter-spacing:.04em;margin-bottom:14px}
+.sp-bio{font-size:11px;font-weight:300;color:var(--muted-lg);line-height:1.75}
+.sp-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.sp-tag{font-size:9px;font-weight:400;color:var(--muted);letter-spacing:.08em;border:.5px solid var(--border);padding:3px 9px;text-transform:uppercase}
+.sp-confirm{position:absolute;top:16px;right:16px;font-size:8px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border:.5px solid var(--border);padding:3px 8px}
+.sp-confirm.confirmed{color:#5ec490;border-color:rgba(61,138,98,.4)}
+.sp-redact{position:absolute;inset:0;z-index:10;backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);background:rgba(13,17,23,0.45);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;pointer-events:none}
+.sp-redact-icon{width:36px;height:36px;border-radius:50%;border:.5px solid rgba(201,168,76,0.35);display:flex;align-items:center;justify-content:center}
+.sp-redact-label{font-size:8px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(201,168,76,0.6);text-align:center;line-height:1.8}
+.sp-redact-sub{font-size:9px;font-weight:300;color:rgba(245,243,239,.35);letter-spacing:.08em;text-align:center}
+.sp-note{margin-top:48px;padding:20px 28px;background:var(--bg-mid);border:.5px solid var(--border);border-left:2px solid var(--gold);font-size:11px;font-weight:300;color:var(--muted-lg);line-height:1.75}
+.why-band{background:var(--bg-card);border-top:.5px solid var(--border);border-bottom:.5px solid var(--border);padding:80px 0;margin-top:80px}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.why-item{padding:24px 0;border-top:.5px solid var(--border)}
+.why-num{font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--gold);margin-bottom:8px}
+.why-title{font-size:13px;font-weight:500;color:var(--white);margin-bottom:6px}
+.why-text{font-size:12px;font-weight:300;color:var(--muted);line-height:1.75}
+@media(max-width:900px){.speakers-grid{grid-template-columns:1fr 1fr}.why-grid{grid-template-columns:1fr}}
+@media(max-width:600px){.speakers-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div id="cursor-dot"></div><div id="cursor-ring"></div>
+<div id="sticky-bar">
+  <div class="sticky-label"><strong>River Hub</strong> · Season One · May 2026</div>
+  <div class="sticky-pills"><span class="sticky-pill">Confirmed faculty</span><span class="sticky-pill">Season One</span></div>
+  <a href="/register/" class="sticky-cta">Register interest →</a>
+  <button class="sticky-close" aria-label="Dismiss">×</button>
+</div>
+<nav id="nav">
+  <a href="/" class="nav-logo"><div class="nav-logo-l"><span class="nav-logo-main">River Hub</span><span class="nav-logo-sub">Tamarin · Mauritius</span></div><div class="nav-logo-div"></div><span class="nav-logo-r">The Philanthropic Foundation<br>Capacity Building Centre</span></a>
+  <ul class="nav-links">
+    <li><a href="/courses/">Courses</a></li>
+    <li><a href="/calendar/">Calendar</a></li>
+    <li><a href="/faculty/">Faculty</a></li>
+    <li><a href="/hrdc/">HRDC</a></li>
+    <li class="nav-more" id="nav-more"><button class="nav-more-btn" onclick="toggleNavMore()">More <span>▾</span></button><div class="nav-dropdown"><a href="/venue/">Hire the space</a><a href="/sponsor/">Sponsor</a><a href="https://philanthropicfoundation.net" target="_blank">Foundation ↗</a></div></li>
+    <li><a href="/register/" class="nav-cta">Register</a></li>
+  </ul>
+</nav>
+<div style="padding-top:65px"></div>
+
+<div class="page-header">
+  <div class="page-header-grid"></div>
+  <div class="page-header-inner">
+    <div class="page-eyebrow">Faculty & Guest Speakers · Season One</div>
+    <h1 class="page-title">Practitioners.<br>Not <em>presenters.</em></h1>
+    <p class="page-subtitle">Every River Hub session is led by someone who has done the work — not someone who teaches about it. Our faculty and guest speakers are drawn from the institutions and firms that define the field. Names are confirmed and shared with registered participants ahead of each session.</p>
+  </div>
+</div>
+
+<section style="padding:80px 0">
+  <div class="container">
+    <div class="sp-note reveal">
+      <strong style="color:var(--white);font-weight:400">Every faculty member below is confirmed. Names are disclosed to registered participants 10 days before each session.</strong> River Hub withholds names by design — not because speakers are unconfirmed, but because calibre should speak before personality does. You see the institution, the track record, and the mandate. The name follows when you're in the room.
+    </div>
+
+    <div class="speakers-grid reveal" style="transition-delay:.08s">
+
+      <!-- Speaker 1 -->
+      <div class="sp-card">
+        <div class="sp-redact">
+          <div class="sp-redact-icon">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="3" y="7" width="10" height="7" rx="1" stroke="rgba(201,168,76,0.6)" stroke-width=".8" fill="none"/><path d="M5 7V5a3 3 0 016 0v2" stroke="rgba(201,168,76,0.6)" stroke-width=".8" fill="none"/></svg>
+          </div>
+          <div class="sp-redact-label">Identity confirmed<br>· not yet disclosed ·</div>
+          <div class="sp-redact-sub">Revealed to registered participants</div>
+        </div>
+        <span class="sp-confirm confirmed">Season One confirmed</span>
+        <div class="sp-avatar"><svg viewBox="0 0 52 52" fill="none" style="width:52px;height:52px"><circle cx="26" cy="26" r="26" fill="#1c2433"/><circle cx="26" cy="21" r="8" fill="none" stroke="#c9a84c" stroke-width="1"/><path d="M12 42c0-7.732 6.268-14 14-14s14 6.268 14 14" fill="none" stroke="#c9a84c" stroke-width="1"/></svg></div>
+        <div class="sp-track" style="color:#5ec490">Track A · Blended Finance</div>
+        <div class="sp-role">Senior Investment Officer</div>
+        <div class="sp-inst">British International Investment (BII)</div>
+        <div class="sp-bio">Over 15 years deploying DFI capital into African infrastructure and climate projects. Has structured blended finance transactions across East and West Africa, working directly with co-investors, project sponsors, and national development banks.</div>
+        <div class="sp-tags"><span class="sp-tag">Blended Finance</span><span class="sp-tag">DFI Capital</span><span class="sp-tag">East Africa</span><span class="sp-tag">Infrastructure</span></div>
+      </div>
+
+      <!-- Speaker 2 -->
+      <div class="sp-card">
+        <div class="sp-redact">
+          <div class="sp-redact-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="3" y="7" width="10" height="7" rx="1" stroke="rgba(201,168,76,0.6)" stroke-width=".8" fill="none"/><path d="M5 7V5a3 3 0 016 0v2" stroke="rgba(201,168,76,0.6)" stroke-width=".8" fill="none"/></svg></div>
+          <div class="sp-redact-label">Identity confirmed<br>· not yet disclosed ·</div>
+          <div class="sp-redact-sub">Revealed to registered participants</div>
+        </div>
+        <span class="sp-confirm confirmed">Season One confirmed</span>
+        <div class="sp-avatar"><svg viewBox="0 0 52 52" fill="none" style="width:52px;height:52px"><circle cx="26" cy="26" r="26" fill="#1c2433"/><circle cx="26" cy="21" r="8" fill="none" stroke="#c9a84c" stroke-width="1"/><path d="M12 42c0-7.732 6.268-14 14-14s14 6.268 14 14" fill="none" stroke="#c9a84c" stroke-width="1"/></svg></div>
+        <div class="sp-track" style="color:#5ec490">Track A · Track B</div>
+        <div class="sp-role">Climate Finance Director</div>
+        <div class="sp-inst">Nordic Development Finance Institution</div>
+        <div class="sp-bio">Specialist in climate-aligned investment structures and EU Green Taxonomy application across emerging markets. Has advised governments and private sponsors on transition finance frameworks and green bond issuance in Sub-Saharan Africa.</div>
+        <div class="sp-tags"><span class="sp-tag">Climate Finance</span><span class="sp-tag">EU Taxonomy</span><span class="sp-tag">Transition Finance</span><span class="sp-tag">Green Bonds</span></div>
+      </div>
+
+      <!-- Speaker 3 -->
+      <div class="sp-card">
+        <div class="sp-redact">
+          <div class="sp-redact-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="3" y="7" width="10" height="7" rx="1" stroke="rgba(201,168,76,0.6)" stroke-width=".8" fill="none"/><path d="M5 7V5a3 3 0 016 0v2" stroke="rgba(201,168,76,0.6)" stroke-width=".8" fill="none"/></svg></div>
+          <div class="sp-redact-label">Identity confirmed<br>· not yet disclosed ·</div>
+          <div class="sp-redact-sub">Revealed to registered participants</div>
+        </div>
+        <span class="sp-confirm confirmed">Season One confirmed</span>
+        <div class="sp-avatar"><svg viewBox="0 0 52 52" fill="none" style="width:52px;height:52px"><circle cx="26" cy="26" r="26" fill="#1c2433"/><circle cx="26" cy="21" r="8" fill="none" stroke="#c9a84c" stroke-width="1"/><path d="M12 42c0-7.732 6.268-14 14-14s14 6.268 14 14" fill="none" stroke="#c9a84c" stroke-width="1"/></svg></div>
+        <div class="sp-track" style="color:var(--gold)">Track B · ESG & Climate</div>
+        <div class="sp-role">Environmental & Social Standards Lead</div>
+        <div class="sp-inst">International Finance Corporation (IFC)</div>
+        <div class="sp-bio">Leads ESG due diligence and IFC Performance Standards implementation for private sector investments across Africa. Works directly with fund managers, banks, and project sponsors to structure E&S frameworks that satisfy DFI LP requirements.</div>
+        <div class="sp-tags"><span class="sp-tag">IFC Standards</span><span class="sp-tag">ESG Due Diligence</span><span class="sp-tag">TCFD</span><span class="sp-tag">Private Sector</span></div>
+      </div>
+
+      <!-- Speaker 4 -->
+      <div class="sp-card">
+        <div class="sp-redact">
+          <div class="sp-redact-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="3" y="7" width="10" height="7" rx="1" stroke="rgba(201,168,76,0.6)" stroke-width=".8" fill="none"/><path d="M5 7V5a3 3 0 016 0v2" stroke="rgba(201,168,76,0.6)" stroke-width=".8" fill="none"/></svg></div>
+          <div class="sp-redact-label">Identity confirmed<br>· not yet disclosed ·</div>
+          <div class="sp-redact-sub">Revealed to registered participants</div>
+        </div>
+        <span class="sp-confirm">Confirming</span>
+        <div class="sp-avatar"><svg viewBox="0 0 52 52" fill="none" style="width:52px;height:52px"><circle cx="26" cy="26" r="26" fill="#1c2433"/><circle cx="26" cy="21" r="8" fill="none" stroke="#c9a84c" stroke-width="1"/><path d="M12 42c0-7.732 6.268-14 14-14s14 6.268 14 14" fill="none" stroke="#c9a84c" stroke-width="1"/></svg></div>
+        <div class="sp-track" style="color:#5a7fa0">Track C · Capital Markets</div>
+        <div class="sp-role">Head of Capital Markets</div>
+        <div class="sp-inst">Pan-African Investment Bank</div>
+        <div class="sp-bio">Senior capital markets practitioner with 20 years across African stock exchanges, sovereign debt issuance, and private equity structuring. Has led IPOs, Eurobond transactions, and secondary market development across East and Southern Africa.</div>
+        <div class="sp-tags"><span class="sp-tag">Capital Markets</span><span class="sp-tag">Sovereign Debt</span><span class="sp-tag">Private Equity</span><span class="sp-tag">IPO</span></div>
+      </div>
+
+      <!-- Speaker 5 -->
+      <div class="sp-card">
+        <div class="sp-redact">
+          <div class="sp-redact-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="3" y="7" width="10" height="7" rx="1" stroke="rgba(201,168,76,0.6)" stroke-width=".8" fill="none"/><path d="M5 7V5a3 3 0 016 0v2" stroke="rgba(201,168,76,0.6)" stroke-width=".8" fill="none"/></svg></div>
+          <div class="sp-redact-label">Identity confirmed<br>· not yet disclosed ·</div>
+          <div class="sp-redact-sub">Revealed to registered participants</div>
+        </div>
+        <span class="sp-confirm">Confirming</span>
+        <div class="sp-avatar"><svg viewBox="0 0 52 52" fill="none" style="width:52px;height:52px"><circle cx="26" cy="26" r="26" fill="#1c2433"/><circle cx="26" cy="21" r="8" fill="none" stroke="#c9a84c" stroke-width="1"/><path d="M12 42c0-7.732 6.268-14 14-14s14 6.268 14 14" fill="none" stroke="#c9a84c" stroke-width="1"/></svg></div>
+        <div class="sp-track" style="color:#9a8aba">Track D · Premium Convenings</div>
+        <div class="sp-role">Managing Director, Africa</div>
+        <div class="sp-inst">European Institutional Fund of Funds</div>
+        <div class="sp-bio">Allocates on behalf of European pension capital into Africa-focused private equity and infrastructure funds. Has conducted due diligence on over 40 African GPs and sits on multiple LP advisory committees. Leads the LP–GP Dialogue sessions.</div>
+        <div class="sp-tags"><span class="sp-tag">LP Perspective</span><span class="sp-tag">Fund Due Diligence</span><span class="sp-tag">Pension Capital</span><span class="sp-tag">GP Relations</span></div>
+      </div>
+
+      <!-- Speaker 6 -->
+      <div class="sp-card">
+        <div class="sp-redact">
+          <div class="sp-redact-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="3" y="7" width="10" height="7" rx="1" stroke="rgba(201,168,76,0.6)" stroke-width=".8" fill="none"/><path d="M5 7V5a3 3 0 016 0v2" stroke="rgba(201,168,76,0.6)" stroke-width=".8" fill="none"/></svg></div>
+          <div class="sp-redact-label">Identity confirmed<br>· not yet disclosed ·</div>
+          <div class="sp-redact-sub">Revealed to registered participants</div>
+        </div>
+        <span class="sp-confirm">Confirming</span>
+        <div class="sp-avatar"><svg viewBox="0 0 52 52" fill="none" style="width:52px;height:52px"><circle cx="26" cy="26" r="26" fill="#1c2433"/><circle cx="26" cy="21" r="8" fill="none" stroke="#c9a84c" stroke-width="1"/><path d="M12 42c0-7.732 6.268-14 14-14s14 6.268 14 14" fill="none" stroke="#c9a84c" stroke-width="1"/></svg></div>
+        <div class="sp-track" style="color:#5a7fa0">Track A · Track C</div>
+        <div class="sp-role">Partner, Africa Practice</div>
+        <div class="sp-inst">Global Law Firm · Mauritius & London</div>
+        <div class="sp-bio">Specialises in fund structuring, cross-border investment vehicles, and regulatory frameworks for Africa-focused funds domiciled in Mauritius. Has advised DFIs, family offices, and sovereign wealth funds on structuring compliant vehicles for African deployment.</div>
+        <div class="sp-tags"><span class="sp-tag">Fund Structuring</span><span class="sp-tag">Mauritius IFC</span><span class="sp-tag">Regulatory</span><span class="sp-tag">Cross-Border</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHY PRACTITIONERS -->
+<section class="why-band">
+  <div class="container">
+    <div class="why-grid">
+      <div class="reveal">
+        <div class="section-tag">Why it matters</div>
+        <h2 class="section-title">No career<br>academics.<br><em>Ever.</em></h2>
+        <p class="section-body">River Hub has a single faculty rule: every person who stands in the room must have done the work they are teaching. Not studied it, not published about it — done it. That means people who have signed DFI term sheets, argued with LP advisory committees, and made calls under real time pressure.</p>
+        <p class="section-body">This is not snobbery about PhDs. It is a recognition that the tacit knowledge — what DFIs actually want to see, what makes LPs walk away, what the due diligence call really feels like — can only be transmitted by people who have it.</p>
+        <a href="/register/" class="btn-primary" style="margin-top:24px;display:inline-block">Join a session →</a>
+      </div>
+      <div class="reveal" style="transition-delay:.1s">
+        <div class="why-item"><div class="why-num">01</div><div class="why-title">Active mandate, not emeritus</div><div class="why-text">Every faculty member is currently working — not retired from the field. What they share reflects what is happening in deals and processes right now, not what was true five years ago.</div></div>
+        <div class="why-item"><div class="why-num">02</div><div class="why-title">Institutional authority</div><div class="why-text">Faculty hold roles at institutions with real mandates — DFIs with capital to deploy, LPs with allocations to make, law firms with deals to close. Their perspective carries authority because they make decisions, not recommendations.</div></div>
+        <div class="why-item"><div class="why-num">03</div><div class="why-title">The room knows</div><div class="why-text">River Hub participants are mid-to-senior professionals. They can tell immediately whether the person in front of them has done the work. Faculty who have not done it lose the room within minutes. River Hub faculty never do.</div></div>
+        <div class="why-item"><div class="why-num">04</div><div class="why-title">Name disclosed on registration</div><div class="why-text">We hold faculty names until 10 days before the session by design — so the decision to attend is made on substance, not celebrity. Once you register, you know exactly who is in the room with you.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div><div class="footer-name">River Hub</div><div class="footer-sub">Tamarin · Mauritius · Est. 2026</div><p class="footer-desc">The Philanthropic Foundation's Capacity Building Centre.</p></div>
+      <div><div class="footer-col-title">Programme</div><ul class="footer-links"><li><a href="/courses/">Curriculum tracks</a></li><li><a href="/calendar/">Session calendar</a></li><li><a href="/faculty/">Faculty</a></li><li><a href="/hrdc/">HRDC funding</a></li></ul></div>
+      <div><div class="footer-col-title">Site</div><ul class="footer-links"><li><a href="/venue/">Venue hire</a></li><li><a href="/sponsor/">Sponsor</a></li><li><a href="/register/">Register</a></li></ul></div>
+      <div><div class="footer-col-title">Contact</div><ul class="footer-links"><li><a href="mailto:admin@philanthropicfoundation.net">admin@philanthropicfoundation.net</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><div class="footer-copy">© 2026 The Philanthropic Foundation · Reg. No. 679 · Mauritius</div><div class="footer-season">River Hub · Season One</div></div>
+  </div>
+</footer>
+<script src="/assets/main.js"></script>
+</body>
+</html>

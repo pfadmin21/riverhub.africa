@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Partner & Sponsor · River Hub</title>
+<meta name="description" content="River Hub partnership generates SDG reporting evidence, staff development, and institutional visibility. Three tiers from MUR 35,000 per season.">
+<link rel="canonical" href="https://riverhub.africa/sponsor/">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230d1117'/><text x='50%25' y='55%25' font-family='serif' font-size='18' fill='%23c9a84c' text-anchor='middle' dominant-baseline='middle'>R</text></svg>">
+<meta name="theme-color" content="#0d1117">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/main.css">
+<style>
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:48px}
+.why-card{background:var(--bg-card);border:.5px solid var(--border);padding:32px 28px}
+.why-num{font-size:9px;font-weight:500;color:var(--gold);letter-spacing:.16em;text-transform:uppercase;margin-bottom:20px}
+.why-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:var(--white);line-height:1.2;margin-bottom:14px}
+.why-text{font-size:11px;font-weight:300;color:var(--muted-lg);line-height:1.75}
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:48px}
+.tier{background:var(--bg-card);border:.5px solid var(--border);padding:36px 28px;position:relative;transition:border-color .25s}
+.tier:hover{border-color:var(--border-lg)}
+.tier.tier-founding{border-color:rgba(201,168,76,0.35)}
+.tier.tier-founding::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold)}
+.tier-name{font-size:9px;font-weight:500;color:var(--muted);letter-spacing:.16em;text-transform:uppercase;margin-bottom:14px}
+.tier-title{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--white);line-height:1.1;margin-bottom:8px}
+.tier-price{font-size:11px;font-weight:400;color:var(--gold);letter-spacing:.06em;margin-bottom:4px}
+.tier-price-note{font-size:10px;font-weight:300;color:var(--muted);margin-bottom:6px}
+.tier-slots{font-size:10px;font-weight:300;color:var(--muted);letter-spacing:.04em;margin-bottom:24px;padding-bottom:24px;border-bottom:.5px solid var(--border)}
+.tier-desc{font-size:11px;font-weight:300;color:var(--muted-lg);line-height:1.75;margin-bottom:20px}
+.tier-perks{display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
+.tier-perk{display:flex;align-items:flex-start;gap:10px;font-size:11px;font-weight:300;color:var(--muted-lg);line-height:1.6}
+.tier-perk::before{content:'';display:block;width:4px;height:4px;border-radius:50%;background:var(--gold);opacity:.7;flex-shrink:0;margin-top:6px}
+.tier-enquire{display:inline-block;font-size:9px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);border:.5px solid rgba(201,168,76,0.4);padding:8px 18px;text-decoration:none;transition:all .2s;border-radius:var(--radius)}
+.tier-enquire:hover{background:rgba(201,168,76,0.08);border-color:var(--gold)}
+.tier.tier-founding .tier-enquire{background:var(--gold);color:var(--bg);border-color:var(--gold)}
+.tier.tier-founding .tier-enquire:hover{background:var(--gold-lt)}
+.sdg-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:40px}
+.sdg-card{background:var(--bg);border:.5px solid var(--border);padding:20px 22px}
+.sdg-num{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;color:var(--gold);line-height:1;margin-bottom:6px}
+.sdg-label{font-size:9px;font-weight:500;color:var(--white);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}
+.sdg-text{font-size:11px;font-weight:300;color:var(--muted);line-height:1.7}
+.obligations-table{display:flex;flex-direction:column;gap:0;margin-top:28px}
+.ob-row{display:grid;grid-template-columns:1fr 1.5fr;gap:14px;padding:12px 0;border-bottom:.5px solid var(--border)}
+.ob-row:first-child{border-top:.5px solid var(--border)}
+.ob-name{font-size:10px;font-weight:500;color:var(--white);letter-spacing:.04em}
+.ob-desc{font-size:10px;font-weight:300;color:var(--muted);line-height:1.6}
+@media(max-width:900px){.why-grid,.tiers,.sdg-grid{grid-template-columns:1fr}}
+@media(max-width:600px){.sdg-grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div id="cursor-dot"></div><div id="cursor-ring"></div>
+<div id="sticky-bar">
+  <div class="sticky-label"><strong>River Hub</strong> · Season One partnership · From MUR 35k</div>
+  <div class="sticky-pills"><span class="sticky-pill">SDG reporting</span><span class="sticky-pill">Staff seats</span><span class="sticky-pill">2 founding slots</span></div>
+  <a href="mailto:admin@philanthropicfoundation.net?subject=River Hub — Partnership Brief Request" class="sticky-cta">Request brief →</a>
+  <button class="sticky-close" aria-label="Dismiss">×</button>
+</div>
+<nav id="nav">
+  <a href="/" class="nav-logo"><div class="nav-logo-l"><span class="nav-logo-main">River Hub</span><span class="nav-logo-sub">Tamarin · Mauritius</span></div><div class="nav-logo-div"></div><span class="nav-logo-r">The Philanthropic Foundation<br>Capacity Building Centre</span></a>
+  <ul class="nav-links">
+    <li><a href="/courses/">Courses</a></li>
+    <li><a href="/calendar/">Calendar</a></li>
+    <li><a href="/faculty/">Faculty</a></li>
+    <li><a href="/hrdc/">HRDC</a></li>
+    <li class="nav-more" id="nav-more"><button class="nav-more-btn" onclick="toggleNavMore()">More <span>▾</span></button><div class="nav-dropdown"><a href="/venue/">Hire the space</a><a href="/sponsor/">Sponsor</a><a href="https://philanthropicfoundation.net" target="_blank">Foundation ↗</a></div></li>
+    <li><a href="/register/" class="nav-cta">Register</a></li>
+  </ul>
+</nav>
+<div style="padding-top:65px"></div>
+
+<div class="page-header">
+  <div class="page-header-grid"></div>
+  <div class="page-header-inner">
+    <div class="page-eyebrow">Partnership · Season One · 3 tiers</div>
+    <h1 class="page-title">Your reporting<br>obligations are<br><em>growing.</em></h1>
+    <p class="page-subtitle">Every financial institution in Mauritius is facing an expanding set of sustainability reporting requirements. River Hub partnership generates verifiable SDG evidence, staff development opportunities, and institutional visibility — all documented and formatted for your annual report.</p>
+  </div>
+</div>
+
+<!-- WHY SPONSOR -->
+<section style="padding:80px 0">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-tag">Three reasons to partner</div>
+      <h2 class="section-title">Beyond<br><em>reporting</em></h2>
+    </div>
+    <div class="why-grid reveal" style="transition-delay:.08s">
+      <div class="why-card">
+        <div class="why-num">01 · Growth</div>
+        <div class="why-title">You are investing in your future clients.</div>
+        <div class="why-text">River Hub participants are working finance professionals at the mid-to-senior level. Fund managers raising their next vehicle. Bankers structuring their next deal. A bank sponsoring Track C is training the people who will list on the SEM and choose which institution to work with. That is not philanthropy. That is pipeline development.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-num">02 · Participation</div>
+        <div class="why-title">Your people learn. Your leaders speak.</div>
+        <div class="why-text">Every partnership tier includes priority staff seats — booked before public registration opens. Your team attends the only practitioner-grade African finance programme in the Indian Ocean. Founding Partners receive a podium: a 30-minute address slot per quarter where your leadership speaks directly to a room of DFI officers, fund managers, and senior bankers.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-num">03 · Visibility</div>
+        <div class="why-title">50 sessions. 13 months. 1,500 participant seats.</div>
+        <div class="why-text">River Hub runs 50 sessions across Season One. Each session puts your brand in front of 30 finance professionals in a focused, high-attention environment. This is not a conference where your logo appears on a banner. It is a practitioner room where your institution is introduced as the partner that made the session possible.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIERS -->
+<section style="background:var(--bg-card);border-top:.5px solid var(--border);border-bottom:.5px solid var(--border);padding:80px 0">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-tag">Season One tiers · Introductory pricing</div>
+      <h2 class="section-title">Three ways<br>to <em>partner</em></h2>
+      <p class="section-body" style="max-width:560px">Priced at Season One introductory rates. Partners who renew for Season Two lock in the same rate before public pricing is released. All tiers include HRDC-eligible staff seats.</p>
+    </div>
+    <div class="tiers reveal" style="transition-delay:.08s">
+      <div class="tier tier-founding">
+        <div class="tier-name">Tier 1 · 2 slots only · Season One</div>
+        <div class="tier-title">Season Founding Partner</div>
+        <div class="tier-price">MUR 200,000 / season</div>
+        <div class="tier-price-note">≈ MUR 15,400 / month · USD 4,600</div>
+        <div class="tier-slots">2 slots · exclusive · price closes at Season One</div>
+        <div class="tier-desc">The most visible partnership River Hub offers. Your institution is named as a founding force behind the only practitioner finance training centre in the Indian Ocean. Season One founding partners shape how the programme is known from the start.</div>
+        <div class="tier-perks">
+          <div class="tier-perk">Premier logo on all 50 session materials, the River Hub website, and every participant certificate</div>
+          <div class="tier-perk">Named Founding Partner on all participant communications — your institution reaches every registrant across the season</div>
+          <div class="tier-perk">6 complimentary HRDC-eligible staff seats — allocate freely across any session, any track</div>
+          <div class="tier-perk">One 30-minute address slot per quarter — your leadership speaks directly to a room of DFI officers and fund managers</div>
+          <div class="tier-perk">Verified annual SDG impact report — GRI 404 and SDG 4 / 8 / 17 mapping, formatted for your sustainability report</div>
+          <div class="tier-perk">Right of first renewal for Season Two at the same rate</div>
+        </div>
+        <a href="mailto:admin@philanthropicfoundation.net?subject=River Hub — Founding Partner Enquiry · Season One&body=I would like to discuss the River Hub Season One Founding Partner tier. Please send the partnership brief and confirm slot availability." class="tier-enquire">Reserve a founding partner slot →</a>
+      </div>
+      <div class="tier">
+        <div class="tier-name">Tier 2 · One per track · Exclusive</div>
+        <div class="tier-title">Track Sponsor</div>
+        <div class="tier-price">MUR 75,000 / track</div>
+        <div class="tier-price-note">≈ MUR 5,800 / month · USD 1,700</div>
+        <div class="tier-slots">4 slots · one per track · exclusive per track</div>
+        <div class="tier-desc">Own the track most aligned to your business — exclusively. No other organisation can sponsor your track. Every blended finance practitioner in the room associates your institution with the subject for the full season.</div>
+        <div class="tier-perks">
+          <div class="tier-perk">Exclusive naming rights across all sessions in your chosen track for the full season</div>
+          <div class="tier-perk">Logo on all materials, slides, and digital communications for every session in your track</div>
+          <div class="tier-perk">2 complimentary HRDC-eligible staff seats within your track</div>
+          <div class="tier-perk">SDG contribution certificate with verified participant hours and GRI code mapping</div>
+          <div class="tier-perk">Named in the post-season impact summary distributed across the Foundation's network</div>
+        </div>
+        <a href="mailto:admin@philanthropicfoundation.net?subject=River Hub — Track Sponsorship Enquiry · Season One&body=I am interested in sponsoring a River Hub curriculum track for Season One. Please confirm available tracks." class="tier-enquire">Enquire about track sponsorship →</a>
+      </div>
+      <div class="tier">
+        <div class="tier-name">Tier 3 · Open · No slot limit</div>
+        <div class="tier-title">Access Partner</div>
+        <div class="tier-price">MUR 35,000 / season</div>
+        <div class="tier-price-note">≈ MUR 2,700 / month · USD 800</div>
+        <div class="tier-slots">Open · no slot limit · any qualifying organisation</div>
+        <div class="tier-desc">The entry point for organisations that want to invest in their people, generate SDG reporting evidence, and associate with the River Hub network. At under MUR 3,000 per month, this is a sustainability manager decision, not a board conversation.</div>
+        <div class="tier-perks">
+          <div class="tier-perk">3 priority HRDC-eligible staff seats per session — booked before public registration opens</div>
+          <div class="tier-perk">Company listed in the River Hub Access Partner directory — on the website and in all session programmes</div>
+          <div class="tier-perk">Annual SDG contribution letter with verified participant hours, GRI 404 data, and SDG 4 / 8 / 10 / 17 codes</div>
+          <div class="tier-perk">Invitation to the Season One closing convening</div>
+        </div>
+        <a href="mailto:admin@philanthropicfoundation.net?subject=River Hub — Access Partner Enquiry · Season One&body=I am interested in becoming a River Hub Access Partner for Season One. Please send the onboarding details." class="tier-enquire">Become an access partner →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SDG -->
+<section style="padding:80px 0">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-tag">SDG alignment · Annual impact report provided to all partners</div>
+      <h2 class="section-title">Verifiable<br><em>evidence</em></h2>
+      <p class="section-body" style="max-width:560px">All partners receive an annual SDG impact report formatted for direct inclusion in GRI, TCFD, ISSB, and annual report sustainability sections.</p>
+    </div>
+    <div class="sdg-grid reveal" style="transition-delay:.08s">
+      <div class="sdg-card"><div class="sdg-num">4</div><div class="sdg-label">Quality Education</div><div class="sdg-text">Direct contribution to practitioner-grade finance education across Sub-Saharan Africa and the Indian Ocean — quantified by participant hours and geography for GRI 404 reporting.</div></div>
+      <div class="sdg-card"><div class="sdg-num">8</div><div class="sdg-label">Decent Work & Growth</div><div class="sdg-text">Building professional capacity that enables productive employment and economic activity in African financial markets — measurable against SDG 8.6 targets.</div></div>
+      <div class="sdg-card"><div class="sdg-num">10</div><div class="sdg-label">Reduced Inequalities</div><div class="sdg-text">Expanding access to institutional-grade finance training beyond the traditional centres of London, Geneva, and New York — extending opportunity to practitioners based across Africa.</div></div>
+      <div class="sdg-card"><div class="sdg-num">17</div><div class="sdg-label">Partnerships for Goals</div><div class="sdg-text">A multi-stakeholder partnership between the Foundation, corporate sponsors, DFI faculty, and practitioners — structured to generate systemic capacity across the African finance ecosystem.</div></div>
+    </div>
+
+    <!-- Reporting obligations -->
+    <div style="margin-top:64px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start" class="reveal" style="transition-delay:.12s">
+      <div>
+        <div class="section-tag">Reporting frameworks</div>
+        <h2 class="section-title" style="font-size:clamp(28px,3vw,42px)">River Hub addresses<br><em>each of these</em></h2>
+        <p class="section-body">Every Mauritius-based financial institution faces at least three of the five frameworks below. River Hub partnership generates documented, verifiable contributions against each.</p>
+      </div>
+      <div>
+        <div class="obligations-table">
+          <div class="ob-row"><div class="ob-name">Bank of Mauritius</div><div class="ob-desc">Sustainable Finance Roadmap — supervised entities required to integrate climate and ESG risk disclosures</div></div>
+          <div class="ob-row"><div class="ob-name">FSC Mauritius</div><div class="ob-desc">ESG disclosure requirements for fund managers and CIS operators under the Securities Act</div></div>
+          <div class="ob-row"><div class="ob-name">SEM Listed Companies</div><div class="ob-desc">Stock Exchange corporate governance code — sustainability reporting section in annual reports</div></div>
+          <div class="ob-row"><div class="ob-name">DFI & LP covenants</div><div class="ob-desc">IFC, FMO, Proparco shareholders increasingly require ESG performance data as a condition of investment agreements</div></div>
+          <div class="ob-row"><div class="ob-name">GRI / TCFD / ISSB</div><div class="ob-desc">Voluntary frameworks now expected by institutional counterparties — capacity building maps directly to GRI 404 and SDG social impact disclosures</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="background:var(--bg-card);border-top:.5px solid var(--border);padding:64px 0">
+  <div class="container">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap">
+      <div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--white);margin-bottom:8px">Request the Season One<br>Partnership Brief</div>
+        <div style="font-size:12px;font-weight:300;color:var(--muted-lg)">A four-page document covering programme reach, participant profile, reporting framework alignment, SDG methodology, and the full benefit schedule for all three tiers. Sent within 24 hours.</div>
+      </div>
+      <a href="mailto:admin@philanthropicfoundation.net?subject=River Hub — Partnership Brief Request · Season One&body=Please send me the River Hub Season One Partnership Brief." class="btn-primary" style="white-space:nowrap;flex-shrink:0">Request the brief →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div><div class="footer-name">River Hub</div><div class="footer-sub">Tamarin · Mauritius · Est. 2026</div><p class="footer-desc">The Philanthropic Foundation's Capacity Building Centre.</p></div>
+      <div><div class="footer-col-title">Programme</div><ul class="footer-links"><li><a href="/courses/">Curriculum tracks</a></li><li><a href="/calendar/">Session calendar</a></li><li><a href="/faculty/">Faculty</a></li><li><a href="/hrdc/">HRDC funding</a></li></ul></div>
+      <div><div class="footer-col-title">Site</div><ul class="footer-links"><li><a href="/venue/">Venue hire</a></li><li><a href="/sponsor/">Sponsor</a></li><li><a href="/register/">Register</a></li></ul></div>
+      <div><div class="footer-col-title">Contact</div><ul class="footer-links"><li><a href="mailto:admin@philanthropicfoundation.net">admin@philanthropicfoundation.net</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><div class="footer-copy">© 2026 The Philanthropic Foundation · Reg. No. 679 · Mauritius</div><div class="footer-season">River Hub · Season One</div></div>
+  </div>
+</footer>
+<script src="/assets/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Session Calendar · River Hub</title>
+<meta name="description" content="50 sessions across Season One — May 2026 to May 2027. Filter by track and reserve your place.">
+<link rel="canonical" href="https://riverhub.africa/calendar/">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230d1117'/><text x='50%25' y='55%25' font-family='serif' font-size='18' fill='%23c9a84c' text-anchor='middle' dominant-baseline='middle'>R</text></svg>">
+<meta name="theme-color" content="#0d1117">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/main.css">
+<style>
+.cal-filters{display:flex;gap:8px;flex-wrap:wrap;margin-top:44px;margin-bottom:32px}
+.cal-filter{background:transparent;border:.5px solid var(--border-lg);color:var(--muted-lg);font-family:'Inter',sans-serif;font-size:10px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;padding:8px 18px;cursor:none;border-radius:var(--radius);transition:all .2s}
+.cal-filter:hover{border-color:var(--gold);color:var(--white)}
+.cal-filter.active{border-color:var(--gold);color:var(--bg);background:var(--gold);font-weight:500}
+.cal-filter.active.f-ta{background:#3d8a62;border-color:#3d8a62;color:#fff}
+.cal-filter.active.f-tb{background:var(--gold);border-color:var(--gold);color:var(--bg)}
+.cal-filter.active.f-tc{background:#5a7fa0;border-color:#5a7fa0;color:#fff}
+.cal-filter.active.f-td{background:#7a6a9a;border-color:#7a6a9a;color:#fff}
+.cal-month-label{display:flex;align-items:baseline;gap:10px;padding:18px 0 10px;border-top:.5px solid var(--border)}
+.cal-month-label:first-child{border-top:none}
+.cal-month-name{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:var(--white);min-width:56px}
+.cal-month-yr{font-size:9px;font-weight:300;color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
+.cal-month-badge{font-size:8px;font-weight:500;color:var(--gold);letter-spacing:.14em;text-transform:uppercase;border:.5px solid var(--gold);padding:2px 7px;border-radius:2px;margin-left:4px}
+.cal-row{display:grid;grid-template-columns:72px 1fr auto;align-items:center;gap:20px;padding:13px 18px;background:var(--bg-card);border:.5px solid var(--border);border-left:2px solid transparent;transition:background .2s,border-color .2s;cursor:none}
+.cal-row:hover{background:var(--bg-mid);border-color:var(--border-lg)}
+.cal-row.ta{border-left-color:#3d8a62}.cal-row.tb{border-left-color:var(--gold)}.cal-row.tc{border-left-color:#5a7fa0}.cal-row.td{border-left-color:#7a6a9a}
+.cal-row.launch{background:rgba(201,168,76,.07);border-left-color:var(--gold)}
+.cal-row.circuit{background:rgba(61,138,98,.07);border-left-color:#3d8a62}
+.cal-row.hidden{display:none}
+.cal-code{font-size:9px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.cal-row.ta .cal-code{color:#3d8a62}.cal-row.tb .cal-code{color:var(--gold)}.cal-row.tc .cal-code{color:#5a7fa0}.cal-row.td .cal-code{color:#9a8aba}
+.cal-name{font-size:13px;font-weight:300;color:var(--white);line-height:1.35}
+.cal-name-badge{display:inline-block;font-size:8px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;background:rgba(201,168,76,.15);color:var(--gold);padding:2px 6px;border-radius:2px;margin-left:8px;vertical-align:middle}
+.cal-name-badge.green{background:rgba(61,138,98,.2);color:#5ec490}
+.cal-seats{font-size:9px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:2px;white-space:nowrap;flex-shrink:0}
+.cal-seats-low{background:rgba(192,57,43,.15);color:#e07070;border:.5px solid rgba(192,57,43,.3)}
+.cal-seats-med{background:rgba(201,168,76,.1);color:var(--gold);border:.5px solid rgba(201,168,76,.25)}
+.cal-cta{font-size:10px;font-weight:400;color:var(--muted);letter-spacing:.08em;text-decoration:none;text-transform:uppercase;white-space:nowrap;transition:color .2s;opacity:0}
+.cal-row:hover .cal-cta{opacity:1;color:var(--gold)}
+.cal-empty{display:none;text-align:center;padding:60px 0;font-size:13px;color:var(--muted);font-style:italic}
+.cal-empty.visible{display:block}
+@media(max-width:600px){.cal-row{grid-template-columns:52px 1fr auto;gap:8px;padding:10px 12px}.cal-code{font-size:8px}.cal-name{font-size:12px}.cal-seats{display:none}}
+</style>
+</head>
+<body>
+<div id="cursor-dot"></div><div id="cursor-ring"></div>
+<div id="sticky-bar">
+  <div class="sticky-label"><strong>River Hub</strong> · Season One · May 2026</div>
+  <div class="sticky-pills"><span class="sticky-pill">50 sessions</span><span class="sticky-pill">HRDC eligible</span></div>
+  <a href="/register/" class="sticky-cta">Register interest →</a>
+  <button class="sticky-close" aria-label="Dismiss">×</button>
+</div>
+<nav id="nav">
+  <a href="/" class="nav-logo"><div class="nav-logo-l"><span class="nav-logo-main">River Hub</span><span class="nav-logo-sub">Tamarin · Mauritius</span></div><div class="nav-logo-div"></div><span class="nav-logo-r">The Philanthropic Foundation<br>Capacity Building Centre</span></a>
+  <ul class="nav-links">
+    <li><a href="/courses/">Courses</a></li>
+    <li><a href="/calendar/">Calendar</a></li>
+    <li><a href="/faculty/">Faculty</a></li>
+    <li><a href="/hrdc/">HRDC</a></li>
+    <li class="nav-more" id="nav-more"><button class="nav-more-btn" onclick="toggleNavMore()">More <span>▾</span></button><div class="nav-dropdown"><a href="/venue/">Hire the space</a><a href="/sponsor/">Sponsor</a><a href="https://philanthropicfoundation.net" target="_blank">Foundation ↗</a></div></li>
+    <li><a href="/register/" class="nav-cta">Register</a></li>
+  </ul>
+</nav>
+<div style="padding-top:65px"></div>
+
+<div class="page-header">
+  <div class="page-header-grid"></div>
+  <div class="page-header-inner">
+    <div class="page-eyebrow">Season One · May 2026 – May 2027</div>
+    <h1 class="page-title">Session<br><em>Calendar</em></h1>
+    <p class="page-subtitle">50 sessions across 13 months. Filter by track to find what is right for you — hover any session to reserve your place.</p>
+  </div>
+</div>
+
+<section style="padding:80px 0">
+  <div class="container">
+    <div class="cal-filters reveal">
+      <button class="cal-filter f-all active" onclick="calFilter('all',this)">All tracks</button>
+      <button class="cal-filter f-ta" onclick="calFilter('ta',this)">Track A · Blended Finance</button>
+      <button class="cal-filter f-tb" onclick="calFilter('tb',this)">Track B · ESG &amp; Climate</button>
+      <button class="cal-filter f-tc" onclick="calFilter('tc',this)">Track C · Capital Markets</button>
+      <button class="cal-filter f-td" onclick="calFilter('td',this)">Track D · Premium Convenings</button>
+    </div>
+    <div id="cal-list" class="reveal" style="transition-delay:.06s">
+
+      <!-- MAY 2026 -->
+      <div class="cal-month-group">
+        <div class="cal-month-label"><span class="cal-month-name">May</span><span class="cal-month-yr">2026</span><span class="cal-month-badge">Launch</span></div>
+        <div style="display:flex;flex-direction:column;gap:1px">
+          <div class="cal-row launch ta" data-track="ta"><div class="cal-code">A1</div><div class="cal-name">Blended finance fundamentals<span class="cal-name-badge">Launch session</span></div><div style="display:flex;align-items:center;gap:12px;margin-left:auto"><span class="cal-seats cal-seats-low">4 seats left</span><a href="/register/" class="cal-cta">Register →</a></div></div>
+          <div class="cal-row tb" data-track="tb"><div class="cal-code">B1</div><div class="cal-name">ESG for African investments</div><div style="display:flex;align-items:center;gap:12px;margin-left:auto"><span class="cal-seats cal-seats-low">6 seats left</span><a href="/register/" class="cal-cta">Register →</a></div></div>
+          <div class="cal-row tc" data-track="tc"><div class="cal-code">C1</div><div class="cal-name">African capital markets</div><div style="display:flex;align-items:center;gap:12px;margin-left:auto"><span class="cal-seats cal-seats-med">12 seats left</span><a href="/register/" class="cal-cta">Register →</a></div></div>
+        </div>
+      </div>
+
+      <!-- JUN 2026 -->
+      <div class="cal-month-group">
+        <div class="cal-month-label"><span class="cal-month-name">Jun</span><span class="cal-month-yr">2026</span></div>
+        <div style="display:flex;flex-direction:column;gap:1px">
+          <div class="cal-row ta" data-track="ta"><div class="cal-code">A2</div><div class="cal-name">How to raise from DFIs</div><div style="display:flex;align-items:center;gap:12px;margin-left:auto"><span class="cal-seats cal-seats-med">8 seats left</span><a href="/register/" class="cal-cta">Register →</a></div></div>
+          <div class="cal-row tb" data-track="tb"><div class="cal-code">B2</div><div class="cal-name">EU Green Taxonomy</div><a href="/register/" class="cal-cta">Register →</a></div>
+          <div class="cal-row tc" data-track="tc"><div class="cal-code">C2</div><div class="cal-name">Corporate governance</div><a href="/register/" class="cal-cta">Register →</a></div>
+          <div class="cal-row td" data-track="td"><div class="cal-code">D2</div><div class="cal-name">DFI deal clinic<span class="cal-name-badge">Cohort 1</span></div><div style="display:flex;align-items:center;gap:12px;margin-left:auto"><span class="cal-seats cal-seats-low">5 seats left</span><a href="/register/" class="cal-cta">Register →</a></div></div>
+        </div>
+      </div>
+
+      <!-- JUL 2026 -->
+      <div class="cal-month-group">
+        <div class="cal-month-label"><span class="cal-month-name">Jul</span><span class="cal-month-yr">2026</span></div>
+        <div style="display:flex;flex-direction:column;gap:1px">
+          <div class="cal-row ta" data-track="ta"><div class="cal-code">A3</div><div class="cal-name">Project preparation & bankability</div><a href="/register/" class="cal-cta">Register →</a></div>
+          <div class="cal-row tb" data-track="tb"><div class="cal-code">B3</div><div class="cal-name">Transition finance</div><a href="/register/" class="cal-cta">Register →</a></div>
+          <div class="cal-row tc" data-track="tc"><div class="cal-code">C3</div><div class="cal-name">Impact measurement</div><a href="/register/" class="cal-cta">Register →</a></div>
+          <div class="cal-row td" data-track="td"><div class="cal-code">D1</div><div class="cal-name">LP–GP dialogue · Round 1</div><a href="/register/" class="cal-cta">Register →</a></div>
+        </div>
+      </div>
+
+      <!-- AUG 2026 -->
+      <div class="cal-month-group">
+        <div class="cal-month-label"><span class="cal-month-name">Aug</span><span class="cal-month-yr">2026</span></div>
+        <div style="display:flex;flex-direction:column;gap:1px">
+          <div class="cal-row ta" data-track="ta"><div class="cal-code">A1</div><div class="cal-name">Blended finance fundamentals<span class="cal-name-badge">Cohort 2</span></div><a href="/register/" class="cal-cta">Register →</a></div>
+          <div class="cal-row tb" data-track="tb"><div class="cal-code">B1</div><div class="cal-name">ESG for African investments<span class="cal-name-badge">Cohort 2</span></div><a href="/register/" class="cal-cta">Register →</a></div>
+          <div class="cal-row tc" data-track="tc"><div class="cal-code">C1</div><div class="cal-name">African capital markets<span class="cal-name-badge">Cohort 2</span></div><a href="/register/" class="cal-cta">Register →</a></div>
+          <div class="cal-row ta" data-track="ta"><div class="cal-code">A4</div><div class="cal-name">Mauritius as an IFC gateway to Africa</div><a href="/register/" class="cal-cta">Register →</a></div>
+        </div>
+      </div>
+
+      <!-- SEP 2026 -->
+      <div class="cal-month-group">
+        <div class="cal-month-label"><span class="cal-month-name">Sep</span><span class="cal-month-yr">2026</span></div>
+        <div style="display:flex;flex-direction:column;gap:1px">
+          <div class="cal-row ta" data-track="ta"><div class="cal-code">A2</div><div class="cal-name">How to raise from DFIs<span class="cal-name-badge">Cohort 2</span></div><a href="/register/" class="cal-cta">Register →</a></div>
+          <div class="cal-row tb" data-track="tb"><div class="cal-code">B4</div><div class="cal-name">Climate risk & TCFD</div><a href="/register/" class="cal-cta">Register →</a></div>
+          <div class="cal-row tc" data-track="tc"><div class="cal-code">C4</div><div class="cal-name">Private equity & VC</div><a href="/register/" class="cal-cta">Register →</a></div>
+          <div class="cal-row td" data-track="td"><div class="cal-code">D2</div><div class="cal-name">DFI deal clinic<span class="cal-name-badge">Cohort 2</span></div><a href="/register/" class="cal-cta">Register →</a></div>
+        </div>
+      </div>
+
+      <!-- OCT 2026 -->
+      <div class="cal-month-group">
+        <div class="cal-month-label"><span class="cal-month-name">Oct</span><span class="cal-month-yr">2026</span></div>
+        <div style="display:flex;flex-direction:column;gap:1px">
+          <div class="cal-row ta" data-track="ta"><div class="cal-code">A3</div><div class="cal-name">Project preparation<span class="cal-name-badge">Cohort 2</span></div><a href="/register/" class="cal-cta">Register →</a></div>
+          <div class="cal-row tb" data-track="tb"><div class="cal-code">B2</div><div class="cal-name">EU Green Taxonomy<span class="cal-name-badge">Cohort 2</span></div><a href="/register/" class="cal-cta">Register →</a></div>
+          <div class="cal-row tc" data-track="tc"><div class="cal-code">C5</div><div class="cal-name">Sovereign & sub-sovereign debt</div><a href="/register/" class="cal-cta">Register →</a></div>
+          <div class="cal-row td" data-track="td"><div class="cal-code">D3</div><div class="cal-name">African Circuit pre-session</div><a href="/register/" class="cal-cta">Register →</a></div>
+        </div>
+      </div>
+
+      <!-- NOV 2026 -->
+      <div class="cal-month-group">
+        <div class="cal-month-label"><span class="cal-month-name">Nov</span><span class="cal-month-yr">2026</span><span class="cal-month-badge" style="border-color:#3d8a62;color:#5ec490">Circuit week</span></div>
+        <div style="display:flex;flex-direction:column;gap:1px">
+          <div class="cal-row circuit td" data-track="td"><div class="cal-code">D1</div><div class="cal-name">LP–GP dialogue · Circuit edition<span class="cal-name-badge green">African Circuit</span></div><a href="/register/" class="cal-cta">Register →</a></div>
+          <div class="cal-row ta" data-track="ta"><div class="cal-code">A4</div><div class="cal-name">Mauritius IFC gateway<span class="cal-name-badge">Cohort 2</span></div><a href="/register/" class="cal-cta">Register →</a></div>
+          <div class="cal-row tb" data-track="tb"><div class="cal-code">B3</div><div class="cal-name">Transition finance<span class="cal-name-badge">Cohort 2</span></div><a href="/register/" class="cal-cta">Register →</a></div>
+          <div class="cal-row tc" data-track="tc"><div class="cal-code">C2</div><div class="cal-name">Corporate governance<span class="cal-name-badge">Cohort 2</span></div><a href="/register/" class="cal-cta">Register →</a></div>
+        </div>
+      </div>
+
+      <!-- DEC 2026 -->
+      <div class="cal-month-group">
+        <div class="cal-month-label"><span class="cal-month-name">Dec</span><span class="cal-month-yr">2026</span></div>
+        <div style="display:flex;flex-direction:column;gap:1px">
+          <div class="cal-row ta" data-track="ta"><div class="cal-code">A1</div><div class="cal-name">Blended finance fundamentals<span class="cal-name-badge">Cohort 3</span></div><a href="/register/" class="cal-cta">Register →</a></div>
+          <div class="cal-row tb" data-track="tb"><div class="cal-code">B4</div><div class="cal-name">Climate risk & TCFD<span class="cal-name-badge">Cohort 2</span></div><a href="/register/" class="cal-cta">Register →</a></div>
+          <div class="cal-row td" data-track="td"><div class="cal-code">D4</div><div class="cal-name">Year-end investor briefing</div><a href="/register/" class="cal-cta">Register →</a></div>
+        </div>
+      </div>
+
+      <!-- JAN 2027 -->
+      <div class="cal-month-group">
+        <div class="cal-month-label"><span class="cal-month-name">Jan</span><span class="cal-month-yr">2027</span></div>
+        <div style="display:flex;flex-direction:column;gap:1px">
+          <div class="cal-row ta" data-track="ta"><div class="cal-code">A2</div><div class="cal-name">How to raise from DFIs<span class="cal-name-badge">Cohort 3</span></div><a href="/register/" class="cal-cta">Register →</a></div>
+          <div class="cal-row tb" data-track="tb"><div class="cal-code">B1</div><div class="cal-name">ESG for African investments<span class="cal-name-badge">Cohort 3</span></div><a href="/register/" class="cal-cta">Register →</a></div>
+          <div class="cal-row tc" data-track="tc"><div class="cal-code">C3</div><div class="cal-name">Impact measurement<span class="cal-name-badge">Cohort 2</span></div><a href="/register/" class="cal-cta">Register →</a></div>
+          <div class="cal-row td" data-track="td"><div class="cal-code">D2</div><div class="cal-name">DFI deal clinic<span class="cal-name-badge">Cohort 3</span></div><a href="/register/" class="cal-cta">Register →</a></div>
+        </div>
+      </div>
+
+      <!-- FEB 2027 -->
+      <div class="cal-month-group">
+        <div class="cal-month-label"><span class="cal-month-name">Feb</span><span class="cal-month-yr">2027</span></div>
+        <div style="display:flex;flex-direction:column;gap:1px">
+          <div class="cal-row ta" data-track="ta"><div class="cal-code">A5</div><div class="cal-name">Structuring African investment funds</div><a href="/register/" class="cal-cta">Register →</a></div>
+          <div class="cal-row tb" data-track="tb"><div class="cal-code">B2</div><div class="cal-name">EU Green Taxonomy<span class="cal-name-badge">Cohort 3</span></div><a href="/register/" class="cal-cta">Register →</a></div>
+          <div class="cal-row tc" data-track="tc"><div class="cal-code">C4</div><div class="cal-name">Private equity & VC<span class="cal-name-badge">Cohort 2</span></div><a href="/register/" class="cal-cta">Register →</a></div>
+          <div class="cal-row tc" data-track="tc"><div class="cal-code">C6</div><div class="cal-name">Trade finance & African supply chains</div><a href="/register/" class="cal-cta">Register →</a></div>
+        </div>
+      </div>
+
+      <!-- MAR 2027 -->
+      <div class="cal-month-group">
+        <div class="cal-month-label"><span class="cal-month-name">Mar</span><span class="cal-month-yr">2027</span></div>
+        <div style="display:flex;flex-direction:column;gap:1px">
+          <div class="cal-row ta" data-track="ta"><div class="cal-code">A3</div><div class="cal-name">Project preparation<span class="cal-name-badge">Cohort 3</span></div><a href="/register/" class="cal-cta">Register →</a></div>
+          <div class="cal-row tb" data-track="tb"><div class="cal-code">B5</div><div class="cal-name">Nature, biodiversity & TNFD</div><a href="/register/" class="cal-cta">Register →</a></div>
+          <div class="cal-row tc" data-track="tc"><div class="cal-code">C5</div><div class="cal-name">Sovereign debt<span class="cal-name-badge">Cohort 2</span></div><a href="/register/" class="cal-cta">Register →</a></div>
+          <div class="cal-row td" data-track="td"><div class="cal-code">D1</div><div class="cal-name">LP–GP dialogue · Round 3</div><a href="/register/" class="cal-cta">Register →</a></div>
+        </div>
+      </div>
+
+      <!-- APR 2027 -->
+      <div class="cal-month-group">
+        <div class="cal-month-label"><span class="cal-month-name">Apr</span><span class="cal-month-yr">2027</span></div>
+        <div style="display:flex;flex-direction:column;gap:1px">
+          <div class="cal-row ta" data-track="ta"><div class="cal-code">A5</div><div class="cal-name">Structuring African funds<span class="cal-name-badge">Cohort 2</span></div><a href="/register/" class="cal-cta">Register →</a></div>
+          <div class="cal-row tb" data-track="tb"><div class="cal-code">B3</div><div class="cal-name">Transition finance<span class="cal-name-badge">Cohort 3</span></div><a href="/register/" class="cal-cta">Register →</a></div>
+          <div class="cal-row tc" data-track="tc"><div class="cal-code">C6</div><div class="cal-name">Trade finance<span class="cal-name-badge">Cohort 2</span></div><a href="/register/" class="cal-cta">Register →</a></div>
+          <div class="cal-row td" data-track="td"><div class="cal-code">D2</div><div class="cal-name">DFI deal clinic<span class="cal-name-badge">Cohort 4</span></div><a href="/register/" class="cal-cta">Register →</a></div>
+        </div>
+      </div>
+
+      <!-- MAY 2027 -->
+      <div class="cal-month-group">
+        <div class="cal-month-label"><span class="cal-month-name">May</span><span class="cal-month-yr">2027</span><span class="cal-month-badge">Year 1 close</span></div>
+        <div style="display:flex;flex-direction:column;gap:1px">
+          <div class="cal-row launch ta" data-track="ta"><div class="cal-code">A1</div><div class="cal-name">Blended finance fundamentals<span class="cal-name-badge">Year 2 opens</span></div><a href="/register/" class="cal-cta">Register →</a></div>
+          <div class="cal-row tb" data-track="tb"><div class="cal-code">B5</div><div class="cal-name">Nature & biodiversity<span class="cal-name-badge">Cohort 2</span></div><a href="/register/" class="cal-cta">Register →</a></div>
+          <div class="cal-row tc" data-track="tc"><div class="cal-code">C4</div><div class="cal-name">Private equity & VC<span class="cal-name-badge">Cohort 3</span></div><a href="/register/" class="cal-cta">Register →</a></div>
+          <div class="cal-row td" data-track="td"><div class="cal-code">D1</div><div class="cal-name">LP–GP dialogue · Year 1 close</div><a href="/register/" class="cal-cta">Register →</a></div>
+        </div>
+      </div>
+
+      <div class="cal-empty" id="cal-empty">No sessions match this filter.</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div><div class="footer-name">River Hub</div><div class="footer-sub">Tamarin · Mauritius · Est. 2026</div><p class="footer-desc">The Philanthropic Foundation's Capacity Building Centre.</p></div>
+      <div><div class="footer-col-title">Programme</div><ul class="footer-links"><li><a href="/courses/">Curriculum tracks</a></li><li><a href="/calendar/">Session calendar</a></li><li><a href="/faculty/">Faculty</a></li><li><a href="/hrdc/">HRDC funding</a></li></ul></div>
+      <div><div class="footer-col-title">Site</div><ul class="footer-links"><li><a href="/venue/">Venue hire</a></li><li><a href="/sponsor/">Sponsor</a></li><li><a href="/register/">Register</a></li></ul></div>
+      <div><div class="footer-col-title">Contact</div><ul class="footer-links"><li><a href="mailto:admin@philanthropicfoundation.net">admin@philanthropicfoundation.net</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><div class="footer-copy">© 2026 The Philanthropic Foundation · Reg. No. 679 · Mauritius</div><div class="footer-season">River Hub · Season One</div></div>
+  </div>
+</footer>
+<script src="/assets/main.js"></script>
+<script>
+function calFilter(track, btn) {
+  document.querySelectorAll('.cal-filter').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const rows = document.querySelectorAll('.cal-row');
+  let any = false;
+  rows.forEach(r => {
+    const show = track === 'all' || r.dataset.track === track;
+    r.classList.toggle('hidden', !show);
+    if (show) any = true;
+  });
+  document.querySelectorAll('.cal-month-group').forEach(g => {
+    const visible = [...g.querySelectorAll('.cal-row')].some(r => !r.classList.contains('hidden'));
+    g.style.display = visible ? '' : 'none';
+  });
+  document.getElementById('cal-empty').classList.toggle('visible', !any);
+}
+</script>
+</body>
+</html>
