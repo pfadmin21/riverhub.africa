@@ -12,6 +12,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/main.css">
 <style>
+a,h1,h2,h3,h4{text-decoration:none}
+.section-title{text-decoration:none}
+h1,h2,h3,h4,h5,h6{text-decoration:none!important}
+*{-webkit-text-decoration:none}
+.page-header-photo{position:absolute;inset:0;background:url('/building.jpg') center center/cover no-repeat;z-index:0}
+.page-header-photo-overlay{position:absolute;inset:0;background:linear-gradient(105deg,rgba(13,17,23,.95) 0%,rgba(13,17,23,.80) 50%,rgba(13,17,23,.60) 100%);z-index:1}
 .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:48px}
 .why-card{background:var(--bg-card);border:.5px solid var(--border);padding:32px 28px;position:relative;overflow:hidden;transition:border-color .25s}
 .why-card:hover{border-color:var(--border-lg)}
@@ -43,7 +49,8 @@
 
 /* WHO */
 .who-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:40px}
-.who-card{background:var(--bg-card);border:.5px solid var(--border);padding:28px 28px;display:flex;gap:18px;align-items:flex-start;transition:border-color .2s}
+.who-card{background:var(--bg-card);border:.5px solid var(--border);padding:28px 28px;display:flex;gap:18px;align-items:flex-start;transition:border-color .2s;text-decoration:none}
+.who-card *{text-decoration:none}
 .who-card:hover{border-color:var(--border-lg)}
 .who-icon{width:36px;height:36px;border:.5px solid rgba(201,168,76,.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--gold)}
 .who-title{font-size:13px;font-weight:500;color:var(--white);margin-bottom:5px}
@@ -92,6 +99,8 @@
 
 <!-- PAGE HEADER -->
 <div class="page-header">
+  <div class="page-header-photo"></div>
+  <div class="page-header-photo-overlay"></div>
   <div class="page-header-grid"></div>
   <div class="page-header-inner">
     <div class="page-eyebrow">Mauritius IFC Desk · River Hub · Tamarin</div>
@@ -253,7 +262,7 @@
         <div class="section-tag">The Mauritius IFC advantage</div>
         <h2 class="section-title">Why sophisticated<br>investors choose<br><em>Mauritius</em></h2>
         <p class="section-body">Mauritius is not an offshore secrecy jurisdiction. It is a well-regulated, OECD-compliant international financial centre with a 30-year track record of channelling capital into Africa. That distinction matters to the LPs, DFIs, and co-investors you are trying to attract.</p>
-        <a onclick="openModal('Base at River Hub Enquiry')" href="#"Enquire about basing here →</a>
+        <a onclick="openModal('Base at River Hub Enquiry')" href="#" class="btn-primary" style="margin-top:32px;display:inline-block">Enquire about basing here →</a>
       </div>
       <div class="reveal" style="transition-delay:.1s">
         <div class="ifc-point"><div class="ifc-point-num">01</div><div class="ifc-point-title">46 double taxation agreements</div><div class="ifc-point-text">More DTA coverage across Africa than any other jurisdiction. Structures domiciled in Mauritius benefit from reduced withholding taxes on dividends, interest, and capital gains in covered countries.</div></div>
