@@ -42,9 +42,11 @@ nav.scrolled{background:rgba(13,17,23,.94);backdrop-filter:blur(16px);padding:14
 
 /* PAGE HEADER */
 .page-header{padding:160px 0 80px;position:relative;overflow:hidden;border-bottom:.5px solid var(--border)}
-.page-header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 60%,rgba(42,74,58,.25) 0%,transparent 55%),radial-gradient(ellipse at 80% 20%,rgba(201,168,76,.07) 0%,transparent 50%)}
-.page-header-grid{position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 79px,rgba(255,255,255,.018) 79px,rgba(255,255,255,.018) 80px),repeating-linear-gradient(90deg,transparent,transparent 79px,rgba(255,255,255,.018) 79px,rgba(255,255,255,.018) 80px)}
-.page-header-inner{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:0 48px}
+.page-header-photo{position:absolute;inset:0;background:url('/venue.jpg') center center/cover no-repeat;z-index:0}
+.page-header-photo-overlay{position:absolute;inset:0;background:linear-gradient(105deg,rgba(13,17,23,.95) 0%,rgba(13,17,23,.82) 50%,rgba(13,17,23,.65) 100%);z-index:1}
+.page-header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 60%,rgba(42,74,58,.15) 0%,transparent 55%);z-index:2}
+.page-header-grid{position:absolute;inset:0;z-index:2;background-image:repeating-linear-gradient(0deg,transparent,transparent 79px,rgba(255,255,255,.012) 79px,rgba(255,255,255,.012) 80px),repeating-linear-gradient(90deg,transparent,transparent 79px,rgba(255,255,255,.012) 79px,rgba(255,255,255,.012) 80px)}
+.page-header-inner{position:relative;z-index:3;max-width:1200px;margin:0 auto;padding:0 48px}
 .page-eyebrow{display:flex;align-items:center;gap:12px;font-size:10px;font-weight:400;color:var(--gold);letter-spacing:.18em;text-transform:uppercase;margin-bottom:24px}
 .page-eyebrow::before{content:'';display:block;width:28px;height:.5px;background:var(--gold)}
 .page-title{font-family:'Cormorant Garamond',serif;font-size:clamp(52px,7vw,88px);font-weight:300;line-height:1.0;color:var(--white);margin-bottom:16px}
