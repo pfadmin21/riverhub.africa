@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Base at River Hub · Mauritius IFC Desk · Tamarin</title>
+<meta name="description" content="A prestigious Mauritius address for African fund managers, DFIs, and advisory firms. Private offices, dedicated desks, and virtual office packages at River Hub, Tamarin.">
+<link rel="canonical" href="https://riverhub.africa/base/">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230d1117'/><text x='50%25' y='55%25' font-family='serif' font-size='18' fill='%23c9a84c' text-anchor='middle' dominant-baseline='middle'>R</text></svg>">
+<meta name="theme-color" content="#0d1117">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/main.css">
+<style>
+a{text-decoration:none}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:48px}
+.why-card{background:var(--bg-card);border:.5px solid var(--border);padding:32px 28px;position:relative;overflow:hidden;transition:border-color .25s}
+.why-card:hover{border-color:var(--border-lg)}
+.why-card::after{content:'';position:absolute;top:0;left:0;width:2px;height:0;background:var(--gold);transition:height .4s ease}
+.why-card:hover::after{height:100%}
+.why-icon{width:40px;height:40px;border:.5px solid rgba(201,168,76,.3);display:flex;align-items:center;justify-content:center;margin-bottom:18px;color:var(--gold)}
+.why-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;color:var(--white);margin-bottom:10px;line-height:1.2}
+.why-text{font-size:11px;font-weight:300;color:var(--muted-lg);line-height:1.8}
+
+/* PACKAGES */
+.pkg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:48px}
+.pkg-card{background:var(--bg-card);border:.5px solid var(--border);padding:36px 30px;position:relative;transition:border-color .25s}
+.pkg-card:hover{border-color:var(--border-lg)}
+.pkg-card.featured{border-color:rgba(201,168,76,.4)}
+.pkg-card.featured::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold)}
+.pkg-eyebrow{font-size:9px;font-weight:500;color:var(--gold);letter-spacing:.16em;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between}
+.pkg-badge{background:var(--gold);color:var(--bg);padding:2px 8px;border-radius:2px;font-size:8px;font-weight:500}
+.pkg-title{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;color:var(--white);line-height:1.1;margin-bottom:8px}
+.pkg-desc{font-size:11px;font-weight:300;color:var(--muted);line-height:1.75;margin-bottom:22px;padding-bottom:22px;border-bottom:.5px solid var(--border)}
+.pkg-price{font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:300;color:var(--gold);line-height:1;margin-bottom:4px}
+.pkg-price-unit{font-size:11px;font-weight:300;color:var(--muted);margin-bottom:20px}
+.pkg-includes{display:flex;flex-direction:column;gap:9px;margin-bottom:28px}
+.pkg-inc{display:flex;align-items:flex-start;gap:10px;font-size:11px;font-weight:300;color:var(--muted-lg);line-height:1.6}
+.pkg-inc svg{flex-shrink:0;margin-top:2px;color:var(--gold)}
+.pkg-enquire{display:inline-block;font-size:9px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);border:.5px solid rgba(201,168,76,.4);padding:10px 20px;text-decoration:none;transition:all .2s;border-radius:var(--radius);width:100%;text-align:center}
+.pkg-enquire:hover{background:rgba(201,168,76,.08);border-color:var(--gold)}
+.pkg-card.featured .pkg-enquire{background:var(--gold);color:var(--bg);border-color:var(--gold)}
+.pkg-card.featured .pkg-enquire:hover{background:var(--gold-lt)}
+
+/* WHO */
+.who-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:40px}
+.who-card{background:var(--bg-card);border:.5px solid var(--border);padding:28px 28px;display:flex;gap:18px;align-items:flex-start;transition:border-color .2s;text-decoration:none}
+.who-card *{text-decoration:none}
+.who-card:hover{border-color:var(--border-lg)}
+.who-icon{width:36px;height:36px;border:.5px solid rgba(201,168,76,.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--gold)}
+.who-title{font-size:13px;font-weight:500;color:var(--white);margin-bottom:5px}
+.who-text{font-size:11px;font-weight:300;color:var(--muted);line-height:1.7}
+
+/* STATS */
+.stats-band{background:var(--bg-card);border-top:.5px solid var(--border);border-bottom:.5px solid var(--border);padding:64px 0}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
+.stat-box{padding:32px 28px;border-right:.5px solid var(--border)}
+.stat-box:last-child{border-right:none}
+.stat-val{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:300;color:var(--gold);line-height:1;margin-bottom:8px}
+.stat-label{font-size:11px;font-weight:300;color:var(--muted-lg);line-height:1.6}
+
+/* IFC BAND */
+.ifc-band{padding:80px 0}
+.ifc-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.ifc-point{padding:18px 0;border-top:.5px solid var(--border)}
+.ifc-point:last-child{border-bottom:.5px solid var(--border)}
+.ifc-point-num{font-size:9px;font-weight:500;color:var(--gold);letter-spacing:.14em;text-transform:uppercase;margin-bottom:6px}
+.ifc-point-title{font-size:13px;font-weight:500;color:var(--white);margin-bottom:4px}
+.ifc-point-text{font-size:11px;font-weight:300;color:var(--muted);line-height:1.7}
+
+@media(max-width:900px){.why-grid,.pkg-grid,.ifc-grid{grid-template-columns:1fr;gap:2px}.who-grid{grid-template-columns:1fr}.stats-grid{grid-template-columns:1fr 1fr}.stat-box{border-right:none;border-bottom:.5px solid var(--border)}}
+</style>
+</head>
+<body>
+<div id="cursor-dot"></div><div id="cursor-ring"></div>
+<div id="sticky-bar">
+  <div class="sticky-label"><strong>River Hub</strong> · Mauritius IFC Desk · From Rs 8,000/month</div>
+  <div class="sticky-pills"><span class="sticky-pill">Private offices</span><span class="sticky-pill">Dedicated desks</span><span class="sticky-pill">Virtual office</span></div>
+  <a href="mailto:admin@philanthropicfoundation.net?subject=River Hub — Base Enquiry" class="sticky-cta">Enquire →</a>
+  <button class="sticky-close" aria-label="Dismiss">×</button>
+</div>
+<nav id="nav">
+  <a href="/" class="nav-logo"><div class="nav-logo-l"><span class="nav-logo-main">River Hub</span><span class="nav-logo-sub">Tamarin · Mauritius</span></div><div class="nav-logo-div"></div><span class="nav-logo-r">The Philanthropic Foundation<br>Capacity Building Centre</span></a>
+  <ul class="nav-links">
+    <li><a href="/courses/">Courses</a></li>
+    <li><a href="/calendar/">Calendar</a></li>
+    <li><a href="/faculty/">Faculty</a></li>
+    <li><a href="/hrdc/">HRDC</a></li>
+    <li class="nav-more" id="nav-more"><button class="nav-more-btn" onclick="toggleNavMore()">More <span>▾</span></button><div class="nav-dropdown"><a href="/venue/">Hire the space</a><a href="/base/">Base here</a><a href="/sponsor/">Sponsor</a><a href="https://philanthropicfoundation.net" target="_blank">Foundation ↗</a></div></li>
+    <li><a href="/register/" class="nav-cta">Register</a></li>
+  </ul>
+</nav>
+<div style="padding-top:65px"></div>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-header-grid"></div>
+  <div class="page-header-inner">
+    <div class="page-eyebrow">Mauritius IFC Desk · River Hub · Tamarin</div>
+    <h1 class="page-title">Your African<br>capital <em>base.</em></h1>
+    <p class="page-subtitle">A credible Mauritius address for African fund managers, DFIs, family offices, and advisory firms that need a presence in the Indian Ocean's leading IFC — without the cost and friction of a full office setup.</p>
+  </div>
+</div>
+
+<!-- WHY MAURITIUS -->
+<section style="padding:80px 0">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-tag">Why Mauritius · Why River Hub</div>
+      <h2 class="section-title">The IFC that<br>connects Africa<br>to <em>global capital</em></h2>
+    </div>
+    <div class="why-grid reveal" style="transition-delay:.08s">
+      <div class="why-card">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" width="20" height="20"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+        <div class="why-title">Gateway to African markets</div>
+        <div class="why-text">Mauritius is the single largest source of FDI into Africa. A Mauritius-domiciled structure gives your fund or advisory practice access to an unmatched network of double taxation agreements across the continent — 46 countries and growing.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" width="20" height="20"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="why-title">Regulatory credibility</div>
+        <div class="why-text">The FSC Mauritius is a IOSCO-signatory regulator recognised by the EU, UK, and major DFIs. A Mauritius address signals institutional credibility to European LPs, development finance institutions, and co-investors who know the jurisdiction.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" width="20" height="20"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <div class="why-title">The River Hub network</div>
+        <div class="why-text">Basing at River Hub puts you inside the TAP Fund ecosystem — the same network that connects DFI investment officers, African fund managers, and institutional LPs through the African Circuit and the River Hub training programme.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section style="background:var(--bg-card);border-top:.5px solid var(--border);border-bottom:.5px solid var(--border);padding:80px 0">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-tag">Three ways to base at River Hub</div>
+      <h2 class="section-title">Choose your<br><em>presence</em></h2>
+      <p class="section-body" style="max-width:520px">All packages include a registered Mauritius address, mail handling, and access to the River Hub meeting room for scheduled sessions. Minimum 3-month commitment.</p>
+    </div>
+    <div class="pkg-grid reveal" style="transition-delay:.08s">
+
+      <!-- Virtual Office -->
+      <div class="pkg-card">
+        <div class="pkg-eyebrow">Virtual Office</div>
+        <div class="pkg-title">Mauritius<br>Address</div>
+        <div class="pkg-desc">A prestigious River Hub, Tamarin address for your fund, advisory firm, or holding structure. No physical desk required. Full mail handling and document reception included.</div>
+        <div class="pkg-price">Rs 8,000</div>
+        <div class="pkg-price-unit">per month · min 3 months</div>
+        <div class="pkg-includes">
+          <div class="pkg-inc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12"><polyline points="20 6 9 17 4 12"/></svg>Registered business address — River Hub, Tamarin</div>
+          <div class="pkg-inc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12"><polyline points="20 6 9 17 4 12"/></svg>Mail receipt, scanning, and forwarding</div>
+          <div class="pkg-inc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12"><polyline points="20 6 9 17 4 12"/></svg>2 meeting room hours per month</div>
+          <div class="pkg-inc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12"><polyline points="20 6 9 17 4 12"/></svg>Listed in the River Hub network directory</div>
+          <div class="pkg-inc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12"><polyline points="20 6 9 17 4 12"/></svg>Invitation to River Hub network events</div>
+        </div>
+        <a onclick="openModal('Base at River Hub Enquiry')" href="#"Enquire about virtual office →</a>
+      </div>
+
+      <!-- Dedicated Desk -->
+      <div class="pkg-card featured">
+        <div class="pkg-eyebrow">Dedicated Desk <span class="pkg-badge">Most popular</span></div>
+        <div class="pkg-title">Your own<br>desk, always</div>
+        <div class="pkg-desc">A permanently assigned desk in the River Hub working space — yours every day, not hot-desked. Full connectivity, storage, and access to the meeting room and training facilities.</div>
+        <div class="pkg-price">Rs 20,000</div>
+        <div class="pkg-price-unit">per month · min 3 months</div>
+        <div class="pkg-includes">
+          <div class="pkg-inc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12"><polyline points="20 6 9 17 4 12"/></svg>Permanently assigned desk — not shared</div>
+          <div class="pkg-inc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12"><polyline points="20 6 9 17 4 12"/></svg>Registered business address — River Hub, Tamarin</div>
+          <div class="pkg-inc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12"><polyline points="20 6 9 17 4 12"/></svg>High-speed dedicated Wi-Fi</div>
+          <div class="pkg-inc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12"><polyline points="20 6 9 17 4 12"/></svg>8 meeting room hours per month</div>
+          <div class="pkg-inc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12"><polyline points="20 6 9 17 4 12"/></svg>Mail handling and document reception</div>
+          <div class="pkg-inc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12"><polyline points="20 6 9 17 4 12"/></svg>1 complimentary River Hub session per quarter</div>
+          <div class="pkg-inc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12"><polyline points="20 6 9 17 4 12"/></svg>Secure parking · 24/7 access</div>
+        </div>
+        <a onclick="openModal('Base at River Hub Enquiry')" href="#"Enquire about a dedicated desk →</a>
+      </div>
+
+      <!-- Private Office -->
+      <div class="pkg-card">
+        <div class="pkg-eyebrow">Private Office · Limited availability</div>
+        <div class="pkg-title">Your own<br>office</div>
+        <div class="pkg-desc">A fully private, lockable office at River Hub for your team. Ideal for fund managers, legal advisors, or family office executives who need a permanent, confidential Mauritius base.</div>
+        <div class="pkg-price">Rs 45,000</div>
+        <div class="pkg-price-unit">per month · min 6 months · from</div>
+        <div class="pkg-includes">
+          <div class="pkg-inc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12"><polyline points="20 6 9 17 4 12"/></svg>Private lockable office — up to 3 workstations</div>
+          <div class="pkg-inc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12"><polyline points="20 6 9 17 4 12"/></svg>Registered business address — River Hub, Tamarin</div>
+          <div class="pkg-inc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12"><polyline points="20 6 9 17 4 12"/></svg>Dedicated high-speed fibre connection</div>
+          <div class="pkg-inc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12"><polyline points="20 6 9 17 4 12"/></svg>Unlimited meeting room access</div>
+          <div class="pkg-inc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12"><polyline points="20 6 9 17 4 12"/></svg>Mail, document, and courier handling</div>
+          <div class="pkg-inc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12"><polyline points="20 6 9 17 4 12"/></svg>2 complimentary River Hub sessions per quarter</div>
+          <div class="pkg-inc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12"><polyline points="20 6 9 17 4 12"/></svg>Signage at River Hub entrance</div>
+          <div class="pkg-inc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12"><polyline points="20 6 9 17 4 12"/></svg>Secure parking · 24/7 access</div>
+        </div>
+        <a onclick="openModal('Base at River Hub Enquiry')" href="#"Enquire about a private office →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-band">
+  <div class="container">
+    <div class="stats-grid reveal">
+      <div class="stat-box"><div class="stat-val">46</div><div class="stat-label">African countries covered by Mauritius double taxation agreements</div></div>
+      <div class="stat-box"><div class="stat-val">#1</div><div class="stat-label">Mauritius — largest source of FDI into Sub-Saharan Africa</div></div>
+      <div class="stat-box"><div class="stat-val">45'</div><div class="stat-label">From SSR International Airport to River Hub, Tamarin</div></div>
+      <div class="stat-box"><div class="stat-val">GMT+4</div><div class="stat-label">Overlaps London, Dubai, Nairobi, and Singapore business hours</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- WHO IS THIS FOR -->
+<section style="padding:80px 0;background:var(--bg-card);border-top:.5px solid var(--border);border-bottom:.5px solid var(--border)">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-tag">Who bases at River Hub</div>
+      <h2 class="section-title">Built for the<br>people <em>moving</em><br>African capital</h2>
+    </div>
+    <div class="who-grid reveal" style="transition-delay:.08s">
+      <div class="who-card">
+        <div class="who-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" width="18" height="18"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <div><div class="who-title">African fund managers</div><div class="who-text">GPs raising Africa-focused vehicles who need a credible Mauritius domicile — without paying for a full office. River Hub gives you the address, the meeting room, and the DFI network in one package.</div></div>
+      </div>
+      <div class="who-card">
+        <div class="who-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" width="18" height="18"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+        <div><div class="who-title">DFI advisors & transaction advisors</div><div class="who-text">Independent advisors supporting DFI transactions, project preparation, or fund structuring who need a Mauritius base for client meetings and document execution.</div></div>
+      </div>
+      <div class="who-card">
+        <div class="who-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" width="18" height="18"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+        <div><div class="who-title">Family offices</div><div class="who-text">African or international family offices with African investment mandates that require a regulated, credible Mauritius presence for structuring and investment activity.</div></div>
+      </div>
+      <div class="who-card">
+        <div class="who-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" width="18" height="18"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg></div>
+        <div><div class="who-title">International firms entering Africa</div><div class="who-text">European, Gulf, or Asian institutions building their African practice who want a Mauritius base before committing to a full office in the region.</div></div>
+      </div>
+      <div class="who-card">
+        <div class="who-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" width="18" height="18"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div><div class="who-title">African Circuit delegates</div><div class="who-text">Participants in the African Circuit conference series who travel to Mauritius regularly and need a permanent base rather than paying for hotels every visit.</div></div>
+      </div>
+      <div class="who-card">
+        <div class="who-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" width="18" height="18"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5 19.79 19.79 0 0 1 1.58 4.88 2 2 0 0 1 3.54 2.69h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        <div><div class="who-title">Legal & compliance advisors</div><div class="who-text">Law firms and compliance specialists advising African funds, banks, or corporates on FSC Mauritius licensing, cross-border structuring, or AML/CFT requirements.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IFC ADVANTAGE -->
+<section class="ifc-band">
+  <div class="container">
+    <div class="ifc-grid">
+      <div class="reveal">
+        <div class="section-tag">The Mauritius IFC advantage</div>
+        <h2 class="section-title">Why sophisticated<br>investors choose<br><em>Mauritius</em></h2>
+        <p class="section-body">Mauritius is not an offshore secrecy jurisdiction. It is a well-regulated, OECD-compliant international financial centre with a 30-year track record of channelling capital into Africa. That distinction matters to the LPs, DFIs, and co-investors you are trying to attract.</p>
+        <a onclick="openModal('Base at River Hub Enquiry')" href="#"Enquire about basing here →</a>
+      </div>
+      <div class="reveal" style="transition-delay:.1s">
+        <div class="ifc-point"><div class="ifc-point-num">01</div><div class="ifc-point-title">46 double taxation agreements</div><div class="ifc-point-text">More DTA coverage across Africa than any other jurisdiction. Structures domiciled in Mauritius benefit from reduced withholding taxes on dividends, interest, and capital gains in covered countries.</div></div>
+        <div class="ifc-point"><div class="ifc-point-num">02</div><div class="ifc-point-title">OECD-compliant, FATF white-listed</div><div class="ifc-point-text">Mauritius has implemented all OECD BEPS standards and sits on the FATF white list. European and American LPs face no adverse AIFMD or regulatory treatment for Mauritius-domiciled structures.</div></div>
+        <div class="ifc-point"><div class="ifc-point-num">03</div><div class="ifc-point-title">FSC-regulated vehicles</div><div class="ifc-point-text">Global Business Companies, Authorised Companies, and CIS licences issued by the FSC Mauritius are recognised by IFC, AfDB, BII, and most major DFIs as qualifying investment vehicles.</div></div>
+        <div class="ifc-point"><div class="ifc-point-num">04</div><div class="ifc-point-title">Time zone advantage</div><div class="ifc-point-text">GMT+4 overlaps London morning, Dubai business hours, Nairobi, and Singapore afternoon in a single working day. No other African IFC offers this cross-market reach.</div></div>
+        <div class="ifc-point"><div class="ifc-point-num">05</div><div class="ifc-point-title">Political and currency stability</div><div class="ifc-point-text">A 50-year democracy with an independent judiciary, investment-grade sovereign rating, and a freely convertible currency. For risk-conscious institutional investors, that matters.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="background:var(--bg-card);border-top:.5px solid var(--border);padding:64px 0">
+  <div class="container">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap">
+      <div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--white);margin-bottom:8px">Ready to base at River Hub?</div>
+        <div style="font-size:12px;font-weight:300;color:var(--muted-lg)">We respond within 24 hours with availability, onboarding details, and a tour of the space if you are in Mauritius.</div>
+      </div>
+      <div style="display:flex;gap:16px;flex-wrap:wrap">
+        <a onclick="openModal('Base at River Hub Enquiry')" href="#"Enquire now →</a>
+        <a href="/venue/" class="btn-ghost">See the space</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div><div class="footer-name">River Hub</div><div class="footer-sub">Tamarin · Mauritius · Est. 2026</div><p class="footer-desc">The Philanthropic Foundation's Capacity Building Centre.</p></div>
+      <div><div class="footer-col-title">Programme</div><ul class="footer-links"><li><a href="/courses/">Curriculum tracks</a></li><li><a href="/calendar/">Session calendar</a></li><li><a href="/faculty/">Faculty</a></li><li><a href="/hrdc/">HRDC funding</a></li></ul></div>
+      <div><div class="footer-col-title">Site & Base</div><ul class="footer-links"><li><a href="/venue/">Venue hire</a></li><li><a href="/base/">Base at River Hub</a></li><li><a href="/sponsor/">Sponsor</a></li><li><a href="/register/">Register</a></li></ul></div>
+      <div><div class="footer-col-title">Contact</div><ul class="footer-links"><li><a href="mailto:admin@philanthropicfoundation.net">admin@philanthropicfoundation.net</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><div class="footer-copy">© 2026 The Philanthropic Foundation · Reg. No. 679 · Mauritius</div><div class="footer-season">River Hub · Season One</div></div>
+  </div>
+</footer>
+<script src="/assets/main.js"></script>
+<script>
+function openModal(type) {
+  document.getElementById('enq-type').value = type;
+  document.getElementById('enq-modal').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('enq-modal').style.display = 'none';
+  document.body.style.overflow = '';
+}
+async function submitEnquiry(e) {
+  e.preventDefault();
+  const btn = document.getElementById('enq-btn');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+  const data = new FormData(document.getElementById('enq-form'));
+  try {
+    const res = await fetch('https://formspree.io/f/xeedqkea', { method: 'POST', body: data, headers: { Accept: 'application/json' } });
+    if (res.ok) {
+      document.getElementById('enq-form').style.display = 'none';
+      document.getElementById('enq-success').style.display = 'block';
+    } else { btn.textContent = 'Try again'; btn.disabled = false; }
+  } catch { btn.textContent = 'Try again'; btn.disabled = false; }
+}
+</script>
+
+<!-- ENQUIRY MODAL -->
+<div id="enq-modal" style="display:none;position:fixed;inset:0;z-index:999;background:rgba(13,17,23,.92);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:20px">
+  <div style="background:#161c26;border:.5px solid rgba(201,168,76,.3);border-radius:3px;padding:40px;max-width:480px;width:100%;position:relative">
+    <button onclick="closeModal()" style="position:absolute;top:16px;right:16px;background:none;border:none;color:rgba(245,243,239,.4);font-size:22px;cursor:none;line-height:1">×</button>
+    <div id="enq-success" style="display:none;text-align:center;padding:20px 0">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:28px;color:#c9a84c;margin-bottom:10px">Thank you.</div>
+      <div style="font-size:12px;color:rgba(245,243,239,.6);line-height:1.8">We will be in touch within 24 hours with availability and details.</div>
+    </div>
+    <form id="enq-form" onsubmit="submitEnquiry(event)">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#f5f3ef;margin-bottom:24px;font-style:italic">Enquire about basing here</div>
+      <input type="hidden" name="_subject" id="enq-type" value="Base at River Hub Enquiry">
+      <div style="margin-bottom:12px"><label style="font-size:9px;color:rgba(245,243,239,.45);letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:6px">Your name</label><input type="text" name="name" required style="width:100%;background:#0d1117;border:.5px solid rgba(255,255,255,.12);padding:10px 14px;font-family:'Inter',sans-serif;font-size:12px;color:#f5f3ef;outline:none;border-radius:3px"></div>
+      <div style="margin-bottom:12px"><label style="font-size:9px;color:rgba(245,243,239,.45);letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:6px">Work email</label><input type="email" name="email" required style="width:100%;background:#0d1117;border:.5px solid rgba(255,255,255,.12);padding:10px 14px;font-family:'Inter',sans-serif;font-size:12px;color:#f5f3ef;outline:none;border-radius:3px"></div>
+      <div style="margin-bottom:12px"><label style="font-size:9px;color:rgba(245,243,239,.45);letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:6px">Organisation</label><input type="text" name="organisation" style="width:100%;background:#0d1117;border:.5px solid rgba(255,255,255,.12);padding:10px 14px;font-family:'Inter',sans-serif;font-size:12px;color:#f5f3ef;outline:none;border-radius:3px"></div>
+      <div style="margin-bottom:12px"><label style="font-size:9px;color:rgba(245,243,239,.45);letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:6px">Package of interest</label>
+      <select name="package" style="width:100%;background:#0d1117;border:.5px solid rgba(255,255,255,.12);padding:10px 14px;font-family:'Inter',sans-serif;font-size:12px;color:#f5f3ef;outline:none;border-radius:3px;-webkit-appearance:none">
+        <option value="">Select a package</option>
+        <option>Virtual Office — Rs 8,000/month</option>
+        <option>Dedicated Desk — Rs 20,000/month</option>
+        <option>Private Office — Rs 45,000/month</option>
+        <option>Not sure — advise me</option>
+      </select></div>
+      <div style="margin-bottom:20px"><label style="font-size:9px;color:rgba(245,243,239,.45);letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:6px">Message <span style="opacity:.4">(optional)</span></label><textarea name="message" rows="3" style="width:100%;background:#0d1117;border:.5px solid rgba(255,255,255,.12);padding:10px 14px;font-family:'Inter',sans-serif;font-size:12px;color:#f5f3ef;outline:none;border-radius:3px;resize:vertical"></textarea></div>
+      <button type="submit" id="enq-btn" style="width:100%;background:#c9a84c;color:#0d1117;border:none;padding:12px;font-family:'Inter',sans-serif;font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;cursor:none;border-radius:3px">Send enquiry</button>
+    </form>
+  </div>
+</div>
+</body>
+</html>
