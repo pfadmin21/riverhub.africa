@@ -112,47 +112,54 @@
       <div class="reveal" style="transition-delay:.12s">
         <div class="form-card">
           <div class="form-title">Register interest</div>
-          <div class="form-row-2">
-            <div class="form-row"><label class="form-label">First name</label><input type="text" class="form-input" placeholder="Given name" id="f-first"></div>
-            <div class="form-row"><label class="form-label">Last name</label><input type="text" class="form-input" placeholder="Family name" id="f-last"></div>
+          <div id="form-success" style="display:none;text-align:center;padding:40px 0">
+            <div style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;color:var(--gold);margin-bottom:12px">Thank you.</div>
+            <div style="font-size:13px;font-weight:300;color:var(--muted-lg);line-height:1.8">We have received your registration.<br>You will hear from us within 48 hours with your place confirmation and fee details.</div>
           </div>
-          <div class="form-row"><label class="form-label">Work email</label><input type="email" class="form-input" placeholder="you@company.com" id="f-email"></div>
-          <div class="form-row"><label class="form-label">Organisation</label><input type="text" class="form-input" placeholder="Company or institution" id="f-org"></div>
-          <div class="form-row">
-            <label class="form-label">Where will you attend from?</label>
-            <select class="form-select" id="f-location" onchange="handleLocation(this.value)">
-              <option value="">Select your location</option>
-              <option value="mu-onsite">Mauritius — on-site at River Hub, Tamarin</option>
-              <option value="mu-online">Mauritius — online</option>
-              <option value="africa">Africa & Indian Ocean — online</option>
-              <option value="europe">Europe — online</option>
-              <option value="gulf">Gulf / Middle East — online</option>
-              <option value="asia">Asia — online</option>
-              <option value="americas">Americas — online</option>
-            </select>
-          </div>
-          <div class="form-context" id="f-context" style="display:none"></div>
-          <div class="form-row">
-            <label class="form-label">Track of interest</label>
-            <select class="form-select" id="f-track">
-              <option value="">Which curriculum track?</option>
-              <option>Track A — Blended finance & DFIs</option>
-              <option>Track B — ESG & climate finance</option>
-              <option>Track C — Capital markets & governance</option>
-              <option>Track D — Premium convenings (invitation)</option>
-              <option>Multiple tracks — advise me</option>
-            </select>
-          </div>
-          <div class="form-row"><label class="form-label">Anything specific? <span style="opacity:.4">(optional)</span></label><input type="text" class="form-input" placeholder="e.g. blended finance for a specific project type" id="f-note"></div>
-          <div class="form-row">
-            <label class="form-label">LinkedIn profile <span style="opacity:.4">(optional)</span></label>
-            <div style="position:relative">
-              <span class="li-prefix">linkedin.com/in/</span>
-              <input type="text" class="form-input" placeholder="yourhandle" id="f-linkedin" style="padding-left:114px">
+          <form id="reg-form" action="https://formspree.io/f/xeedqkea" method="POST" onsubmit="handleSubmit(event)">
+            <div class="form-row-2">
+              <div class="form-row"><label class="form-label">First name</label><input type="text" name="first_name" class="form-input" placeholder="Given name" required></div>
+              <div class="form-row"><label class="form-label">Last name</label><input type="text" name="last_name" class="form-input" placeholder="Family name"></div>
             </div>
-          </div>
-          <button class="form-submit" id="f-submit" onclick="submitForm()">Register interest — receive confirmation within 48h</button>
-          <div class="form-note" id="f-footnote">No payment required. We respond within 48 hours with your place confirmation and fee.</div>
+            <div class="form-row"><label class="form-label">Work email</label><input type="email" name="email" class="form-input" placeholder="you@company.com" required></div>
+            <div class="form-row"><label class="form-label">Organisation</label><input type="text" name="organisation" class="form-input" placeholder="Company or institution" required></div>
+            <div class="form-row">
+              <label class="form-label">Where will you attend from?</label>
+              <select name="location" class="form-select" id="f-location" onchange="handleLocation(this.value)" required>
+                <option value="">Select your location</option>
+                <option value="Mauritius — on-site at River Hub, Tamarin">Mauritius — on-site at River Hub, Tamarin</option>
+                <option value="Mauritius — online">Mauritius — online</option>
+                <option value="Africa & Indian Ocean — online">Africa & Indian Ocean — online</option>
+                <option value="Europe — online">Europe — online</option>
+                <option value="Gulf / Middle East — online">Gulf / Middle East — online</option>
+                <option value="Asia — online">Asia — online</option>
+                <option value="Americas — online">Americas — online</option>
+              </select>
+            </div>
+            <div class="form-context" id="f-context" style="display:none"></div>
+            <div class="form-row">
+              <label class="form-label">Track of interest</label>
+              <select name="track" class="form-select">
+                <option value="">Which curriculum track?</option>
+                <option>Track A — Blended finance & DFIs</option>
+                <option>Track B — ESG & climate finance</option>
+                <option>Track C — Capital markets & governance</option>
+                <option>Track D — Premium convenings (invitation)</option>
+                <option>Multiple tracks — advise me</option>
+              </select>
+            </div>
+            <div class="form-row"><label class="form-label">Anything specific? <span style="opacity:.4">(optional)</span></label><input type="text" name="notes" class="form-input" placeholder="e.g. blended finance for a specific project type"></div>
+            <div class="form-row">
+              <label class="form-label">LinkedIn profile <span style="opacity:.4">(optional)</span></label>
+              <div style="position:relative">
+                <span class="li-prefix">linkedin.com/in/</span>
+                <input type="text" name="linkedin" class="form-input" placeholder="yourhandle" style="padding-left:114px">
+              </div>
+            </div>
+            <input type="hidden" name="_subject" value="New River Hub Registration">
+            <button type="submit" class="form-submit" id="f-submit">Register interest — receive confirmation within 48h</button>
+            <div class="form-note">No payment required. We respond within 48 hours with your place confirmation and fee.</div>
+          </form>
         </div>
       </div>
     </div>
@@ -173,13 +180,13 @@
 <script src="/assets/main.js"></script>
 <script>
 const locationMessages = {
-  'mu-onsite': '🇲🇺 <strong>On-site at River Hub, Tamarin.</strong> Your fee confirmation will include the course fee in MUR and a full HRDC employer claim guide — your company can claim up to 75% back. Catering and F&B are included in your seat.',
-  'mu-online': '🇲🇺 <strong>Online from Mauritius.</strong> Your fee confirmation will include the course fee in MUR. If your employer contributes to the HRDC levy, they may be eligible to claim a refund — we will include the claim guide in your confirmation.',
-  'africa': '🌍 <strong>Online — Africa & Indian Ocean.</strong> Your fee confirmation will be in USD at our regional rate (USD 150 per session). A direct invoice will be issued on confirmation.',
-  'europe': '🌐 <strong>Online — Europe.</strong> Your fee confirmation will be in USD at our international rate (USD 350 per session). Invoice issued in USD on confirmation.',
-  'gulf': '🌐 <strong>Online — Gulf & Middle East.</strong> Your fee confirmation will be in USD at our international rate (USD 350 per session). Invoice issued in USD on confirmation.',
-  'asia': '🌐 <strong>Online — Asia.</strong> Your fee confirmation will be in USD at our international rate (USD 350 per session). Invoice issued in USD on confirmation.',
-  'americas': '🌐 <strong>Online — Americas.</strong> Your fee confirmation will be in USD at our international rate (USD 350 per session). Invoice issued in USD on confirmation.',
+  'Mauritius — on-site at River Hub, Tamarin': '🇲🇺 <strong>On-site at River Hub, Tamarin.</strong> Your fee confirmation will include the course fee in MUR and a full HRDC employer claim guide — your company can claim up to 75% back. Catering and F&B are included in your seat.',
+  'Mauritius — online': '🇲🇺 <strong>Online from Mauritius.</strong> Your fee confirmation will include the course fee in MUR. If your employer contributes to the HRDC levy, they may be eligible to claim a refund — we will include the claim guide in your confirmation.',
+  'Africa & Indian Ocean — online': '<strong>Online — Africa & Indian Ocean.</strong> Your fee confirmation will be in USD at our regional rate (USD 150 per session). A direct invoice will be issued on confirmation.',
+  'Europe — online': '<strong>Online — Europe.</strong> Your fee confirmation will be in USD at our international rate (USD 350 per session). Invoice issued in USD on confirmation.',
+  'Gulf / Middle East — online': '<strong>Online — Gulf & Middle East.</strong> Your fee confirmation will be in USD at our international rate (USD 350 per session). Invoice issued in USD on confirmation.',
+  'Asia — online': '<strong>Online — Asia.</strong> Your fee confirmation will be in USD at our international rate (USD 350 per session). Invoice issued in USD on confirmation.',
+  'Americas — online': '<strong>Online — Americas.</strong> Your fee confirmation will be in USD at our international rate (USD 350 per session). Invoice issued in USD on confirmation.',
 };
 
 function handleLocation(val) {
@@ -192,57 +199,29 @@ function handleLocation(val) {
   }
 }
 
-function submitForm() {
-  const first = document.getElementById('f-first').value.trim();
-  const last = document.getElementById('f-last').value.trim();
-  const email = document.getElementById('f-email').value.trim();
-  const org = document.getElementById('f-org').value.trim();
-  const loc = document.getElementById('f-location').value;
-  const track = document.getElementById('f-track').value;
-  const noteVal = document.getElementById('f-note').value.trim();
-  const linkedinRaw = document.getElementById('f-linkedin').value.trim();
-  const linkedin = linkedinRaw ? 'https://linkedin.com/in/' + linkedinRaw.replace(/.*linkedin\.com\/in\//, '') : '';
+async function handleSubmit(e) {
+  e.preventDefault();
   const btn = document.getElementById('f-submit');
-  const note = document.getElementById('f-footnote');
-  if (!first || !email || !org || !loc) {
-    note.textContent = 'Please complete your name, email, organisation and location to register.';
-    note.style.color = '#e07070';
-    return;
-  }
-  const locationLabels = {
-    'mu-onsite': 'Mauritius — on-site at River Hub, Tamarin',
-    'mu-online': 'Mauritius — online',
-    'africa': 'Africa & Indian Ocean — online',
-    'europe': 'Europe — online',
-    'gulf': 'Gulf / Middle East — online',
-    'asia': 'Asia — online',
-    'americas': 'Americas — online',
-  };
-  const body = [
-    'New registration interest from riverhub.africa',
-    '',
-    'NAME: ' + first + (last ? ' ' + last : ''),
-    'EMAIL: ' + email,
-    'ORGANISATION: ' + org,
-    'LOCATION: ' + (locationLabels[loc] || loc),
-    'TRACK: ' + (track || 'Not specified'),
-    'NOTES: ' + (noteVal || 'None'),
-    'LINKEDIN: ' + (linkedin || 'Not provided'),
-  ].join('\n');
-  const subject = 'River Hub Registration — ' + first + (last ? ' ' + last : '') + ' · ' + org;
-  window.location.href = 'mailto:admin@philanthropicfoundation.net'
-    + '?subject=' + encodeURIComponent(subject)
-    + '&body=' + encodeURIComponent(body);
-  btn.textContent = 'Opening your email client ✓';
-  btn.style.background = '#3d8a62';
-  btn.style.color = '#f5f3ef';
+  btn.textContent = 'Sending...';
   btn.disabled = true;
-  const isMauritius = loc.startsWith('mu');
-  note.style.color = '';
-  note.textContent = isMauritius
-    ? 'Please send the email that just opened. We will confirm your place, fee in MUR, and send your employer\'s HRDC claim guide within 48 hours.'
-    : 'Please send the email that just opened. We will confirm your place and send your fee confirmation in USD within 48 hours.';
+  const form = document.getElementById('reg-form');
+  const data = new FormData(form);
+  try {
+    const res = await fetch('https://formspree.io/f/xeedqkea', { method: 'POST', body: data, headers: { Accept: 'application/json' } });
+    if (res.ok) {
+      form.style.display = 'none';
+      document.getElementById('form-success').style.display = 'block';
+    } else {
+      btn.textContent = 'Something went wrong — please try again';
+      btn.disabled = false;
+    }
+  } catch {
+    btn.textContent = 'Something went wrong — please try again';
+    btn.disabled = false;
+  }
 }
 </script>
+
 </body>
 </html>
+
