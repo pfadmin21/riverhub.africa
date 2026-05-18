@@ -210,7 +210,7 @@
         <div style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--white);margin-bottom:8px">Request the Season One<br>Partnership Brief</div>
         <div style="font-size:12px;font-weight:300;color:var(--muted-lg)">A four-page document covering programme reach, participant profile, reporting framework alignment, SDG methodology, and the full benefit schedule for all three tiers. Sent within 24 hours.</div>
       </div>
-      <a href="mailto:admin@philanthropicfoundation.net?subject=River Hub — Partnership Brief Request · Season One&body=Please send me the River Hub Season One Partnership Brief." class="btn-primary" style="white-space:nowrap;flex-shrink:0">Request the brief →</a>
+      <button onclick="openModal('Sponsorship Enquiry')" class="btn-primary" style="white-space:nowrap;flex-shrink:0;border:none;cursor:none">Request the brief →</button>
     </div>
   </div>
 </section>
@@ -227,5 +227,58 @@
   </div>
 </footer>
 <script src="/assets/main.js"></script>
+<script>
+function openModal(type) {
+  document.getElementById('enq-type').value = type;
+  document.getElementById('enq-modal').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('enq-modal').style.display = 'none';
+  document.body.style.overflow = '';
+}
+async function submitEnquiry(e) {
+  e.preventDefault();
+  const btn = document.getElementById('enq-btn');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+  const data = new FormData(document.getElementById('enq-form'));
+  try {
+    const res = await fetch('https://formspree.io/f/xeedqkea', { method: 'POST', body: data, headers: { Accept: 'application/json' } });
+    if (res.ok) {
+      document.getElementById('enq-form').style.display = 'none';
+      document.getElementById('enq-success').style.display = 'block';
+    } else { btn.textContent = 'Try again'; btn.disabled = false; }
+  } catch { btn.textContent = 'Try again'; btn.disabled = false; }
+}
+</script>
+
+<!-- ENQUIRY MODAL -->
+<div id="enq-modal" style="display:none;position:fixed;inset:0;z-index:999;background:rgba(13,17,23,.92);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:20px">
+  <div style="background:#161c26;border:.5px solid rgba(201,168,76,.3);border-radius:3px;padding:40px;max-width:480px;width:100%;position:relative">
+    <button onclick="closeModal()" style="position:absolute;top:16px;right:16px;background:none;border:none;color:rgba(245,243,239,.4);font-size:22px;cursor:none;line-height:1">×</button>
+    <div id="enq-success" style="display:none;text-align:center;padding:20px 0">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:28px;color:#c9a84c;margin-bottom:10px">Thank you.</div>
+      <div style="font-size:12px;color:rgba(245,243,239,.6);line-height:1.8">We will send the partnership brief within 24 hours.</div>
+    </div>
+    <form id="enq-form" onsubmit="submitEnquiry(event)">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#f5f3ef;margin-bottom:24px;font-style:italic">Request the partnership brief</div>
+      <input type="hidden" name="_subject" id="enq-type" value="Sponsorship Enquiry">
+      <div style="margin-bottom:12px"><label style="font-size:9px;color:rgba(245,243,239,.45);letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:6px">Your name</label><input type="text" name="name" required style="width:100%;background:#0d1117;border:.5px solid rgba(255,255,255,.12);padding:10px 14px;font-family:'Inter',sans-serif;font-size:12px;color:#f5f3ef;outline:none;border-radius:3px"></div>
+      <div style="margin-bottom:12px"><label style="font-size:9px;color:rgba(245,243,239,.45);letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:6px">Work email</label><input type="email" name="email" required style="width:100%;background:#0d1117;border:.5px solid rgba(255,255,255,.12);padding:10px 14px;font-family:'Inter',sans-serif;font-size:12px;color:#f5f3ef;outline:none;border-radius:3px"></div>
+      <div style="margin-bottom:12px"><label style="font-size:9px;color:rgba(245,243,239,.45);letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:6px">Organisation</label><input type="text" name="organisation" style="width:100%;background:#0d1117;border:.5px solid rgba(255,255,255,.12);padding:10px 14px;font-family:'Inter',sans-serif;font-size:12px;color:#f5f3ef;outline:none;border-radius:3px"></div>
+      <div style="margin-bottom:12px"><label style="font-size:9px;color:rgba(245,243,239,.45);letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:6px">Partnership tier of interest</label>
+      <select name="tier" style="width:100%;background:#0d1117;border:.5px solid rgba(255,255,255,.12);padding:10px 14px;font-family:'Inter',sans-serif;font-size:12px;color:#f5f3ef;outline:none;border-radius:3px;-webkit-appearance:none">
+        <option value="">Select a tier</option>
+        <option>Tier 1 — Season Founding Partner (MUR 200,000)</option>
+        <option>Tier 2 — Track Sponsor (MUR 75,000)</option>
+        <option>Tier 3 — Access Partner (MUR 35,000)</option>
+        <option>Not sure — send me the brief</option>
+      </select></div>
+      <div style="margin-bottom:20px"><label style="font-size:9px;color:rgba(245,243,239,.45);letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:6px">Message <span style="opacity:.4">(optional)</span></label><textarea name="message" rows="3" style="width:100%;background:#0d1117;border:.5px solid rgba(255,255,255,.12);padding:10px 14px;font-family:'Inter',sans-serif;font-size:12px;color:#f5f3ef;outline:none;border-radius:3px;resize:vertical"></textarea></div>
+      <button type="submit" id="enq-btn" style="width:100%;background:#c9a84c;color:#0d1117;border:none;padding:12px;font-family:'Inter',sans-serif;font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;cursor:none;border-radius:3px">Request the brief</button>
+    </form>
+  </div>
+</div>
 </body>
 </html>

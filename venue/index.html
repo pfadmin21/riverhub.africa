@@ -166,10 +166,10 @@
           <strong>Availability.</strong> River Hub is available for corporate hire on days outside the programme calendar. Bookings are confirmed on a first-come basis. A minimum of 5 working days' notice is required. No external catering is permitted on site.
         </div>
 
-        <a href="mailto:admin@philanthropicfoundation.net?subject=River Hub Venue Hire Enquiry&body=I would like to enquire about hiring River Hub for a corporate session. Please send availability and confirm the package details." class="enquire-cta">
+        <button onclick="openModal('Venue Hire')" class="enquire-cta" style="width:100%;border:none;cursor:none">
           <span>Enquire about availability</span>
           <span style="font-size:18px;color:var(--bg)">→</span>
-        </a>
+        </button>
       </div>
     </div>
   </div>
@@ -187,6 +187,50 @@
   </div>
 </footer>
 <script src="/assets/main.js"></script>
+<script>
+function openModal(type) {
+  document.getElementById('enq-type').value = type;
+  document.getElementById('enq-modal').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('enq-modal').style.display = 'none';
+  document.body.style.overflow = '';
+}
+async function submitEnquiry(e) {
+  e.preventDefault();
+  const btn = document.getElementById('enq-btn');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+  const data = new FormData(document.getElementById('enq-form'));
+  try {
+    const res = await fetch('https://formspree.io/f/xeedqkea', { method: 'POST', body: data, headers: { Accept: 'application/json' } });
+    if (res.ok) {
+      document.getElementById('enq-form').style.display = 'none';
+      document.getElementById('enq-success').style.display = 'block';
+    } else { btn.textContent = 'Try again'; btn.disabled = false; }
+  } catch { btn.textContent = 'Try again'; btn.disabled = false; }
+}
+</script>
+
+<!-- ENQUIRY MODAL -->
+<div id="enq-modal" style="display:none;position:fixed;inset:0;z-index:999;background:rgba(13,17,23,.92);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:20px">
+  <div style="background:#161c26;border:.5px solid rgba(201,168,76,.3);border-radius:3px;padding:40px;max-width:480px;width:100%;position:relative">
+    <button onclick="closeModal()" style="position:absolute;top:16px;right:16px;background:none;border:none;color:rgba(245,243,239,.4);font-size:22px;cursor:none;line-height:1">×</button>
+    <div id="enq-success" style="display:none;text-align:center;padding:20px 0">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:28px;color:#c9a84c;margin-bottom:10px">Thank you.</div>
+      <div style="font-size:12px;color:rgba(245,243,239,.6);line-height:1.8">We will be in touch within 24 hours.</div>
+    </div>
+    <form id="enq-form" onsubmit="submitEnquiry(event)">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#f5f3ef;margin-bottom:24px;font-style:italic">Send an enquiry</div>
+      <input type="hidden" name="_subject" id="enq-type" value="Venue Hire Enquiry">
+      <div style="margin-bottom:12px"><label style="font-size:9px;color:rgba(245,243,239,.45);letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:6px">Your name</label><input type="text" name="name" required style="width:100%;background:#0d1117;border:.5px solid rgba(255,255,255,.12);padding:10px 14px;font-family:'Inter',sans-serif;font-size:12px;color:#f5f3ef;outline:none;border-radius:3px"></div>
+      <div style="margin-bottom:12px"><label style="font-size:9px;color:rgba(245,243,239,.45);letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:6px">Work email</label><input type="email" name="email" required style="width:100%;background:#0d1117;border:.5px solid rgba(255,255,255,.12);padding:10px 14px;font-family:'Inter',sans-serif;font-size:12px;color:#f5f3ef;outline:none;border-radius:3px"></div>
+      <div style="margin-bottom:12px"><label style="font-size:9px;color:rgba(245,243,239,.45);letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:6px">Organisation</label><input type="text" name="organisation" style="width:100%;background:#0d1117;border:.5px solid rgba(255,255,255,.12);padding:10px 14px;font-family:'Inter',sans-serif;font-size:12px;color:#f5f3ef;outline:none;border-radius:3px"></div>
+      <div style="margin-bottom:20px"><label style="font-size:9px;color:rgba(245,243,239,.45);letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:6px">Message <span style="opacity:.4">(optional)</span></label><textarea name="message" rows="3" style="width:100%;background:#0d1117;border:.5px solid rgba(255,255,255,.12);padding:10px 14px;font-family:'Inter',sans-serif;font-size:12px;color:#f5f3ef;outline:none;border-radius:3px;resize:vertical"></textarea></div>
+      <button type="submit" id="enq-btn" style="width:100%;background:#c9a84c;color:#0d1117;border:none;padding:12px;font-family:'Inter',sans-serif;font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;cursor:none;border-radius:3px">Send enquiry</button>
+    </form>
+  </div>
+</div>
 </body>
 </html>
-
