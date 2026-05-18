@@ -1,5 +1,6 @@
 :root{--bg:#0d1117;--bg-card:#161c26;--bg-mid:#1c2433;--border:rgba(255,255,255,0.08);--border-lg:rgba(255,255,255,0.12);--gold:#c9a84c;--gold-lt:#e0c27a;--white:#f5f3ef;--muted:rgba(245,243,239,0.45);--muted-lg:rgba(245,243,239,0.65);--radius:3px}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+a{text-decoration:none;color:inherit}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--white);font-weight:300;overflow-x:hidden;cursor:none}
 a,button,[role="button"]{cursor:none}
