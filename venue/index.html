@@ -13,7 +13,10 @@
 <link rel="stylesheet" href="/assets/main.css">
 <style>
 .venue-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;padding:80px 0;align-items:start}
-.pkg{background:var(--bg-card);border:.5px solid var(--border-lg);border-radius:var(--radius);padding:28px 32px;margin-bottom:2px;transition:border-color .25s}
+.page-header{padding:160px 0 80px;position:relative;overflow:hidden;border-bottom:.5px solid var(--border)}
+.page-header-photo{position:absolute;inset:0;background:url('/venue.jpg') center center/cover no-repeat;z-index:0}
+.page-header-photo-overlay{position:absolute;inset:0;background:linear-gradient(105deg,rgba(13,17,23,.95) 0%,rgba(13,17,23,.80) 50%,rgba(13,17,23,.60) 100%);z-index:1}
+.page-header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 60%,rgba(42,74,58,.15) 0%,transparent 55%);z-index:2}border:.5px solid var(--border-lg);border-radius:var(--radius);padding:28px 32px;margin-bottom:2px;transition:border-color .25s}
 .pkg:hover{border-color:var(--gold)}
 .pkg.featured{border-color:var(--gold)}
 .pkg-tag{font-size:9px;font-weight:500;color:var(--gold);letter-spacing:.16em;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between}
@@ -64,6 +67,8 @@
 <div style="padding-top:65px"></div>
 
 <div class="page-header">
+  <div class="page-header-photo"></div>
+  <div class="page-header-photo-overlay"></div>
   <div class="page-header-grid"></div>
   <div class="page-header-inner">
     <div class="page-eyebrow">Venue Hire · Tamarin · Mauritius</div>
@@ -184,3 +189,4 @@
 <script src="/assets/main.js"></script>
 </body>
 </html>
+
